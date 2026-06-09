@@ -10,7 +10,7 @@ export default function About() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">About YMKCOE</h1>
           <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
-            Nurturing engineering excellence, fostering innovation, and building the leaders of tomorrow since 2005.
+            Nurturing engineering excellence, fostering innovation, and building the leaders of tomorrow since 1965.
           </p>
         </div>
       </section>
@@ -25,7 +25,7 @@ export default function About() {
               </div>
               <h2 className="text-2xl font-bold text-primary mb-4">Our Vision</h2>
               <p className="text-muted-foreground leading-relaxed">
-                To be a premier institute of academic excellence, recognized globally for imparting quality engineering education, driving innovation, and producing ethically strong professionals who contribute to the betterment of society.
+                "To provide higher &amp; quality education and enable the students from economically weaker sections to become professionals in today's competitive world."
               </p>
             </CardContent>
           </Card>
@@ -39,19 +39,19 @@ export default function About() {
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex gap-2">
                   <span className="text-accent font-bold">&bull;</span>
-                  To provide state-of-the-art infrastructure and a conducive learning environment.
+                  To foster excellence in teaching, scholarship &amp; service to develop a cadre of students with positive attitude, leadership skills &amp; habit of lifelong learning.
                 </li>
                 <li className="flex gap-2">
                   <span className="text-accent font-bold">&bull;</span>
-                  To foster research, critical thinking, and a spirit of entrepreneurship among students.
+                  To create an academic environment where the highest standards of scholarship &amp; professional practice are observed and responsibilities to students are continuously met.
                 </li>
                 <li className="flex gap-2">
                   <span className="text-accent font-bold">&bull;</span>
-                  To bridge the gap between academia and industry through strong collaborations.
+                  To ensure achievement of overall education goals through effective, fair &amp; efficient administration of recruitment and career enhancement programs.
                 </li>
                 <li className="flex gap-2">
                   <span className="text-accent font-bold">&bull;</span>
-                  To instill moral values, professional ethics, and social responsibility.
+                  To use latest technology for the betterment of students and staff.
                 </li>
               </ul>
             </CardContent>
@@ -69,23 +69,23 @@ export default function About() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="bg-white p-6 rounded-xl border border-border text-center shadow-sm">
               <Award className="h-10 w-10 text-accent mx-auto mb-4" />
-              <h3 className="font-bold text-lg mb-2">NAAC A+ Grade</h3>
-              <p className="text-sm text-muted-foreground">Accredited by National Assessment and Accreditation Council.</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl border border-border text-center shadow-sm">
-              <Award className="h-10 w-10 text-accent mx-auto mb-4" />
-              <h3 className="font-bold text-lg mb-2">NBA Accredited</h3>
-              <p className="text-sm text-muted-foreground">All major undergraduate programs are NBA accredited.</p>
+              <h3 className="font-bold text-lg mb-2">AICTE Approved</h3>
+              <p className="text-sm text-muted-foreground">Approved by the All India Council for Technical Education.</p>
             </div>
             <div className="bg-white p-6 rounded-xl border border-border text-center shadow-sm">
               <Building2 className="h-10 w-10 text-accent mx-auto mb-4" />
-              <h3 className="font-bold text-lg mb-2">SPPU Affiliated</h3>
-              <p className="text-sm text-muted-foreground">Permanently affiliated to Savitribai Phule Pune University.</p>
+              <h3 className="font-bold text-lg mb-2">DBATU Affiliated</h3>
+              <p className="text-sm text-muted-foreground">Affiliated to Dr. Babasaheb Ambedkar Technological University, Lonere.</p>
             </div>
             <div className="bg-white p-6 rounded-xl border border-border text-center shadow-sm">
               <Award className="h-10 w-10 text-accent mx-auto mb-4" />
-              <h3 className="font-bold text-lg mb-2">AICTE Approved</h3>
-              <p className="text-sm text-muted-foreground">Approved by the All India Council for Technical Education.</p>
+              <h3 className="font-bold text-lg mb-2">Established 1965</h3>
+              <p className="text-sm text-muted-foreground">Over 60 years of academic excellence under Indrayani Vidya Mandir.</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-border text-center shadow-sm">
+              <Building2 className="h-10 w-10 text-accent mx-auto mb-4" />
+              <h3 className="font-bold text-lg mb-2">15-Acre Campus</h3>
+              <p className="text-sm text-muted-foreground">State-of-the-art infrastructure on a sprawling 15-acre campus at Talegaon Dabhade.</p>
             </div>
           </div>
         </div>
@@ -103,9 +103,9 @@ export default function About() {
             </div>
             <div className="md:w-2/3 p-8 md:p-10">
               <h2 className="text-2xl font-bold text-primary mb-2">Message from the Principal</h2>
-              <h3 className="text-accent font-semibold mb-6">Dr. A. N. Sharma</h3>
+              <h3 className="text-accent font-semibold mb-6">Prof. (Dr.) S. N. Patil</h3>
               <p className="text-muted-foreground leading-relaxed mb-6 italic">
-                "Welcome to YMKCOE. Our institution is built on the foundation of rigorous academics and a commitment to innovation. We believe in providing our students with not just an education, but an environment where they can discover their potential, build character, and develop the technical prowess needed to solve global challenges. We look forward to being part of your educational journey."
+                "Welcome to Yashoda Mahadeo Kakade College of Engineering. Our institution is committed to providing quality technical education that empowers students — especially those from economically weaker sections — to become confident professionals in today's competitive world. With state-of-the-art facilities, dedicated faculty, and strong industry connections, YMKCOE is the launchpad for your engineering career."
               </p>
             </div>
           </div>

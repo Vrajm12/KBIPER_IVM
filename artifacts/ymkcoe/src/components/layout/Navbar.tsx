@@ -4,11 +4,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const DEPARTMENTS = [
-  "Computer Engg",
-  "Mechanical Engg",
-  "Civil Engg",
-  "Electronics & Telecom",
-  "Electrical Engg",
+  "Computer Science & Engineering",
+  "Artificial Intelligence & Data Science",
+  "Electronics & Telecommunication Engineering",
+  "Information Technology",
 ];
 
 export function Navbar() {
@@ -30,16 +29,16 @@ export function Navbar() {
       <div className="bg-primary text-primary-foreground py-1 md:py-2">
         <div className="container mx-auto px-4 flex justify-between items-center text-xs md:text-sm">
           <div className="flex items-center gap-4">
-            <a href="mailto:info@ymkcoe.edu.in" className="flex items-center gap-1 hover:text-accent transition-colors">
-              <Mail className="h-3 w-3" /> <span className="hidden md:inline">info@ymkcoe.edu.in</span>
+            <a href="mailto:admission@ymkcoe.com" className="flex items-center gap-1 hover:text-accent transition-colors">
+              <Mail className="h-3 w-3" /> <span className="hidden md:inline">admission@ymkcoe.com</span>
             </a>
-            <a href="tel:+912012345678" className="flex items-center gap-1 hover:text-accent transition-colors">
-              <Phone className="h-3 w-3" /> <span className="hidden md:inline">+91 20 1234 5678</span>
+            <a href="tel:+918983683005" className="flex items-center gap-1 hover:text-accent transition-colors">
+              <Phone className="h-3 w-3" /> <span className="hidden md:inline">+91 89836 83005</span>
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <span>Savitribai Phule Pune University Affiliated</span>
-            <span className="hidden md:inline font-semibold text-accent">NBA & NAAC Accredited</span>
+            <span>DBATU Affiliated</span>
+            <span className="hidden md:inline font-semibold text-accent">AICTE Approved | DTE Code: 16352</span>
           </div>
         </div>
       </div>
@@ -49,7 +48,7 @@ export function Navbar() {
           {/* We'll assume attached_assets/ymkcoe_logo.png is served from /ymkcoe_logo.png if copied to public, or we can just use an img tag if it's there. Actually, for now, let's just use a stylized text logo or a placeholder. The prompt says "attached_assets/ymkcoe_logo.png (display in navbar)". Let's assume it's copied to public or can be imported. Let's use an img tag with src "/ymkcoe_logo.png" but provide a fallback if it doesn't exist. Actually, let's use a div with text if it fails to load. */}
           <div className="flex flex-col">
             <span className="font-bold text-xl md:text-2xl text-primary leading-none tracking-tight">YMKCOE</span>
-            <span className="text-[10px] md:text-xs text-muted-foreground font-medium hidden sm:block">Yashoda Mahadeo Kore College of Engineering</span>
+            <span className="text-[10px] md:text-xs text-muted-foreground font-medium hidden sm:block">Yashoda Mahadeo Kakade College of Engineering</span>
           </div>
         </Link>
 

@@ -83,7 +83,7 @@ export default function Contact() {
                     <div>
                       <h3 className="font-semibold text-foreground text-lg mb-1">Campus Address</h3>
                       <p className="text-muted-foreground leading-relaxed">
-                        Yashoda Mahadeo Kore College of Engineering,<br />
+                        Talegaon-Chakan Road,<br />
                         Talegaon Dabhade,<br />
                         Pune, Maharashtra 410507
                       </p>
@@ -97,8 +97,8 @@ export default function Contact() {
                     <div>
                       <h3 className="font-semibold text-foreground text-lg mb-1">Phone Number</h3>
                       <p className="text-muted-foreground">
-                        <a href="tel:+912012345678" className="hover:text-primary transition-colors">+91 20 1234 5678</a><br/>
-                        <a href="tel:+919876543210" className="hover:text-primary transition-colors">+91 98765 43210</a> (Admissions)
+                        <a href="tel:+918983683005" className="hover:text-primary transition-colors">+91 89836 83005</a><br/>
+                        <a href="tel:+918983673005" className="hover:text-primary transition-colors">+91 89836 73005</a> (Admissions)
                       </p>
                     </div>
                   </div>
@@ -110,8 +110,7 @@ export default function Contact() {
                     <div>
                       <h3 className="font-semibold text-foreground text-lg mb-1">Email Address</h3>
                       <p className="text-muted-foreground">
-                        <a href="mailto:info@ymkcoe.edu.in" className="hover:text-primary transition-colors">info@ymkcoe.edu.in</a><br/>
-                        <a href="mailto:admissions@ymkcoe.edu.in" className="hover:text-primary transition-colors">admissions@ymkcoe.edu.in</a>
+                        <a href="mailto:admission@ymkcoe.com" className="hover:text-primary transition-colors">admission@ymkcoe.com</a>
                       </p>
                     </div>
                   </div>

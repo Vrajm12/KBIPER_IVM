@@ -27,13 +27,13 @@ export default function Home() {
           <div className="text-white space-y-6">
             <div className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-sm font-medium backdrop-blur-sm">
               <span className="flex h-2 w-2 rounded-full bg-accent mr-2"></span>
-              Admissions Open for 2024-25
+              Admissions Open for 2026-27
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
               Engineer Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-emerald-300">Future</span> With Excellence
             </h1>
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-lg leading-relaxed">
-              Yashoda Mahadeo Kore College of Engineering prepares the next generation of innovators, leaders, and problem solvers.
+              Yashoda Mahadeo Kakade College of Engineering — an institution under Indrayani Vidya Mandir — prepares the next generation of innovators, leaders, and problem solvers since 1965.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link href="/admissions">
@@ -63,23 +63,23 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
             <div className="py-8 px-4 text-center">
               <div className="flex justify-center mb-3 text-accent"><GraduationCap className="h-8 w-8" /></div>
-              <div className="text-3xl font-bold text-primary mb-1">{stats?.totalStudents || "2,500"}+</div>
-              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Students</div>
+              <div className="text-3xl font-bold text-primary mb-1">1965</div>
+              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Established</div>
             </div>
             <div className="py-8 px-4 text-center">
               <div className="flex justify-center mb-3 text-accent"><Users className="h-8 w-8" /></div>
-              <div className="text-3xl font-bold text-primary mb-1">{stats?.totalFaculty || "150"}+</div>
-              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Expert Faculty</div>
+              <div className="text-3xl font-bold text-primary mb-1">15 Acres</div>
+              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Campus Area</div>
             </div>
             <div className="py-8 px-4 text-center">
               <div className="flex justify-center mb-3 text-accent"><Building className="h-8 w-8" /></div>
-              <div className="text-3xl font-bold text-primary mb-1">{stats?.totalPlacements || "500"}+</div>
-              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Placements/Yr</div>
+              <div className="text-3xl font-bold text-primary mb-1">360</div>
+              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Total Seats</div>
             </div>
             <div className="py-8 px-4 text-center">
               <div className="flex justify-center mb-3 text-accent"><Trophy className="h-8 w-8" /></div>
-              <div className="text-3xl font-bold text-primary mb-1">A+</div>
-              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">NAAC Grade</div>
+              <div className="text-3xl font-bold text-primary mb-1">AICTE</div>
+              <div className="text-sm font-medium text-muted-foreground uppercase tracking-wider">Approved</div>
             </div>
           </div>
         </div>

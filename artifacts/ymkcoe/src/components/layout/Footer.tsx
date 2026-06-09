@@ -13,7 +13,7 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-2xl font-bold tracking-tight mb-4">YMKCOE</h3>
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
-              Yashoda Mahadeo Kore College of Engineering is a premier institution dedicated to excellence in technical education, research, and innovation.
+              Yashoda Mahadeo Kakade College of Engineering (YMKCOE) is a premier institution under Indrayani Vidya Mandir, dedicated to excellence in technical education and innovation since 1965.
             </p>
             <div className="flex gap-4 pt-2">
               <a href="#" className="text-primary-foreground/60 hover:text-accent transition-colors"><Facebook className="h-5 w-5" /></a>
@@ -52,11 +52,10 @@ export function Footer() {
             <h4 className="text-lg font-semibold mb-4 border-b border-primary-foreground/10 pb-2">Departments</h4>
             <ul className="space-y-2">
               {[
-                "Computer Engineering",
-                "Mechanical Engineering",
-                "Civil Engineering",
-                "Electronics & Telecom",
-                "Electrical Engineering",
+                "Computer Science & Engineering",
+                "Artificial Intelligence & Data Science",
+                "Electronics & Telecommunication Engineering",
+                "Information Technology",
               ].map((dept) => (
                 <li key={dept}>
                   <Link href={`/courses?dept=${encodeURIComponent(dept)}`}>
@@ -76,15 +75,15 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3 text-sm text-primary-foreground/80">
                 <MapPin className="h-5 w-5 text-accent shrink-0 mt-0.5" />
-                <span>Yashoda Mahadeo Kore College of Engineering, Talegaon Dabhade, Pune, Maharashtra 410507</span>
+                <span>Talegaon-Chakan Road, Talegaon Dabhade, Pune, Maharashtra 410507</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-primary-foreground/80">
                 <Phone className="h-5 w-5 text-accent shrink-0" />
-                <span>+91 20 1234 5678</span>
+                <span>+91 89836 83005 / +91 89836 73005</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-primary-foreground/80">
                 <Mail className="h-5 w-5 text-accent shrink-0" />
-                <a href="mailto:info@ymkcoe.edu.in" className="hover:text-accent transition-colors">info@ymkcoe.edu.in</a>
+                <a href="mailto:admission@ymkcoe.com" className="hover:text-accent transition-colors">admission@ymkcoe.com</a>
               </li>
             </ul>
           </div>
@@ -94,7 +93,7 @@ export function Footer() {
       
       <div className="bg-primary/95 border-t border-primary-foreground/10 py-6">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/60">
-          <p>&copy; {currentYear} Yashoda Mahadeo Kore College of Engineering. All rights reserved.</p>
+          <p>&copy; {currentYear} Yashoda Mahadeo Kakade College of Engineering. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/admin"><span className="hover:text-accent transition-colors">Admin Portal</span></Link>
             <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
