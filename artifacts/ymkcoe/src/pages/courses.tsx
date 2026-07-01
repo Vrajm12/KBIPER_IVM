@@ -1,5 +1,5 @@
 import { AppLayout } from "@/components/layout/AppLayout";
-import { useGetCourses } from "@workspace/api-client-react";
+// API client import removed since we are hardcoding the courses now
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,19 +9,25 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 const DEPARTMENTS = [
   "All",
-  "Computer Engg",
-  "Mechanical Engg",
-  "Civil Engg",
-  "Electronics & Telecom",
-  "Electrical Engg",
+  "Diploma",
+  "Undergraduate",
+  "Postgraduate",
+];
+
+const PHARMACY_COURSES = [
+  { id: '1', name: 'D. Pharmacy', department: 'Diploma', type: 'Diploma', duration: '2 Years', seats: 60, eligibility: '10+2 with Science', description: 'Diploma in Pharmacy is a 2-year entry-level diploma course that provides the essential knowledge and skills required to practice as a pharmacist.' },
+  { id: '2', name: 'B. Pharmacy', department: 'Undergraduate', type: 'Degree', duration: '4 Years', seats: 100, eligibility: '10+2 with PCB/PCM', description: 'Bachelor of Pharmacy is a 4-year undergraduate program focusing on health and chemical sciences.' },
+  { id: '3', name: 'M. Pharmacy (Pharmaceutics)', department: 'Postgraduate', type: 'Master', duration: '2 Years', seats: 15, eligibility: 'B.Pharm', description: 'Specialized master program focusing on the process of turning a new chemical entity into a medication.' },
+  { id: '4', name: 'M. Pharmacy (Pharmacology)', department: 'Postgraduate', type: 'Master', duration: '2 Years', seats: 15, eligibility: 'B.Pharm', description: 'Specialized master program focusing on drug action and how medicines interact with biological systems.' },
 ];
 
 export default function Courses() {
   const [selectedDept, setSelectedDept] = useState<string>("All");
   
-  const { data: courses, isLoading } = useGetCourses(
-    selectedDept !== "All" ? { department: selectedDept } : undefined
-  );
+  const isLoading = false;
+  const courses = selectedDept === "All" 
+    ? PHARMACY_COURSES 
+    : PHARMACY_COURSES.filter(c => c.department === selectedDept);
 
   return (
     <AppLayout>
@@ -29,7 +35,7 @@ export default function Courses() {
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Academic Programs</h1>
           <p className="text-lg text-primary-foreground/80 max-w-2xl">
-            Explore our comprehensive range of undergraduate and postgraduate engineering programs designed to build technical excellence.
+            Explore our comprehensive range of diploma, undergraduate, and postgraduate pharmacy programs designed to build healthcare excellence.
           </p>
         </div>
       </section>
@@ -71,13 +77,13 @@ export default function Courses() {
                 </Card>
               ))}
             </div>
-          ) : courses && courses.length > 0 ? (
+          ) : courses.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {courses.map((course) => (
                 <Card key={course.id} className="overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col h-full border-border">
                   <div className="h-48 bg-secondary/10 relative">
-                    {course.imageUrl ? (
-                      <img src={course.imageUrl} alt={course.name} className="w-full h-full object-cover" />
+                    {(course as any).imageUrl ? (
+                      <img src={(course as any).imageUrl} alt={course.name} className="w-full h-full object-cover" />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center text-muted-foreground bg-muted">
                         <BookOpen className="h-12 w-12 opacity-20" />

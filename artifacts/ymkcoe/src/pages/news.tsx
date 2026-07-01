@@ -12,14 +12,16 @@ const CATEGORIES = ["All", "announcement", "event", "achievement", "news"];
 export default function News() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   
-  const { data: newsItems, isLoading } = useGetNews(
+  const { data: newsItemsData, isLoading } = useGetNews(
     selectedCategory !== "All" ? { category: selectedCategory } : undefined
   );
+  
+  const newsItems = Array.isArray(newsItemsData) ? newsItemsData : [];
 
   const getCategoryColor = (category: string) => {
     switch (category) {
       case "announcement": return "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300";
-      case "event": return "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300";
+      case "event": return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300";
       case "achievement": return "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300";
       default: return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-300";
     }
@@ -31,7 +33,7 @@ export default function News() {
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">News & Events</h1>
           <p className="text-lg text-primary-foreground/80 max-w-2xl">
-            Stay updated with the latest happenings, achievements, and upcoming events at YMKCOE.
+            Stay updated with the latest happenings, achievements, and upcoming events at Krishnarao Bhegade Institute of Pharmaceutical Education and Research (KBIPER).
           </p>
         </div>
       </section>
@@ -72,7 +74,7 @@ export default function News() {
                 </Card>
               ))}
             </div>
-          ) : newsItems && newsItems.length > 0 ? (
+          ) : newsItems.length > 0 ? (
             <div className="space-y-6 max-w-4xl mx-auto">
               {newsItems.map((item) => (
                 <Card key={item.id} className={`overflow-hidden border-border hover:shadow-md transition-shadow ${item.isPinned ? 'ring-1 ring-accent' : ''}`}>

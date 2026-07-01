@@ -6,14 +6,14 @@ export function Footer() {
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <div className="container mx-auto px-4 py-6 md:py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           
           {/* About */}
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold tracking-tight mb-4">YMKCOE</h3>
+          <div className="space-y-3">
+            <h3 className="text-2xl font-bold tracking-tight mb-4">Krishnarao Bhegade Institute of Pharmaceutical Education and Research (KBIPER)</h3>
             <p className="text-sm text-primary-foreground/80 leading-relaxed">
-              Yashoda Mahadeo Kakade College of Engineering (YMKCOE) is a premier institution under Indrayani Vidya Mandir, dedicated to excellence in technical education and innovation since 1965.
+              Krishnarao Bhegade Institute of Pharmaceutical Education and Research (KBIPER) is a premier institution under Indrayani Vidya Mandir, dedicated to excellence in technical education and innovation since 1965.
             </p>
             <div className="flex gap-4 pt-2">
               <a href="#" className="text-primary-foreground/60 hover:text-accent transition-colors"><Facebook className="h-5 w-5" /></a>
@@ -72,7 +72,7 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h4 className="text-lg font-semibold mb-4 border-b border-primary-foreground/10 pb-2">Contact Us</h4>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-primary-foreground/80">
                 <MapPin className="h-5 w-5 text-accent shrink-0 mt-0.5" />
                 <span>Talegaon-Chakan Road, Talegaon Dabhade, Pune, Maharashtra 410507</span>
@@ -91,9 +91,9 @@ export function Footer() {
         </div>
       </div>
       
-      <div className="bg-primary/95 border-t border-primary-foreground/10 py-6">
+      <div className="bg-primary/95 border-t border-primary-foreground/10 py-3">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/60">
-          <p>&copy; {currentYear} Yashoda Mahadeo Kakade College of Engineering. All rights reserved.</p>
+          <p>&copy; {currentYear} Krishnarao Bhegade Institute of Pharmaceutical Education and Research (KBIPER). All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/admin"><span className="hover:text-accent transition-colors">Admin Portal</span></Link>
             <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>

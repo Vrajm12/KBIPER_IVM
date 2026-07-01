@@ -28,7 +28,8 @@ const courseSchema = z.object({
 });
 
 export function CoursesManager() {
-  const { data: courses, isLoading } = useGetCourses();
+  const { data: coursesData, isLoading } = useGetCourses();
+  const courses = Array.isArray(coursesData) ? coursesData : [];
   const queryClient = useQueryClient();
   const { toast } = useToast();
   const deleteCourse = useDeleteCourse();
@@ -162,7 +163,7 @@ export function CoursesManager() {
                   <TableCell><Skeleton className="h-8 w-20 ml-auto" /></TableCell>
                 </TableRow>
               ))
-            ) : courses && courses.length > 0 ? (
+            ) : courses.length > 0 ? (
               courses.map((course) => (
                 <TableRow key={course.id}>
                   <TableCell className="font-medium">{course.name}</TableCell>

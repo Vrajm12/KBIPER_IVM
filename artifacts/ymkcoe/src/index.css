@@ -1,3 +1,4 @@
+@import url('https://cdn.jsdelivr.net/fontsource/fonts/google-sans@latest/index.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -79,55 +80,55 @@
 
   /* Backgrounds: White and off-whites */
   --background: 0 0% 100%;
-  --foreground: 240 28% 14%; /* Deep Navy */
+  --foreground: 222 47% 11%; /* Text Dark #0F172A */
 
-  --border: 214 32% 91%;
+  --border: 210 31% 95%; /* Light Grey #EEF2F6 */
   
   --card: 0 0% 100%;
-  --card-foreground: 240 28% 14%;
-  --card-border: 214 32% 91%;
+  --card-foreground: 222 47% 11%;
+  --card-border: 210 31% 95%;
 
-  --sidebar: 240 28% 14%;
+  --sidebar: 203 96% 18%; /* Dark Azure #023859 */
   --sidebar-foreground: 0 0% 100%;
-  --sidebar-border: 220 56% 22%; /* Dark Blue */
-  --sidebar-primary: 141 49% 47%; /* Emerald */
+  --sidebar-border: 210 31% 95%;
+  --sidebar-primary: 44 93% 50%; /* Orange Gold */
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 220 56% 22%;
+  --sidebar-accent: 48 44% 62%; /* Grey Yellow */
   --sidebar-accent-foreground: 0 0% 100%;
-  --sidebar-ring: 141 49% 47%;
+  --sidebar-ring: 44 93% 50%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 240 28% 14%;
-  --popover-border: 214 32% 91%;
+  --popover-foreground: 222 47% 11%;
+  --popover-border: 210 31% 95%;
 
-  /* Primary: Deep Navy */
-  --primary: 240 28% 14%;
+  /* Primary: Medical Green */
+  --primary: 203 96% 18%; /* Dark Azure */
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Dark Blue */
-  --secondary: 220 56% 22%;
+  /* Secondary: Teal */
+  --secondary: 48 44% 62%; /* Grey Yellow */
   --secondary-foreground: 0 0% 100%;
 
-  --muted: 210 40% 96.1%;
+  --muted: 210 40% 98%; /* Off White #F8FAFC */
   --muted-foreground: 215.4 16.3% 46.9%;
 
-  /* Accent: Emerald Green */
-  --accent: 141 49% 47%;
+  /* Accent: Medical Blue */
+  --accent: 44 93% 50%; /* Orange Gold */
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
 
-  --input: 214 32% 91%;
-  --ring: 141 49% 47%;
+  --input: 210 31% 95%;
+  --ring: 44 93% 50%;
   
-  --chart-1: 141 49% 47%;
-  --chart-2: 240 28% 14%;
-  --chart-3: 220 56% 22%;
+  --chart-1: 203 96% 18%;
+  --chart-2: 48 44% 62%;
+  --chart-3: 44 93% 50%;
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
 
-  --app-font-sans: 'Poppins', sans-serif;
+  --app-font-sans: 'Google Sans', 'Poppins', sans-serif;
   --app-font-serif: Georgia, serif;
   --app-font-mono: Menlo, monospace;
   
@@ -186,25 +187,25 @@
   --popover-foreground: 0 0% 100%;
   --popover-border: 240 28% 18%;
 
-  --primary: 240 28% 20%;
+  --primary: 160 84% 30%;
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 220 56% 22%;
+  --secondary: 173 58% 39%;
   --secondary-foreground: 0 0% 100%;
 
-  --muted: 240 28% 20%;
+  --muted: 160 84% 15%;
   --muted-foreground: 215 20% 65%;
 
-  --accent: 141 49% 47%;
+  --accent: 212 100% 48%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 0 0% 98%;
 
   --input: 240 28% 18%;
-  --ring: 141 49% 47%;
+  --ring: 39 100% 50%;
   
-  --chart-1: 141 49% 47%;
+  --chart-1: 39 100% 50%;
   --chart-2: 240 28% 14%;
   --chart-3: 220 56% 22%;
   --chart-4: 43 74% 66%;
@@ -214,6 +215,10 @@
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html, body {
+    min-height: 100%;
   }
 
   body {

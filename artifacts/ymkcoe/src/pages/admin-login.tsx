@@ -31,7 +31,7 @@ export default function AdminLogin() {
   });
 
   const onSubmit = (data: LoginFormValues) => {
-    login.mutate(data, {
+    login.mutate({ data }, {
       onSuccess: () => {
         setLocation("/admin/dashboard");
       },
@@ -53,7 +53,7 @@ export default function AdminLogin() {
           <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4 text-accent">
             <Lock className="h-8 w-8" />
           </div>
-          <CardTitle className="text-2xl font-bold text-primary">YMKCOE Admin</CardTitle>
+          <CardTitle className="text-2xl font-bold text-primary">Krishnarao Bhegade Institute of Pharmaceutical Education and Research (KBIPER) Admin</CardTitle>
           <p className="text-sm text-muted-foreground mt-2">Sign in to manage college website content</p>
         </CardHeader>
         <CardContent className="p-8">

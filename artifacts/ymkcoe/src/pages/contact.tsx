@@ -91,8 +91,8 @@ export default function Contact() {
                   </div>
                   
                   <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
-                      <Phone className="h-6 w-6 text-secondary" />
+                    <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                      <Phone className="h-6 w-6 text-accent" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground text-lg mb-1">Phone Number</h3>
@@ -104,8 +104,8 @@ export default function Contact() {
                   </div>
 
                   <div className="flex gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <Mail className="h-6 w-6 text-primary" />
+                    <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
+                      <Mail className="h-6 w-6 text-accent" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-foreground text-lg mb-1">Email Address</h3>

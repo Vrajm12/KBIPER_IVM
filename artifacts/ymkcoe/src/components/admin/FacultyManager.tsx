@@ -23,7 +23,8 @@ const facultySchema = z.object({
 });
 
 export function FacultyManager() {
-  const { data: faculty, isLoading } = useGetFaculty();
+  const { data: facultyData, isLoading } = useGetFaculty();
+  const faculty = Array.isArray(facultyData) ? facultyData : [];
   const queryClient = useQueryClient();
   const { toast } = useToast();
   const deleteFaculty = useDeleteFacultyMember();
@@ -129,7 +130,7 @@ export function FacultyManager() {
                   <TableCell><Skeleton className="h-8 w-20 ml-auto" /></TableCell>
                 </TableRow>
               ))
-            ) : faculty && faculty.length > 0 ? (
+            ) : faculty.length > 0 ? (
               faculty.map((member) => (
                 <TableRow key={member.id}>
                   <TableCell className="font-medium">

@@ -8,7 +8,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 
 export function NewsManager() {
-  const { data: news, isLoading } = useGetNews();
+  const { data: newsData, isLoading } = useGetNews();
+  const news = Array.isArray(newsData) ? newsData : [];
   const queryClient = useQueryClient();
   const { toast } = useToast();
   const deleteNews = useDeleteNewsItem();
@@ -54,7 +55,7 @@ export function NewsManager() {
                   <TableCell><Skeleton className="h-8 w-20 ml-auto" /></TableCell>
                 </TableRow>
               ))
-            ) : news && news.length > 0 ? (
+            ) : news.length > 0 ? (
               news.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell className="font-medium">

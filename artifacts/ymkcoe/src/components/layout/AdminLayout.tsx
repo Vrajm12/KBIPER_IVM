@@ -29,7 +29,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
       {/* Sidebar */}
       <aside className="w-full md:w-64 bg-sidebar text-sidebar-foreground border-r border-sidebar-border shrink-0 flex flex-col">
         <div className="h-16 flex items-center px-6 border-b border-sidebar-border">
-          <span className="font-bold text-xl tracking-tight text-white">YMKCOE Admin</span>
+          <span className="font-bold text-xl tracking-tight text-white">Krishnarao Bhegade Institute of Pharmaceutical Education and Research (KBIPER) Admin</span>
         </div>
         <nav className="flex-1 py-6 px-4 space-y-1">
           {navItems.map((item) => {

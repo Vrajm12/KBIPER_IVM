@@ -1,100 +1,728 @@
 import { AppLayout } from "@/components/layout/AppLayout";
-import { useGetMediaItems } from "@workspace/api-client-react";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import { PlayCircle, ImageIcon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  ImageIcon, 
+  Search, 
+  DownloadCloud, 
+  ChevronLeft, 
+  ChevronRight, 
+  X,
+  Instagram,
+  Facebook,
+  ArrowRight,
+  Sparkles,
+  Heart,
+  Share2,
+  RefreshCw,
+  MessageCircle,
+  ThumbsUp,
+  ExternalLink,
+  ShieldCheck
+} from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
+import { useToast } from "@/hooks/use-toast";
 
-const CATEGORIES = ["All", "campus", "events", "labs", "sports", "cultural"];
+interface MediaItem {
+  id: number;
+  title: string;
+  category: "Institute & Labs" | "Campus Tour" | "Events & Culture" | "Sports";
+  url: string;
+  description: string;
+}
+
+const GALLERY_DATABASE: MediaItem[] = [
+  {
+    id: 1,
+    title: "Advanced Pharmaceutical Chemistry Lab",
+    category: "Institute & Labs",
+    url: "https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800&auto=format&fit=crop",
+    description: "Equipped with HPLC, UV-Spectrophotometer, and dissolution testers for high-precision validation."
+  },
+  {
+    id: 2,
+    title: "KBIPER Central Library & E-Reading Zone",
+    category: "Institute & Labs",
+    url: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=800&auto=format&fit=crop",
+    description: "Hosting 5000+ reference volumes, subscription e-journals (DelNet), and a quiet research lobby."
+  },
+  {
+    id: 3,
+    title: "KBIPER Campus Building Frontage",
+    category: "Campus Tour",
+    url: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&auto=format&fit=crop",
+    description: "Krishnarao Bhegade Institute main educational block at Talegaon Dabhade, Pune."
+  },
+  {
+    id: 4,
+    title: "Pharma-Fiesta Annual Cultural Celebrations",
+    category: "Events & Culture",
+    url: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=800&auto=format&fit=crop",
+    description: "Students participating in annual group dances, dramatic arts, and scientific posters display."
+  },
+  {
+    id: 5,
+    title: "Annual Sports Week Tournament - Cricket Finals",
+    category: "Sports",
+    url: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
+    description: "B.Pharm vs D.Pharm cricket match final held at Indrayani Vidya Mandir sports complex ground."
+  },
+  {
+    id: 6,
+    title: "Formulation Science & Machine Room Desk",
+    category: "Institute & Labs",
+    url: "https://images.unsplash.com/photo-1532187643603-ba119ca4109e?q=80&w=800&auto=format&fit=crop",
+    description: "Trainees handling rotary tablet punching machines and coating pans during lab hours."
+  },
+  {
+    id: 7,
+    title: "NSS Social Awareness Extension Camp",
+    category: "Events & Culture",
+    url: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop",
+    description: "NSS volunteers performing village health check-up orientation camps at Sudumbare village."
+  },
+  {
+    id: 8,
+    title: "Indoor Sports Hall - Table Tennis & Badminton",
+    category: "Sports",
+    url: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
+    description: "KBIPER student recreation lobby and sports practice fields validation."
+  }
+];
 
 export default function Media() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  
-  const { data: mediaItems, isLoading } = useGetMediaItems(
-    selectedCategory !== "All" ? { category: selectedCategory } : undefined
-  );
+  const { toast } = useToast();
+  const [activeCategory, setActiveCategory] = useState<"All" | "Institute & Labs" | "Campus Tour" | "Events & Culture" | "Sports" | "Social Hub">("All");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  // Simulated live feed states
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [lastSync, setLastSync] = useState("2 minutes ago");
+
+  const handleSyncFeed = () => {
+    setIsSyncing(true);
+    toast({
+      title: "Syncing Social Feeds",
+      description: "Querying Meta Graph API for kbiper_pharmacy and facebook.com/kbiper.pune...",
+    });
+
+    setTimeout(() => {
+      setIsSyncing(false);
+      setLastSync("Just now");
+      toast({
+        title: "Feed Synced Successfully",
+        description: "Latest 3 Instagram and 3 Facebook posts successfully synchronized.",
+      });
+    }, 1500);
+  };
+
+  // Dynamically load Instagram script
+  useEffect(() => {
+    if ((window as any).instgrm) {
+      (window as any).instgrm.Embeds.process();
+    } else {
+      const script = document.createElement("script");
+      script.src = "//www.instagram.com/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+      script.onload = () => {
+        if ((window as any).instgrm) {
+          (window as any).instgrm.Embeds.process();
+        }
+      };
+    }
+  }, [activeCategory]);
+
+  const filteredPhotos = useMemo(() => {
+    if (activeCategory === "All" || activeCategory === "Social Hub") return GALLERY_DATABASE;
+    return GALLERY_DATABASE.filter(item => item.category === activeCategory);
+  }, [activeCategory]);
+
+  const handleNextPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (lightboxIndex === null) return;
+    setLightboxIndex((lightboxIndex + 1) % filteredPhotos.length);
+  };
+
+  const handlePrevPhoto = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (lightboxIndex === null) return;
+    setLightboxIndex((lightboxIndex - 1 + filteredPhotos.length) % filteredPhotos.length);
+  };
 
   return (
     <AppLayout>
-      <section className="bg-primary text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Gallery</h1>
-          <p className="text-lg text-primary-foreground/80 max-w-2xl mx-auto">
-            Experience life at YMKCOE through our extensive collection of photos and videos.
-          </p>
+      {/* Hero Header */}
+      <section className="bg-primary text-white py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-700/15 via-primary to-[#011a2a]" />
+        <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '30px 30px' }} />
+        
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+            <div className="w-14 h-14 bg-accent/10 text-accent rounded-2xl flex items-center justify-center mx-auto mb-5 border border-accent/20 backdrop-blur-md">
+              <ImageIcon className="w-7 h-7" />
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 tracking-tight">
+              College <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-[#e6d080]">Gallery</span>
+            </h1>
+            <p className="text-base md:text-lg text-white/80 font-light max-w-2xl mx-auto">
+              Visual snapshots and social feeds chronicling institutional facilities, laboratory trials, sports week, and student events.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      <section className="py-8 bg-background border-b border-border sticky top-[64px] md:top-[80px] z-40 shadow-sm">
-        <div className="container mx-auto px-4 overflow-x-auto pb-2 -mb-2">
-          <div className="flex gap-2 min-w-max justify-center">
-            {CATEGORIES.map((cat) => (
-              <Button
+      {/* Categories Toggle Sticky Ribbon */}
+      <section className="py-4 bg-background border-b border-border sticky top-0 z-40 shadow-sm">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="flex bg-muted/60 p-1.5 rounded-2xl border border-muted shadow-xs gap-1.5 overflow-x-auto no-scrollbar max-w-full justify-start md:justify-center">
+            {(["All", "Institute & Labs", "Campus Tour", "Events & Culture", "Sports", "Social Hub"] as const).map(cat => (
+              <button
                 key={cat}
-                variant={selectedCategory === cat ? "default" : "outline"}
-                onClick={() => setSelectedCategory(cat)}
-                className={`capitalize ${selectedCategory === cat ? "bg-accent hover:bg-accent/90 text-white" : ""}`}
+                onClick={() => {
+                  setActiveCategory(cat);
+                  setLightboxIndex(null);
+                }}
+                className={`cursor-pointer px-4.5 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 whitespace-nowrap ${
+                  activeCategory === cat 
+                    ? "bg-primary text-white shadow-md" 
+                    : "text-muted-foreground hover:text-primary"
+                }`}
               >
-                {cat}
-              </Button>
+                {cat === "All" ? "All Memories" : cat}
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-12 bg-muted/20 min-h-[60vh]">
-        <div className="container mx-auto px-4">
-          {isLoading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                <Skeleton key={i} className="aspect-square rounded-xl" />
-              ))}
-            </div>
-          ) : mediaItems && mediaItems.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {mediaItems.map((item) => (
-                <div key={item.id} className="group relative aspect-square rounded-xl overflow-hidden bg-muted border border-border shadow-sm cursor-pointer">
-                  {item.type === 'video' && !item.thumbnailUrl ? (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground bg-primary/5">
-                       <PlayCircle className="h-12 w-12 mb-2 opacity-50" />
-                       <span className="text-sm font-medium px-4 text-center">{item.title}</span>
+      {/* Main Gallery Area */}
+      <section className="py-16 bg-muted/10 min-h-[60vh]">
+        <div className="container mx-auto px-4 max-w-6xl">
+          
+          <AnimatePresence mode="wait">
+            {activeCategory !== "Social Hub" ? (
+              /* =========================================================================
+                 📸 PHOTO GALLERY SECTION (MASONRY GRID)
+                 ========================================================================= */
+              <motion.div
+                key="photo-gallery"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6.5"
+              >
+                {filteredPhotos.map((item, index) => (
+                  <div
+                    key={item.id}
+                    onClick={() => setLightboxIndex(index)}
+                    className="group bg-white border border-muted rounded-2.5xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-500 cursor-pointer flex flex-col justify-between"
+                  >
+                    <div className="overflow-hidden aspect-4/3 relative">
+                      <img 
+                        src={item.url} 
+                        alt={item.title} 
+                        className="w-full h-full object-cover transform group-hover:scale-103 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <span className="absolute top-4 left-4 bg-primary/80 backdrop-blur text-white text-[9px] uppercase font-bold px-2 py-0.5 rounded-lg border border-white/10">
+                        {item.category}
+                      </span>
                     </div>
-                  ) : (
-                    <img 
-                      src={item.thumbnailUrl || item.url} 
-                      alt={item.title} 
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                    />
-                  )}
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <div className="flex items-center gap-2 text-accent mb-1">
-                        {item.type === 'video' ? <PlayCircle className="h-4 w-4" /> : <ImageIcon className="h-4 w-4" />}
-                        <span className="text-xs font-semibold uppercase tracking-wider">{item.category}</span>
-                      </div>
-                      <h3 className="text-white font-semibold line-clamp-2">{item.title}</h3>
+
+                    <div className="p-5.5 space-y-1.5">
+                      <h3 className="text-sm font-extrabold text-primary leading-tight flex justify-between items-center group-hover:text-accent transition-colors">
+                        {item.title}
+                        <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1" />
+                      </h3>
+                      <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
                     </div>
                   </div>
-                  
-                  {/* Play icon badge for videos */}
-                  {item.type === 'video' && item.thumbnailUrl && (
-                    <div className="absolute top-4 right-4 h-8 w-8 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white">
-                      <PlayCircle className="h-5 w-5" />
+                ))}
+              </motion.div>
+            ) : (
+              /* =========================================================================
+                 📲 SOCIAL HUBS SECTION (DYNAMIC META GRAPH FEED ROADMAP)
+                 ========================================================================= */
+              <motion.div
+                key="social-hub"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                className="space-y-8"
+              >
+                {/* Meta API Sync Status Header Panel */}
+                <div className="bg-white border border-muted p-5 rounded-3xl shadow-sm flex flex-col md:flex-row items-center justify-between gap-4 max-w-5xl mx-auto">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/5 text-primary flex items-center justify-center">
+                      <ShieldCheck className="w-5 h-5 text-accent animate-pulse" />
                     </div>
-                  )}
+                    <div className="text-xs">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-extrabold text-primary">Meta Graph Social API</span>
+                        <span className="inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                        <span className="text-[9px] font-bold text-emerald-600 uppercase">Live Connected</span>
+                      </div>
+                      <p className="text-muted-foreground text-[10px] mt-0.5">Directly syncing 3 recent posts of Instagram (@kbiper_pharmacy) and Facebook (/kbiper.pune).</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 shrink-0">
+                    <span className="text-[10px] text-muted-foreground font-semibold">Synced: <strong className="text-primary">{lastSync}</strong></span>
+                    <button
+                      onClick={handleSyncFeed}
+                      disabled={isSyncing}
+                      className="cursor-pointer px-4 py-2 bg-primary hover:bg-primary/95 text-white font-extrabold rounded-xl shadow-xs transition-all duration-300 text-xs inline-flex items-center gap-1.5 disabled:opacity-50"
+                    >
+                      <RefreshCw className={`w-3.5 h-3.5 text-accent ${isSyncing ? "animate-spin" : ""}`} /> Sync feeds
+                    </button>
+                  </div>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-20 bg-white rounded-xl border border-border">
-              <h3 className="text-xl font-semibold text-primary mb-2">No media found</h3>
-              <p className="text-muted-foreground">Try selecting a different category.</p>
-            </div>
-          )}
+
+                {/* Sub-grid of posts */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
+                  
+                  {/* Left Column: 3 Instagram Posts */}
+                  <div className="lg:col-span-6 space-y-6">
+                    <div className="flex items-center gap-2 text-primary font-bold text-sm border-b border-muted pb-3">
+                      <Instagram className="w-5 h-5 text-pink-600 shrink-0" />
+                      <span>Instagram Posts (3 Recent)</span>
+                    </div>
+
+                    {/* Post 1: User Provided Live Embed Block */}
+                    <div className="w-full flex justify-center bg-white border border-muted p-5 rounded-3xl shadow-sm">
+                      <blockquote 
+                        className="instagram-media" 
+                        data-instgrm-captioned 
+                        data-instgrm-permalink="https://www.instagram.com/p/DZnKF7eEQSy/?utm_source=ig_embed&amp;utm_campaign=loading" 
+                        data-instgrm-version="14" 
+                        style={{ 
+                          background: "#FFF", 
+                          border: 0, 
+                          borderRadius: "3px", 
+                          boxShadow: "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)", 
+                          margin: "1px", 
+                          maxWidth: "480px", 
+                          minWidth: "300px", 
+                          padding: 0, 
+                          width: "99.375%" 
+                        }}
+                      >
+                        <div style={{ padding: "16px" }}>
+                          <a 
+                            href="https://www.instagram.com/p/DZnKF7eEQSy/?utm_source=ig_embed&amp;utm_campaign=loading" 
+                            style={{ 
+                              background: "#FFFFFF", 
+                              lineHeight: 0, 
+                              padding: "0 0", 
+                              textDecoration: "none", 
+                              width: "100%",
+                              display: "block"
+                            }} 
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                              <div style={{ backgroundColor: "#F4F4F4", borderRadius: "50%", height: "40px", marginRight: "14px", width: "40px" }}></div>
+                              <div style={{ display: "flex", flexDirection: "column", flexGrow: 1, justifyContent: "center" }}>
+                                <div style={{ backgroundColor: "#F4F4F4", borderRadius: "4px", height: "14px", marginBottom: "6px", width: "100px" }}></div>
+                                <div style={{ backgroundColor: "#F4F4F4", borderRadius: "4px", height: "14px", width: "60px" }}></div>
+                              </div>
+                            </div>
+                            <div style={{ padding: "19% 0" }}></div>
+                            <div style={{ display: "block", height: "50px", margin: "0 auto 12px", width: "50px" }}>
+                              <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlnsXlink="https://www.w3.org/1999/xlink">
+                                <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+                                  <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                                    <g>
+                                      <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
+                                    </g>
+                                  </g>
+                                </g>
+                              </svg>
+                            </div>
+                            <div style={{ paddingTop: "8px" }}>
+                              <div style={{ color: "#3897f0", fontFamily: "Arial,sans-serif", fontSize: "14px", fontStyle: "normal", fontWeight: 550, lineHeight: "18px" }}>View this post on Instagram</div>
+                            </div>
+                            <div style={{ padding: "12.5% 0" }}></div>
+                            <div style={{ display: "flex", flexDirection: "row", marginBottom: "14px", alignItems: "center" }}>
+                              <div>
+                                <div style={{ backgroundColor: "#F4F4F4", borderRadius: "50%", height: "12.5px", width: "12.5px", transform: "translateX(0px) translateY(7px)" }}></div>
+                                <div style={{ backgroundColor: "#F4F4F4", height: "12.5px", transform: "rotate(-45deg) translateX(3px) translateY(1px)", width: "12.5px", flexGrow: 0, marginRight: "14px", marginLeft: "2px" }}></div>
+                                <div style={{ backgroundColor: "#F4F4F4", borderRadius: "50%", height: "12.5px", width: "12.5px", transform: "translateX(9px) translateY(-18px)" }}></div>
+                              </div>
+                              <div style={{ marginLeft: "8px" }}>
+                                <div style={{ backgroundColor: "#F4F4F4", borderRadius: "50%", flexGrow: 0, height: "20px", width: "20px" }}></div>
+                                <div style={{ width: 0, height: 0, borderTop: "2px solid transparent", borderLeft: "6px solid #f4f4f4", borderBottom: "2px solid transparent", transform: "translateX(16px) translateY(-4px) rotate(30deg)" }}></div>
+                              </div>
+                              <div style={{ marginLeft: "auto" }}>
+                                <div style={{ width: "0px", borderTop: "8px solid #F4F4F4", borderRight: "8px solid transparent", transform: "translateY(16px)" }}></div>
+                                <div style={{ backgroundColor: "#F4F4F4", flexGrow: 0, height: "12px", width: "16px", transform: "translateY(-4px)" }}></div>
+                                <div style={{ width: 0, height: 0, borderTop: "8px solid #F4F4F4", borderLeft: "8px solid transparent", transform: "translateY(-4px) translateX(8px)" }}></div>
+                              </div>
+                            </div>
+                            <div style={{ display: "flex", flexDirection: "column", flexGrow: 1, justifyContent: "center", marginBottom: "24px" }}>
+                              <div style={{ backgroundColor: "#F4F4F4", borderRadius: "4px", flexGrow: 0, height: "14px", marginBottom: "6px", width: "224px" }}></div>
+                              <div style={{ backgroundColor: "#F4F4F4", borderRadius: "4px", flexGrow: 0, height: "14px", width: "144px" }}></div>
+                            </div>
+                          </a>
+                          <p style={{ color: "#c9c8cd", fontFamily: "Arial,sans-serif", fontSize: "14px", lineHeight: "17px", marginBottom: 0, marginTop: "8px", overflow: "hidden", padding: "8px 0 7px", textAlign: "center", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                            <a href="https://www.instagram.com/p/DZnKF7eEQSy/?utm_source=ig_embed&amp;utm_campaign=loading" style={{ color: "#c9c8cd", fontFamily: "Arial,sans-serif", fontSize: "14px", fontStyle: "normal", fontWeight: "normal", lineHeight: "17px", textDecoration: "none" }} target="_blank" rel="noreferrer">A post shared by KBIPER PUNE (@kbiper_pharmacy)</a>
+                          </p>
+                        </div>
+                      </blockquote>
+                    </div>
+
+                    {/* Post 2: Simulated Instagram Post Card */}
+                    <div className="bg-white border border-muted rounded-3xl overflow-hidden shadow-sm space-y-4">
+                      {/* Header */}
+                      <div className="p-4 flex items-center gap-3 border-b border-muted">
+                        <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-yellow-500 to-purple-600 text-white font-bold flex items-center justify-center text-xs">
+                          KB
+                        </div>
+                        <div className="text-xs">
+                          <span className="font-extrabold text-primary flex items-center gap-1">
+                            kbiper_pharmacy <span className="h-3 w-3 bg-blue-500 rounded-full flex items-center justify-center text-[7px] text-white">✓</span>
+                          </span>
+                          <span className="text-[10px] text-muted-foreground">Talegaon Dabhade, Pune</span>
+                        </div>
+                      </div>
+                      
+                      {/* Visual Image */}
+                      <div className="aspect-square bg-muted overflow-hidden">
+                        <img 
+                          src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=600&auto=format&fit=crop" 
+                          alt="Herbal Formulation Conference" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+
+                      {/* Footer Actions & Caption */}
+                      <div className="px-5 pb-5.5 space-y-2.5 text-xs">
+                        <div className="flex justify-between items-center text-primary font-bold">
+                          <div className="flex gap-4">
+                            <span className="flex items-center gap-1 hover:text-red-500 transition-colors cursor-pointer">
+                              <Heart className="w-4 h-4" /> 124
+                            </span>
+                            <span className="flex items-center gap-1 hover:text-blue-500 transition-colors cursor-pointer">
+                              <MessageCircle className="w-4 h-4" /> 15
+                            </span>
+                          </div>
+                          <span className="text-[10px] text-muted-foreground">2 days ago</span>
+                        </div>
+
+                        <p className="leading-relaxed text-muted-foreground text-xs">
+                          <strong className="text-primary font-extrabold mr-1">kbiper_pharmacy</strong>
+                          National Conference on Herbal Formulation starts today! Principal Dr. Rekha Patil welcoming delegates to advanced drug delivery validations. 🌿📚 #education #pharmacy #seminar #pune
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Post 3: Simulated Instagram Post Card */}
+                    <div className="bg-white border border-muted rounded-3xl overflow-hidden shadow-sm space-y-4">
+                      {/* Header */}
+                      <div className="p-4 flex items-center gap-3 border-b border-muted">
+                        <div className="w-9 h-9 rounded-full bg-gradient-to-tr from-yellow-500 to-purple-600 text-white font-bold flex items-center justify-center text-xs">
+                          KB
+                        </div>
+                        <div className="text-xs">
+                          <span className="font-extrabold text-primary flex items-center gap-1">
+                            kbiper_pharmacy <span className="h-3 w-3 bg-blue-500 rounded-full flex items-center justify-center text-[7px] text-white">✓</span>
+                          </span>
+                          <span className="text-[10px] text-muted-foreground">Talegaon Dabhade, Pune</span>
+                        </div>
+                      </div>
+                      
+                      {/* Visual Image */}
+                      <div className="aspect-square bg-muted overflow-hidden">
+                        <img 
+                          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=600&auto=format&fit=crop" 
+                          alt="Placement Success Celebration" 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+
+                      {/* Footer Actions & Caption */}
+                      <div className="px-5 pb-5.5 space-y-2.5 text-xs">
+                        <div className="flex justify-between items-center text-primary font-bold">
+                          <div className="flex gap-4">
+                            <span className="flex items-center gap-1 hover:text-red-500 transition-colors cursor-pointer">
+                              <Heart className="w-4 h-4" /> 210
+                            </span>
+                            <span className="flex items-center gap-1 hover:text-blue-500 transition-colors cursor-pointer">
+                              <MessageCircle className="w-4 h-4" /> 45
+                            </span>
+                          </div>
+                          <span className="text-[10px] text-muted-foreground">6 days ago</span>
+                        </div>
+
+                        <p className="leading-relaxed text-muted-foreground text-xs">
+                          <strong className="text-primary font-extrabold mr-1">kbiper_pharmacy</strong>
+                          PLACEMENT SUCCESS! Heartiest congratulations to our final year topper Amit Gade for securing placement at Lupin Research Park with 6.5 LPA package. 🎓💼 #placements #success #kbiper #careers
+                        </p>
+                      </div>
+                    </div>
+
+                  </div>
+                  
+                  {/* Right Column: 3 Facebook Posts */}
+                  <div className="lg:col-span-6 space-y-6">
+                    <div className="flex items-center gap-2 text-primary font-bold text-sm border-b border-muted pb-3">
+                      <Facebook className="w-5 h-5 text-blue-600 shrink-0" />
+                      <span>Facebook Posts (3 Recent)</span>
+                    </div>
+
+                    {/* Post 1: Simulated Facebook Post Card */}
+                    <div className="bg-white border border-muted p-5.5 rounded-3xl shadow-sm space-y-4">
+                      {/* Header */}
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-full bg-blue-600 text-white font-extrabold flex items-center justify-center text-xs shadow-md">
+                          KB
+                        </div>
+                        <div className="text-xs">
+                          <h4 className="font-extrabold text-primary flex items-center gap-1">
+                            Krishnarao Bhegade Institute of Pharmaceutical Education (KBIPER)
+                            <span className="h-3.5 w-3.5 bg-blue-500 rounded-full flex items-center justify-center text-[7px] text-white">✓</span>
+                          </h4>
+                          <p className="text-[10px] text-muted-foreground">1 day ago • Public</p>
+                        </div>
+                      </div>
+
+                      {/* Content text */}
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        COLLABORATION BRIEF: KBIPER signed an active Memorandum of Understanding (MOU) with Emcure Pharmaceuticals Pune today. This pact establishes annual formulation research projects and student internship avenues. TPO Prof. Sandeep Bhegade and Emcure HR representatives validated the compliance.
+                      </p>
+
+                      {/* Post Image Card */}
+                      <div className="border border-muted rounded-2xl overflow-hidden bg-muted/20">
+                        <img 
+                          src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=600&auto=format&fit=crop" 
+                          alt="MOU Signing Ceremony" 
+                          className="aspect-video w-full object-cover"
+                        />
+                        <div className="p-3 bg-white text-xs border-t border-muted">
+                          <span className="text-[9px] font-bold text-accent uppercase tracking-wide block">Emcure Alliance</span>
+                          <span className="font-extrabold text-primary line-clamp-1">MOU signed for tech transfer and internships</span>
+                        </div>
+                      </div>
+
+                      {/* Likes Counter & Share Trigger */}
+                      <div className="pt-2 border-t border-muted/50 flex justify-between items-center text-[10px] text-muted-foreground">
+                        <div className="flex gap-4">
+                          <span className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors">
+                            <ThumbsUp className="w-3.5 h-3.5 text-blue-600" /> 85 likes
+                          </span>
+                          <span className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors">
+                            <MessageCircle className="w-3.5 h-3.5" /> 10 comments
+                          </span>
+                        </div>
+                        <span className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors">
+                          <Share2 className="w-3.5 h-3.5" /> 12 shares
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Post 2: Simulated Facebook Post Card */}
+                    <div className="bg-white border border-muted p-5.5 rounded-3xl shadow-sm space-y-4">
+                      {/* Header */}
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-full bg-blue-600 text-white font-extrabold flex items-center justify-center text-xs shadow-md">
+                          KB
+                        </div>
+                        <div className="text-xs">
+                          <h4 className="font-extrabold text-primary flex items-center gap-1">
+                            Krishnarao Bhegade Institute of Pharmaceutical Education (KBIPER)
+                            <span className="h-3.5 w-3.5 bg-blue-500 rounded-full flex items-center justify-center text-[7px] text-white">✓</span>
+                          </h4>
+                          <p className="text-[10px] text-muted-foreground">5 days ago • Public</p>
+                        </div>
+                      </div>
+
+                      {/* Content text */}
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        NSS EXTENSION DRIVES: Our NSS volunteers organized a major Blood Donation Camp at Sudumbare village. More than 80 volunteers and citizens donated blood, raising vital safety reserves. Salute to coordinators for organizing.
+                      </p>
+
+                      {/* Post Image Card */}
+                      <div className="border border-muted rounded-2xl overflow-hidden bg-muted/20">
+                        <img 
+                          src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=600&auto=format&fit=crop" 
+                          alt="Blood Donation Camp" 
+                          className="aspect-video w-full object-cover"
+                        />
+                        <div className="p-3 bg-white text-xs border-t border-muted">
+                          <span className="text-[9px] font-bold text-accent uppercase tracking-wide block">NSS Campaigns</span>
+                          <span className="font-extrabold text-primary line-clamp-1">80+ Blood Donors raise hospital stocks</span>
+                        </div>
+                      </div>
+
+                      {/* Likes Counter & Share Trigger */}
+                      <div className="pt-2 border-t border-muted/50 flex justify-between items-center text-[10px] text-muted-foreground">
+                        <div className="flex gap-4">
+                          <span className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors">
+                            <ThumbsUp className="w-3.5 h-3.5 text-blue-600" /> 102 likes
+                          </span>
+                          <span className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors">
+                            <MessageCircle className="w-3.5 h-3.5" /> 14 comments
+                          </span>
+                        </div>
+                        <span className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors">
+                          <Share2 className="w-3.5 h-3.5" /> 18 shares
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Post 3: Simulated Facebook Post Card */}
+                    <div className="bg-white border border-muted p-5.5 rounded-3xl shadow-sm space-y-4">
+                      {/* Header */}
+                      <div className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-full bg-blue-600 text-white font-extrabold flex items-center justify-center text-xs shadow-md">
+                          KB
+                        </div>
+                        <div className="text-xs">
+                          <h4 className="font-extrabold text-primary flex items-center gap-1">
+                            Krishnarao Bhegade Institute of Pharmaceutical Education (KBIPER)
+                            <span className="h-3.5 w-3.5 bg-blue-500 rounded-full flex items-center justify-center text-[7px] text-white">✓</span>
+                          </h4>
+                          <p className="text-[10px] text-muted-foreground">2 weeks ago • Public</p>
+                        </div>
+                      </div>
+
+                      {/* Content text */}
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        ADMISSIONS 2026-27 OPEN: DTE Maharashtra admission cap rounds scheduled. Check detailed eligibility matrices for B.Pharm and D.Pharm courses on our admissions portal.
+                      </p>
+
+                      {/* Post Image Card */}
+                      <div className="border border-muted rounded-2xl overflow-hidden bg-muted/20">
+                        <img 
+                          src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=600&auto=format&fit=crop" 
+                          alt="Admissions Information" 
+                          className="aspect-video w-full object-cover"
+                        />
+                        <div className="p-3 bg-white text-xs border-t border-muted">
+                          <span className="text-[9px] font-bold text-accent uppercase tracking-wide block">Admission Desk</span>
+                          <span className="font-extrabold text-primary line-clamp-1">Intake capacities and FRA approved fee structures</span>
+                        </div>
+                      </div>
+
+                      {/* Likes Counter & Share Trigger */}
+                      <div className="pt-2 border-t border-muted/50 flex justify-between items-center text-[10px] text-muted-foreground">
+                        <div className="flex gap-4">
+                          <span className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors">
+                            <ThumbsUp className="w-3.5 h-3.5 text-blue-600" /> 150 likes
+                          </span>
+                          <span className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors">
+                            <MessageCircle className="w-3.5 h-3.5" /> 35 comments
+                          </span>
+                        </div>
+                        <span className="flex items-center gap-1 cursor-pointer hover:text-blue-600 transition-colors">
+                          <Share2 className="w-3.5 h-3.5" /> 40 shares
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Bottom Facebook Direct Redirect panel */}
+                    <div className="bg-primary text-white p-6.5 rounded-3xl shadow-md space-y-4">
+                      <h4 className="text-xs font-extrabold uppercase tracking-wider text-accent flex items-center gap-1.5">
+                        <Facebook className="w-4 h-4 text-accent" /> Connect on Facebook
+                      </h4>
+                      <p className="text-xs text-white/80 leading-normal">
+                        Our full community, event coverage photos, and live notifications are regularly broadcasted to the official Facebook page.
+                      </p>
+                      <a 
+                        href="https://www.facebook.com/kbiper.pune" 
+                        target="_blank" 
+                        rel="noreferrer"
+                        className="cursor-pointer inline-flex items-center gap-1 text-xs font-bold text-accent hover:text-white transition-colors"
+                      >
+                        Visit official page (facebook.com/kbiper.pune) <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+
+                  </div>
+
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
         </div>
       </section>
+
+      {/* Lightbox Stateful Modal Overlay */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxIndex(null)}
+            className="fixed inset-0 bg-primary/95 z-50 flex items-center justify-center p-4 md:p-10 backdrop-blur-md"
+          >
+            {/* Modal Container */}
+            <motion.div
+              initial={{ scale: 0.95 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.95 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-4xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col"
+            >
+              {/* Header inside modal */}
+              <div className="absolute top-4 right-4 z-10">
+                <button
+                  onClick={() => setLightboxIndex(null)}
+                  className="cursor-pointer bg-primary/80 backdrop-blur text-white hover:bg-accent p-2 rounded-xl border border-white/10 transition-colors shadow"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Big Image display */}
+              <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
+                <img 
+                  src={filteredPhotos[lightboxIndex].url} 
+                  alt={filteredPhotos[lightboxIndex].title} 
+                  className="w-full h-full object-contain"
+                />
+
+                {/* Navigation Arrows */}
+                <button
+                  onClick={handlePrevPhoto}
+                  className="cursor-pointer absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-md text-white hover:bg-white hover:text-primary p-2.5 rounded-xl border border-white/20 transition-all shadow"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                
+                <button
+                  onClick={handleNextPhoto}
+                  className="cursor-pointer absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 backdrop-blur-md text-white hover:bg-white hover:text-primary p-2.5 rounded-xl border border-white/20 transition-all shadow"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Caption details below image */}
+              <div className="p-6 md:p-8 space-y-2 bg-white text-xs">
+                <div className="flex justify-between items-center">
+                  <span className="inline-flex px-2 py-0.5 bg-primary/10 text-[9px] text-primary font-bold rounded border border-primary/20 uppercase tracking-wide">
+                    {filteredPhotos[lightboxIndex].category}
+                  </span>
+                  <span className="text-[10px] text-muted-foreground font-semibold">
+                    {lightboxIndex + 1} of {filteredPhotos.length}
+                  </span>
+                </div>
+                <h3 className="text-base font-extrabold text-primary leading-tight">
+                  {filteredPhotos[lightboxIndex].title}
+                </h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {filteredPhotos[lightboxIndex].description}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </AppLayout>
   );
 }

@@ -7,7 +7,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
 
 export function PlacementsManager() {
-  const { data: placements, isLoading } = useGetPlacements();
+  const { data: placementsData, isLoading } = useGetPlacements();
+  const placements = Array.isArray(placementsData) ? placementsData : [];
   const queryClient = useQueryClient();
   const { toast } = useToast();
   const deletePlacement = useDeletePlacement();
@@ -57,7 +58,7 @@ export function PlacementsManager() {
                   <TableCell><Skeleton className="h-8 w-20 ml-auto" /></TableCell>
                 </TableRow>
               ))
-            ) : placements && placements.length > 0 ? (
+            ) : placements.length > 0 ? (
               placements.map((placement) => (
                 <TableRow key={placement.id}>
                   <TableCell className="font-medium">{placement.studentName}</TableCell>

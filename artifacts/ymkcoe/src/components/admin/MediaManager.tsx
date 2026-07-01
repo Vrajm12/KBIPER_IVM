@@ -7,7 +7,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 
 export function MediaManager() {
-  const { data: media, isLoading } = useGetMediaItems();
+  const { data: mediaData, isLoading } = useGetMediaItems();
+  const media = Array.isArray(mediaData) ? mediaData : [];
   const queryClient = useQueryClient();
   const { toast } = useToast();
   const deleteMedia = useDeleteMediaItem();
@@ -38,7 +39,7 @@ export function MediaManager() {
           [1, 2, 3, 4, 5].map(i => (
             <div key={i} className="aspect-square rounded-lg bg-muted border border-border animate-pulse" />
           ))
-        ) : media && media.length > 0 ? (
+        ) : media.length > 0 ? (
           media.map((item) => (
             <div key={item.id} className="group relative aspect-square rounded-lg overflow-hidden bg-muted border border-border">
               {item.type === 'video' && !item.thumbnailUrl ? (
