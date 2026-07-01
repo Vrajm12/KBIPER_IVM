@@ -1,0 +1,3 @@
+[build]
+  command = "pnpm --filter @workspace/ymkcoe build"
+  publish = "artifacts/ymkcoe/dist"
