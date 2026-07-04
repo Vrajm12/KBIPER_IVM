@@ -33,171 +33,371 @@ interface FacultyMember {
   isHOD?: boolean;
   isPrincipal?: boolean;
   photoUrl?: string;
+  certificateUrl?: string;
+  resumeUrl?: string;
 }
 
 const FACULTY_MEMBERS: FacultyMember[] = [
   {
-    id: "1",
-    name: "Dr. Sanjay R. Arote",
-    designation: "Principal & Professor",
-    department: "Administration",
-    qualification: "M. Pharm, Ph.D.",
-    specialization: "Novel Drug Delivery Systems (NDDS), Controlled Release Formulations, Biopharmaceutics",
-    experience: "22+ Years",
-    email: "principal.iiper@gmail.com",
-    linkedin: "https://linkedin.com",
-    bio: "Dr. Sanjay R. Arote is a visionary academician and researcher with over two decades of contribution to pharmaceutical sciences. He is committed to fostering academic excellence, high-impact research, and industry collaborations at KBIPER.",
-    publications: "35+ Research Publications in National & International peer-reviewed journals",
-    patents: "02 Patents filed on controlled release formulations",
-    projects: "Guided 15+ Post-graduate (M.Pharm) projects and currently supervising 3 Ph.D. candidates",
-    isPrincipal: true,
-  },
+    "id": "1",
+    "name": "Dr. Sanjay R. Arote",
+    "designation": "Principal & Professor",
+    "department": "Administration",
+    "qualification": "M. Pharm, Ph.D.",
+    "specialization": "Novel Drug Delivery Systems (NDDS), Controlled Release Formulations, Biopharmaceutics",
+    "experience": "22+ Years",
+    "email": "principal.iiper@gmail.com",
+    "linkedin": "https://linkedin.com",
+    "bio": "Dr. Sanjay R. Arote is a visionary academician and researcher with over two decades of contribution to pharmaceutical sciences. He is committed to fostering academic excellence, high-impact research, and industry collaborations at KBIPER.",
+    "publications": "35+ Research Publications in National & International peer-reviewed journals",
+    "patents": "02 Patents filed on controlled release formulations",
+    "projects": "Guided 15+ Post-graduate (M.Pharm) projects and currently supervising 3 Ph.D. candidates",
+    "isPrincipal": true
+},
   {
-    id: "2",
-    name: "Dr. Gulab S. Shinde",
-    designation: "HOD & Associate Professor (D.Pharm)",
-    department: "D. Pharmacy",
-    qualification: "M. Pharm, Ph.D.",
-    specialization: "Industrial Pharmaceutics, Quality-by-Design (QbD), Regulatory Affairs",
-    experience: "15+ Years",
-    email: "gulab.shinde@kbiper.edu.in",
-    linkedin: "https://linkedin.com",
-    bio: "Dr. Gulab Shinde leads the Diploma in Pharmacy division at KBIPER, focusing on industrial pharmaceutics foundations. He ensures the diploma curriculum is highly practical and aligned with retail and community healthcare requirements.",
-    publications: "18+ Research papers, regular speaker at pharmacy research conventions",
-    projects: "Successfully conducted 4 industry-sponsored quality validation audits",
-    isHOD: true,
-  },
+    "id": "2",
+    "name": "Dr. Gulab S. Shinde",
+    "designation": "HOD & Associate Professor (D.Pharm)",
+    "department": "D. Pharmacy",
+    "qualification": "M. Pharm, Ph.D.",
+    "specialization": "Industrial Pharmaceutics, Quality-by-Design (QbD), Regulatory Affairs",
+    "experience": "15+ Years",
+    "email": "gulab.shinde@kbiper.edu.in",
+    "linkedin": "https://linkedin.com",
+    "bio": "Dr. Gulab Shinde leads the Diploma in Pharmacy division at KBIPER, focusing on industrial pharmaceutics foundations. He ensures the diploma curriculum is highly practical and aligned with retail and community healthcare requirements.",
+    "publications": "18+ Research papers, regular speaker at pharmacy research conventions",
+    "projects": "Successfully conducted 4 industry-sponsored quality validation audits",
+    "isHOD": true
+},
   {
-    id: "3",
-    name: "Dr. Ganesh R. Phadtare",
-    designation: "Professor",
-    department: "Pharmaceutical Chemistry",
-    qualification: "M. Pharm, Ph.D.",
-    specialization: "Synthetic Organic Chemistry, Computer-Aided Drug Design (CADD), Spectroscopy",
-    experience: "18+ Years",
-    email: "ganesh.phadtare@kbiper.edu.in",
-    bio: "Dr. Phadtare specializes in the design and synthesis of bioactive molecules targeting metabolic disorders. His expertise lies in molecular docking, spectroscopic analysis, and chemical process optimization.",
-    publications: "25+ Publications in high-impact international journals",
-    projects: "Investigating lead molecules with potential anti-diabetic activities",
-    isHOD: true,
-  },
+    "id": "3",
+    "name": "Dr. Ganesh R. Phadtare",
+    "designation": "Professor",
+    "department": "Pharmaceutical Chemistry",
+    "qualification": "M. Pharm, Ph.D.",
+    "specialization": "Synthetic Organic Chemistry, Computer-Aided Drug Design (CADD), Spectroscopy",
+    "experience": "18+ Years",
+    "email": "ganesh.phadtare@kbiper.edu.in",
+    "bio": "Dr. Phadtare specializes in the design and synthesis of bioactive molecules targeting metabolic disorders. His expertise lies in molecular docking, spectroscopic analysis, and chemical process optimization.",
+    "publications": "25+ Publications in high-impact international journals",
+    "projects": "Investigating lead molecules with potential anti-diabetic activities",
+    "isHOD": true
+},
   {
-    id: "4",
-    name: "Dr. Mayuri V. Gurav",
-    designation: "Associate Professor",
-    department: "Pharmacognosy",
-    qualification: "M. Pharm, Ph.D.",
-    specialization: "Phytochemistry, Herbal Drug Formulations, Plant Tissue Culture",
-    experience: "12+ Years",
-    email: "mayuri.gurav@kbiper.edu.in",
-    bio: "Dr. Mayuri Gurav is dedicated to exploring traditional Indian medicine systems. Her research centers on extracting, isolating, and standardizing bioactive phytoconstituents for modern therapeutic applications.",
-    publications: "15+ Publications, co-author of a textbook on Pharmacognosy",
-    projects: "Received research grant for extraction of local medicinal flora of Maval region",
-    isHOD: false,
-  },
+    "id": "5",
+    "name": "Dr. Yogesh B. Zambare",
+    "designation": "Associate Professor",
+    "department": "Pharmacology",
+    "qualification": "M. Pharm, Ph.D.",
+    "specialization": "Neuropharmacology, Behavioral Toxicology, Cardiovascular Screening",
+    "experience": "13+ Years",
+    "email": "yogesh.zambare@kbiper.edu.in",
+    "bio": "Dr. Yogesh Zambare leads the pharmacology department and oversees the institutional CPCSEA animal house facility. His research explores target receptors in neurodegenerative diseases like Alzheimer's and Parkinson's.",
+    "publications": "20+ Research and review articles in indexed journals",
+    "projects": "Collaborating with local hospitals for clinical research safety evaluations",
+    "isHOD": true
+},
   {
-    id: "5",
-    name: "Dr. Yogesh B. Zambare",
-    designation: "Associate Professor",
-    department: "Pharmacology",
-    qualification: "M. Pharm, Ph.D.",
-    specialization: "Neuropharmacology, Behavioral Toxicology, Cardiovascular Screening",
-    experience: "13+ Years",
-    email: "yogesh.zambare@kbiper.edu.in",
-    bio: "Dr. Yogesh Zambare leads the pharmacology department and oversees the institutional CPCSEA animal house facility. His research explores target receptors in neurodegenerative diseases like Alzheimer's and Parkinson's.",
-    publications: "20+ Research and review articles in indexed journals",
-    projects: "Collaborating with local hospitals for clinical research safety evaluations",
-    isHOD: true,
-  },
+    "id": "6",
+    "name": "Ms. Mugdha Arvind Joshi",
+    "designation": "Associate Professor",
+    "department": "Pharmaceutical Chemistry",
+    "qualification": "M. Pharmacy, Phd pursuing",
+    "specialization": "Pharmaceutical Sciences",
+    "experience": "0-2 Years (Industry), 10+ Years (Teaching)",
+    "email": "majoshi.iiper@gmail.com",
+    "bio": "Ms. Mugdha Arvind Joshi is an esteemed Associate Professor in the Department of Pharmaceutical Chemistry at KBIPER. She holds a highest qualification of M. Pharmacy, Phd pursuing. With 0-2 Years (Industry), 10+ Years (Teaching) of experience, she is committed to academic excellence. She is focused on guiding students and fostering research. Additionally, she serves as ERP Coordinator, Admission Coordinator.",
+    "certificateUrl": "https://drive.google.com/open?id=1i2CwSJg7gybcwBv2-e9ZG6YElfxRkhG3",
+    "resumeUrl": "https://drive.google.com/open?id=1P9oxeSXgO_BQVtibx0FuDoMRoQjx1HcN",
+    "publications": "Indexed in: UGC Care",
+    "projects": "UG Projects (20+ Scholars)"
+},
   {
-    id: "6",
-    name: "Prof. Kadambari S. Ghatpande",
-    designation: "Assistant Professor",
-    department: "Quality Assurance",
-    qualification: "M. Pharm",
-    specialization: "Analytical Method Validation, HPLC Method Development, cGMP Compliance",
-    experience: "8+ Years",
-    email: "kadambari.ghatpande@kbiper.edu.in",
-    bio: "Ms. Kadambari Ghatpande has extensive experience training students on advanced analytical instruments, including HPLC and UV-Vis spectrophotometers. She conducts regular workshops on laboratory safety and compliance.",
-    publications: "10+ Research papers in national pharmaceutical journals",
-    isHOD: false,
-  },
+    "id": "7",
+    "name": "Mr. Mayur Kishor Lohkare",
+    "designation": "Assistant Professor",
+    "department": "D. Pharmacy",
+    "qualification": "M.Pharmacy, PhD. (Pursuing)",
+    "specialization": "Computer Knowledge, handling of instruments",
+    "experience": "10+ Years (Teaching)",
+    "email": "mayurlohkare@gmail.com",
+    "bio": "Mr. Mayur Kishor Lohkare is an esteemed Assistant Professor in the Department of D. Pharmacy at KBIPER. He holds a highest qualification of M.Pharmacy, PhD. (Pursuing). With 10+ Years (Teaching) of experience, he is committed to academic excellence. His core expertise includes computer knowledge, handling of instruments. Additionally, he serves as Admission Coordinator, Examination Coordinator, Other.",
+    "certificateUrl": "https://drive.google.com/open?id=1xUZ8wKe-2I7qgVJZQL3d_TvIceqIfGPM",
+    "resumeUrl": "https://drive.google.com/open?id=1G_7cpQgmOtg-Hw3C5PcsBrjRtm2n62TF",
+    "publications": "Indexed in: UGC Care, Other"
+},
   {
-    id: "7",
-    name: "Prof. Mugdha A. Joshi",
-    designation: "Assistant Professor",
-    department: "Pharmaceutical Chemistry",
-    qualification: "M. Pharm",
-    specialization: "Medicinal Chemistry, Quantitative Structure-Activity Relationship (QSAR)",
-    experience: "7+ Years",
-    email: "mugdha.joshi@kbiper.edu.in",
-    bio: "Prof. Mugdha Joshi teaches organic chemistry and biochemistry. She is actively involved in guiding undergraduate students in chemistry laboratory practices and synthetic pathways.",
-    publications: "06 Publications, regular participant in national seminars",
-    isHOD: false,
-  },
+    "id": "8",
+    "name": "Ms. Ashvini Vilas Joshi",
+    "designation": "Assistant Professor",
+    "department": "Pharmaceutics",
+    "qualification": "Ph.D",
+    "specialization": "Teaching, Adaptibility,Monitoring,Team Work",
+    "experience": "0-2 Years (Industry), 6-10 Years (Teaching)",
+    "email": "ashvinijoshi94@gmail.com",
+    "bio": "Ms. Ashvini Vilas Joshi is an esteemed Assistant Professor in the Department of Pharmaceutics at KBIPER. She holds a highest qualification of Ph.D. With 0-2 Years (Industry), 6-10 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes teaching, adaptibility,monitoring,team work. Additionally, she serves as NSS/Cultural Committee.",
+    "certificateUrl": "https://drive.google.com/open?id=108VWk9MU7alITJZExX32Co2exlRaylL3",
+    "resumeUrl": "https://drive.google.com/open?id=1zcGpVYiouk6C6O63f5kEcI1GWKnNk9OP",
+    "publications": "Indexed in: Scopus, SCI, UGC Care, Web of Science",
+    "projects": "UG Projects (0-5 Scholars), UG Projects (6-10 Scholars)"
+},
   {
-    id: "8",
-    name: "Prof. Shyam S. Awate",
-    designation: "Assistant Professor",
-    department: "Pharmaceutics",
-    qualification: "M. Pharm",
-    specialization: "Physical Pharmaceutics, Microencapsulation, Solubility Enhancement",
-    experience: "8+ Years",
-    email: "shyam.awate@kbiper.edu.in",
-    bio: "Prof. Shyam Awate specializes in physical pharmaceutics and tablet manufacturing technologies. He is the academic co-ordinator for B.Pharm students, organizing seminars and guest lectures.",
-    publications: "08 Research articles in peer-reviewed journals",
-    isHOD: false,
-  },
+    "id": "9",
+    "name": "Ms. SHWETA MORAJI MANTRI",
+    "designation": "Lecturer",
+    "department": "D. Pharmacy",
+    "qualification": "M.Pharmacy",
+    "specialization": "Teaching and Learning Skills, Communication Skills, Research Skills, Student Development Skills",
+    "experience": "6-10 Years (Teaching)",
+    "email": "mantrishweta7@gmail.com",
+    "bio": "Ms. SHWETA MORAJI MANTRI is an esteemed Lecturer in the Department of D. Pharmacy at KBIPER. She holds a highest qualification of M.Pharmacy. With 6-10 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes teaching and learning skills, communication skills, research skills, student development skills. Additionally, she serves as NSS/Cultural Committee, Other.",
+    "certificateUrl": "https://drive.google.com/open?id=1j-22bCwTINy5tjdsXEn6QjW0NGMQkL6r",
+    "resumeUrl": "https://drive.google.com/open?id=1MbVCjofAf2DFPKcalg6EuJVEssQRRBhZ",
+    "publications": "Indexed in: Scopus, Other",
+    "projects": "Ph.D. Scholars, PG Projects, UG Projects"
+},
   {
-    id: "9",
-    name: "Prof. Shraddha S. Satkar",
-    designation: "Assistant Professor",
-    department: "Pharmacology",
-    qualification: "M. Pharm",
-    specialization: "Clinical Pharmacy, Pharmacovigilance, Hospital Pharmacy Training",
-    experience: "6+ Years",
-    email: "shraddha.satkar@kbiper.edu.in",
-    bio: "Prof. Shraddha Satkar coordinates the hospital training programs for pharmacy students. She also runs the student-led Pharmacovigilance and drug safety reporting cell.",
-    publications: "05 Articles in indexed pharmacy journals",
-    isHOD: false,
-  },
+    "id": "10",
+    "name": "Ms. Pooja Nana Sawant",
+    "designation": "Assistant Professor",
+    "department": "Pharmaceutics",
+    "qualification": "M.pharm",
+    "specialization": "Adaptability, Team work, communication",
+    "experience": "0-2 Years (Teaching)",
+    "email": "pooja.sawant0302@gmail.com",
+    "bio": "Ms. Pooja Nana Sawant is an esteemed Assistant Professor in the Department of Pharmaceutics at KBIPER. She holds a highest qualification of M.pharm. With 0-2 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes adaptability, team work, communication.",
+    "certificateUrl": "https://drive.google.com/open?id=1NTO_P4q50UIksJu5AS1E6FASzG5GtcHu",
+    "resumeUrl": "https://drive.google.com/open?id=1Q4T-YYuSkNkGvFcYcbyq7pYHvVmhOGSe",
+    "publications": "Indexed in: Scopus",
+    "projects": "Ph.D. Scholars, PG Projects, UG Projects"
+},
   {
-    id: "10",
-    name: "Mr. Mayur Kishor Lohkare",
-    designation: "Lecturer (D.Pharm)",
-    department: "D. Pharmacy",
-    qualification: "M. Pharm",
-    specialization: "Community Pharmacy, Pharmacy Practice & Laws",
-    experience: "5+ Years",
-    email: "mayur.lohkare@kbiper.edu.in",
-    bio: "Mr. Mayur Lohkare focuses on prescription dispensing practices and drugstore management. He is highly passionate about community health education and clinical training.",
-    isHOD: false,
-  },
+    "id": "11",
+    "name": "Mrs. Reshma Pankaj Dhakate",
+    "designation": "Assistant Professor",
+    "department": "Pharmaceutical Chemistry",
+    "qualification": "M. PHARM IN PHARMACEUTICAL CHEMISTRY",
+    "specialization": "Analytical Instrument Handling like UV, HPLC etc",
+    "experience": "0-2 Years (Research), 3-5 Years (Teaching)",
+    "email": "gonnader@gmail.com",
+    "bio": "Mrs. Reshma Pankaj Dhakate is an esteemed Assistant Professor in the Department of Pharmaceutical Chemistry at KBIPER. She holds a highest qualification of M. PHARM IN PHARMACEUTICAL CHEMISTRY. With 0-2 Years (Research), 3-5 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes analytical instrument handling like uv, hplc etc. Additionally, she serves as NAAC Coordinator, Other.",
+    "certificateUrl": "https://drive.google.com/open?id=1sKEdpvciL8aJ5HiH33CIrGGwX1p9Ky_O",
+    "resumeUrl": "https://drive.google.com/open?id=1Vt0K0n7rsJJAmbOLGrH4IgKm80S71UMX",
+    "publications": "Indexed in: UGC Care, Other",
+    "projects": "UG Projects (20+ Scholars)"
+},
   {
-    id: "11",
-    name: "Ms. Ankita Vilas Berde",
-    designation: "Lecturer (D.Pharm)",
-    department: "D. Pharmacy",
-    qualification: "M. Pharm",
-    specialization: "Pharmacognosy, Natural remedies and Herbals",
-    experience: "4+ Years",
-    email: "ankita.berde@kbiper.edu.in",
-    bio: "Ms. Ankita Berde handles natural drug study laboratories, helping diploma students understand pharmaceutical raw materials of natural origin.",
-    isHOD: false,
-  },
+    "id": "12",
+    "name": "Ms. Ankita Vilas Berde",
+    "designation": "Assistant Professor",
+    "department": "D. Pharmacy",
+    "qualification": "Master in Pharmacy (Pharmaceutics)",
+    "specialization": "Research, Teaching, Pharmaceutical Formulation, Scientific Writing.",
+    "experience": "3-5 Years (Teaching)",
+    "email": "ankita.berde2011@gmail.com",
+    "bio": "Ms. Ankita Vilas Berde is an esteemed Assistant Professor in the Department of D. Pharmacy at KBIPER. She holds a highest qualification of Master in Pharmacy (Pharmaceutics). With 3-5 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes research, teaching, pharmaceutical formulation, scientific writing. Additionally, she serves as Examination Coordinator.",
+    "certificateUrl": "https://drive.google.com/open?id=1FyQFjo_00qRu80AiAzy5XkxcbScd5zmD",
+    "resumeUrl": "https://drive.google.com/open?id=1ay6LOwWFr9IeiJf7pTInnJW8EGChgB7A",
+    "publications": "Indexed in: Scopus, UGC Care"
+},
   {
-    id: "12",
-    name: "Ms. Sohini A. Ganguly",
-    designation: "Lecturer (D.Pharm)",
-    department: "D. Pharmacy",
-    qualification: "M. Pharm",
-    specialization: "Human Anatomy & Physiology, Biochemistry",
-    experience: "3+ Years",
-    email: "sohini.ganguly@kbiper.edu.in",
-    bio: "Ms. Sohini Ganguly conducts fundamental biochemistry and human physiology classes, ensuring students grasp basic clinical biological sciences thoroughly.",
-    isHOD: false,
-  }
+    "id": "13",
+    "name": "Ms. Sohini Amalkrishna Ganguly",
+    "designation": "Assistant Professor",
+    "department": "D. Pharmacy",
+    "qualification": "M. Pharm.",
+    "specialization": "Management skills, Leadership, Creativity, etc.",
+    "experience": "3-5 Years (Teaching)",
+    "email": "iipsohini@gmail.com",
+    "bio": "Ms. Sohini Amalkrishna Ganguly is an esteemed Assistant Professor in the Department of D. Pharmacy at KBIPER. She holds a highest qualification of M. Pharm.. With 3-5 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes management skills, leadership, creativity, etc. Additionally, she serves as Examination Coordinator, NSS/Cultural Committee, Other.",
+    "certificateUrl": "https://drive.google.com/open?id=1MBUE6l2H9sgRTLuSASIk8Xb6Gx8H2qm2",
+    "resumeUrl": "https://drive.google.com/open?id=1Wyj6TxGp_lzWPBfYb5wQiHzd6qlbLRfY",
+    "publications": "Indexed in: UGC Care, Other",
+    "projects": "Ph.D. Scholars, PG Projects, UG Projects"
+},
+  {
+    "id": "14",
+    "name": "Mrs. Sharda Sarang Kulkarni",
+    "designation": "Assistant Professor",
+    "department": "Pharmaceutics",
+    "qualification": "M. Pharm. (Pharmaceutics)",
+    "specialization": "Research , Teaching.",
+    "experience": "6-10 Years (Teaching)",
+    "email": "kulkarnisharda97@gmail.com",
+    "bio": "Mrs. Sharda Sarang Kulkarni is an esteemed Assistant Professor in the Department of Pharmaceutics at KBIPER. She holds a highest qualification of M. Pharm. (Pharmaceutics). With 6-10 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes research , teaching.",
+    "certificateUrl": "https://drive.google.com/open?id=1-q0WBLYHojVMsqMR6p7MknM95I1kP602",
+    "resumeUrl": "https://drive.google.com/open?id=1mu-VB30QTVZsLcppZgIRuyRrj_Mn-aQi",
+    "publications": "Indexed in: Scopus, SCI, UGC Care, Other",
+    "projects": "UG Projects (20+ Scholars)"
+},
+  {
+    "id": "15",
+    "name": "Ms. Vikranti Walmik Koli",
+    "designation": "Assistant Professor",
+    "department": "Pharmaceutics",
+    "qualification": "M Pharmacy",
+    "specialization": "Pharmaceutical Formulation Development\nResearch & Development (R&D)\nNanoemulsion Formulation and Characterization",
+    "experience": "3-5 Years (Teaching)",
+    "email": "vwk.iiper96@gmail.com",
+    "bio": "Ms. Vikranti Walmik Koli is an esteemed Assistant Professor in the Department of Pharmaceutics at KBIPER. She holds a highest qualification of M Pharmacy. With 3-5 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes pharmaceutical formulation development\nresearch & development (r&d)\nnanoemulsion formulation and characterization.",
+    "certificateUrl": "https://drive.google.com/open?id=1umGZDYp056rDqMrAVJWuZINGhqe3nYxO",
+    "resumeUrl": "https://drive.google.com/open?id=1FMc1T--PyCQ_oEdnk-v4QbHJ6FfjXvh9",
+    "publications": "Indexed in: UGC Care",
+    "projects": "UG Projects (20+ Scholars)"
+},
+  {
+    "id": "16",
+    "name": "Ms. Shraddha Subhash Satkar",
+    "designation": "Assistant Professor",
+    "department": "Quality Assurance",
+    "qualification": "M.Pharm (Pharmaceutical Quality Assurance)",
+    "specialization": "Good communication, Student mentoring, Research Publications,",
+    "experience": "6-10 Years (Teaching)",
+    "email": "sssatkar. iiper@gmail.com",
+    "bio": "Ms. Shraddha Subhash Satkar is an esteemed Assistant Professor in the Department of Quality Assurance at KBIPER. She holds a highest qualification of M.Pharm (Pharmaceutical Quality Assurance). With 6-10 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes good communication, student mentoring, research publications,.",
+    "certificateUrl": "https://drive.google.com/open?id=1CTFYie1cE1nHpZnLSlBQYOfujdEAGPIZ",
+    "resumeUrl": "https://drive.google.com/open?id=1n-ZMuXlF_uHfzqmOzx98TxJ3LrRFlUTi",
+    "publications": "Indexed in: Scopus, UGC Care, Web of Science",
+    "projects": "UG Projects (20+ Scholars), Ph.D. Scholars, PG Projects"
+},
+  {
+    "id": "17",
+    "name": "Ms. Kadambari Shripad Ghatpande",
+    "designation": "Assistant Professor",
+    "department": "Quality Assurance",
+    "qualification": "M. Pharm(Quality assurance Techniques?",
+    "specialization": "Teaching, Administrative, Extra curricular",
+    "experience": "3-5 Years (Industry), 6-10 Years (Teaching)",
+    "email": "ghatpandekadambari4@gmail.com",
+    "bio": "Ms. Kadambari Shripad Ghatpande is an esteemed Assistant Professor in the Department of Quality Assurance at KBIPER. She holds a highest qualification of M. Pharm(Quality assurance Techniques?. With 3-5 Years (Industry), 6-10 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes teaching, administrative, extra curricular. Additionally, she serves as Examination Coordinator.",
+    "publications": "Indexed in: UGC Care, Web of Science"
+},
+  {
+    "id": "18",
+    "name": "Mr. Mahesh Balkrishna Gawade",
+    "designation": "Assistant Professor",
+    "department": "Pharmaceutics",
+    "qualification": "M.pharm ( Pursuing PH D )",
+    "specialization": "Teaching and learning",
+    "experience": "3-5 Years (Teaching)",
+    "email": "maheshgawade829@gmail.com",
+    "bio": "Mr. Mahesh Balkrishna Gawade is an esteemed Assistant Professor in the Department of Pharmaceutics at KBIPER. He holds a highest qualification of M.pharm ( Pursuing PH D ). With 3-5 Years (Teaching) of experience, he is committed to academic excellence. His core expertise includes teaching and learning. Additionally, he serves as NSS/Cultural Committee.",
+    "certificateUrl": "https://drive.google.com/open?id=1TfaTcGWwdbwk26w2amPsKCDdSICRT6p_",
+    "resumeUrl": "https://drive.google.com/open?id=1d2AHfHLVpEbQJaNuhQKh23YU2VAIRh0u",
+    "publications": "Indexed in: Other",
+    "projects": "UG Projects (11-20 Scholars)"
+},
+  {
+    "id": "19",
+    "name": "Mr. Awate Shyam Suryakant",
+    "designation": "Assistant Professor",
+    "department": "Pharmaceutics",
+    "qualification": "M. Pharm in Pharmaceutical Biotechnology",
+    "specialization": "Soft Skills: Excellent communication, Leadership, Good Presentation Skills, M.S.Office.\nMachine Handling: Tablet Compression machine, Dissolution,  Disintegration,  Friability tester, UV Visible Spectrophotometer, HPLC, Laminar Air Flow, PCR, Gel Electrophoresis, Ultracentrifuge, Lyophilizer.",
+    "experience": "10+ Years (Teaching)",
+    "email": "shyamsawate.iiper@gmail.com",
+    "bio": "Mr. Awate Shyam Suryakant is an esteemed Assistant Professor in the Department of Pharmaceutics at KBIPER. He holds a highest qualification of M. Pharm in Pharmaceutical Biotechnology. With 10+ Years (Teaching) of experience, he is committed to academic excellence. His core expertise includes soft skills: excellent communication, leadership, good presentation skills, m.s.office.\nmachine handling: tablet compression machine, dissolution,  disintegration,  friability tester, uv visible spectrophotometer, hplc, laminar air flow, pcr, gel electrophoresis, ultracentrifuge, lyophilizer. Additionally, he serves as Training & Placement.",
+    "certificateUrl": "https://drive.google.com/open?id=1JZK7DLrKkEf2djQfw5X3NmioNTyT91--",
+    "resumeUrl": "https://drive.google.com/open?id=19bmvSoHMstNEh6-9WtfO0CCdywUL9trj",
+    "publications": "Indexed in: Scopus, UGC Care",
+    "projects": "PG Projects (11-20 Scholars), UG Projects (20+ Scholars)"
+},
+  {
+    "id": "20",
+    "name": "Dr. Mayuri Vighnahar Gurav",
+    "designation": "Assistant Professor",
+    "department": "Pharmacognosy",
+    "qualification": "PhD, Pharmacology",
+    "specialization": "Academics, Research, Administrative work",
+    "experience": "0-2 Years (Research), 6-10 Years (Teaching)",
+    "email": "mvg.iiper@gmail.com",
+    "bio": "Dr. Mayuri Vighnahar Gurav is an esteemed Assistant Professor in the Department of Pharmacognosy at KBIPER. She holds a highest qualification of PhD, Pharmacology. With 0-2 Years (Research), 6-10 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes academics, research, administrative work. Additionally, she serves as Examination Coordinator, Other.",
+    "certificateUrl": "https://drive.google.com/open?id=183kkZ0Ht-zvnU6sE1uP1BNsKRGoEEf2i",
+    "resumeUrl": "https://drive.google.com/open?id=1qnLEmJACR610HA2BjHEUeKv0BT0Hp36y",
+    "publications": "Indexed in: Scopus, UGC Care, Web of Science",
+    "projects": "PG Projects (6-10 Scholars), UG Projects (20+ Scholars)"
+},
+  {
+    "id": "21",
+    "name": "Ms. Nilam Subhash Patangare",
+    "designation": "Assistant Professor",
+    "department": "Pharmaceutics",
+    "qualification": "M.pharm",
+    "specialization": "Teaching, learning, Reading, Research and development activities etc",
+    "experience": "3-5 Years (Teaching)",
+    "email": "patangarenilam99@gmail.com",
+    "bio": "Ms. Nilam Subhash Patangare is an esteemed Assistant Professor in the Department of Pharmaceutics at KBIPER. She holds a highest qualification of M.pharm. With 3-5 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes teaching, learning, reading, research and development activities etc. Additionally, she serves as NSS/Cultural Committee.",
+    "certificateUrl": "https://drive.google.com/open?id=1aqXGOW3dSN62mwfJYu3E-IHIJCA_FW12",
+    "resumeUrl": "https://drive.google.com/open?id=1IOI8bg5BhigIsEIjORRgaZpY4IugVHIR",
+    "publications": "Indexed in: Scopus",
+    "projects": "UG Projects (0-5 Scholars)"
+},
+  {
+    "id": "22",
+    "name": "Ms. Priyanka Arun Panmand",
+    "designation": "Assistant Professor",
+    "department": "Pharmaceutics",
+    "qualification": "M. Pharmacy",
+    "specialization": "Learning new things",
+    "experience": "6-10 Years (Teaching)",
+    "email": "priyankapanmand92@gmail.com",
+    "bio": "Ms. Priyanka Arun Panmand is an esteemed Assistant Professor in the Department of Pharmaceutics at KBIPER. She holds a highest qualification of M. Pharmacy. With 6-10 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes learning new things.",
+    "certificateUrl": "https://drive.google.com/open?id=1xDr7OADG3nkfLvt5WehRyiFtmwGf7E-d",
+    "resumeUrl": "https://drive.google.com/open?id=1m_4hgS0z0j9FiSTgvm2dKIBEzLqdASkM",
+    "publications": "Indexed in: Scopus, UGC Care, Web of Science",
+    "projects": "UG Projects (20+ Scholars)"
+},
+  {
+    "id": "23",
+    "name": "Ms. VILASINI RAMESHRAO PANDAV",
+    "designation": "Assistant Professor",
+    "department": "Pharmacognosy",
+    "qualification": "M.Pharmacy (Pharmacognosy)",
+    "specialization": "Communication skill,Leadership,Clligraphy writings,Sharp Learner,Singing etc.",
+    "experience": "0-2 Years (Teaching)",
+    "email": "vilasinipandav773@gmail.com",
+    "bio": "Ms. VILASINI RAMESHRAO PANDAV is an esteemed Assistant Professor in the Department of Pharmacognosy at KBIPER. She holds a highest qualification of M.Pharmacy (Pharmacognosy). With 0-2 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes communication skill,leadership,clligraphy writings,sharp learner,singing etc. Additionally, she serves as Admission Coordinator, Examination Coordinator, Training & Placement.",
+    "certificateUrl": "https://drive.google.com/open?id=1Gl8xrIWJzHQv0EcdLxasMAhoJCRjR6F3",
+    "resumeUrl": "https://drive.google.com/open?id=1s54zSSpooxLNo3KPf_O3w_TRFxInWpRN",
+    "publications": "Indexed in: Other"
+},
+  {
+    "id": "24",
+    "name": "Ms. Yogita Chittaranjan Saraf",
+    "designation": "Assistant Professor",
+    "department": "Pharmaceutics",
+    "qualification": "M. Pharmacy (Pharmaceutics)",
+    "specialization": "Communication skill",
+    "experience": "0-2 Years (Teaching)",
+    "email": "ycs.kbiper@gmail.com",
+    "bio": "Ms. Yogita Chittaranjan Saraf is an esteemed Assistant Professor in the Department of Pharmaceutics at KBIPER. She holds a highest qualification of M. Pharmacy (Pharmaceutics). With 0-2 Years (Teaching) of experience, she is committed to academic excellence. Her core expertise includes communication skill. Additionally, she serves as Admission Coordinator, Examination Coordinator.",
+    "certificateUrl": "https://drive.google.com/open?id=1KgQwHZsMZZOs6SHxyGuRFCeh2bGiMZkl",
+    "resumeUrl": "https://drive.google.com/open?id=1Icnko1G4-qWkUGzPI8WfJhYAvg9C9Fke"
+},
 ];
+
+
+
+
+
+const getGradientForInitials = (name: string) => {
+  const gradients = [
+    "from-blue-50 to-sky-100 border-blue-200/60 text-blue-700",
+    "from-emerald-50 to-teal-100 border-emerald-200/60 text-emerald-700",
+    "from-indigo-50 to-violet-100 border-indigo-200/60 text-indigo-700",
+    "from-amber-50 to-yellow-100 border-amber-200/60 text-amber-700",
+    "from-rose-50 to-pink-100 border-rose-200/60 text-rose-700",
+    "from-fuchsia-50 to-purple-100 border-fuchsia-200/60 text-fuchsia-700",
+    "from-cyan-50 to-sky-100 border-cyan-200/60 text-cyan-700",
+    "from-orange-50 to-amber-100 border-orange-200/60 text-orange-700",
+  ];
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const index = Math.abs(hash) % gradients.length;
+  return gradients[index];
+};
 
 const DEPARTMENTS = [
   "All",
@@ -355,9 +555,19 @@ export default function Faculty() {
                           </div>
                         )}
 
-                        {/* Profile Image Initials Placeholder */}
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/5 to-accent/5 border border-muted flex items-center justify-center mb-5 shrink-0 group-hover:scale-105 transition-transform duration-300">
-                          <span className="text-2xl font-black text-primary/80 tracking-wide">{initials}</span>
+                        {/* Profile Image / Initials Placeholder */}
+                        <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${getGradientForInitials(faculty.name)} border flex items-center justify-center mb-5 shrink-0 group-hover:scale-105 transition-transform duration-300 overflow-hidden relative shadow-sm`}>
+                          <span className="text-2xl font-black tracking-wide z-0">{initials}</span>
+                          {faculty.photoUrl && (
+                            <img
+                              src={faculty.photoUrl}
+                              alt={faculty.name}
+                              className="absolute inset-0 w-full h-full object-cover z-10"
+                              onError={(e) => {
+                                e.currentTarget.style.display = 'none';
+                              }}
+                            />
+                          )}
                         </div>
 
                         {/* Name and Designation */}
@@ -426,17 +636,33 @@ export default function Faculty() {
               className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-muted overflow-hidden z-10 max-h-[85vh] flex flex-col"
             >
               {/* Header block with close button */}
-              <div className="p-6 md:p-8 bg-gradient-to-r from-primary to-[#0e354e] text-white flex justify-between items-start shrink-0">
-                <div>
-                  <span className="inline-block px-3 py-1 bg-white/10 text-accent font-bold text-[10px] uppercase tracking-wider rounded-full mb-3 border border-white/10">
-                    {activeFaculty.department}
-                  </span>
-                  <h2 className="text-2xl md:text-3xl font-bold tracking-tight">{activeFaculty.name}</h2>
-                  <p className="text-sm font-semibold text-white/80 mt-1">{activeFaculty.designation}</p>
+              <div className="p-6 md:p-8 bg-gradient-to-r from-primary to-[#0e354e] text-white flex justify-between items-center shrink-0">
+                <div className="flex items-center gap-4">
+                  {/* Circle Placeholder / Image in Modal */}
+                  <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br ${getGradientForInitials(activeFaculty.name)} border-2 border-white/10 flex items-center justify-center shrink-0 overflow-hidden relative shadow-md`}>
+                    <span className="text-xl md:text-2xl font-black tracking-wide z-0">{activeFaculty.name.split(" ").slice(-2).map(n => n.charAt(0)).join("")}</span>
+                    {activeFaculty.photoUrl && (
+                      <img
+                        src={activeFaculty.photoUrl}
+                        alt={activeFaculty.name}
+                        className="absolute inset-0 w-full h-full object-cover z-10"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    )}
+                  </div>
+                  <div>
+                    <span className="inline-block px-3 py-1 bg-white/10 text-accent font-bold text-[10px] uppercase tracking-wider rounded-full mb-1.5 border border-white/10">
+                      {activeFaculty.department}
+                    </span>
+                    <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight leading-tight">{activeFaculty.name}</h2>
+                    <p className="text-xs md:text-sm font-semibold text-white/80 mt-0.5">{activeFaculty.designation}</p>
+                  </div>
                 </div>
                 <button
                   onClick={() => setActiveFaculty(null)}
-                  className="cursor-pointer p-2 rounded-full hover:bg-white/15 text-white/80 hover:text-white transition-colors"
+                  className="cursor-pointer p-2 rounded-full hover:bg-white/15 text-white/80 hover:text-white transition-colors shrink-0"
                 >
                   <X className="h-6 w-6" />
                 </button>
@@ -515,6 +741,41 @@ export default function Faculty() {
                             <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest block mb-0.5">Projects Guided</span>
                             <p className="text-primary text-sm font-medium">{activeFaculty.projects}</p>
                           </div>
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {/* Credentials & Documents */}
+                {(activeFaculty.resumeUrl || activeFaculty.certificateUrl) && (
+                  <>
+                    <hr className="border-muted" />
+                    <div className="space-y-3.5">
+                      <div className="flex items-center gap-2 text-accent">
+                        <FileText className="w-4.5 h-4.5 shrink-0" />
+                        <h4 className="text-xs font-bold uppercase tracking-wider">Credentials & Documents</h4>
+                      </div>
+                      <div className="flex flex-col sm:flex-row gap-3 pl-0 sm:pl-6.5">
+                        {activeFaculty.resumeUrl && (
+                          <a
+                            href={activeFaculty.resumeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 text-xs font-bold text-primary bg-primary/5 hover:bg-primary/10 border border-primary/20 px-4.5 py-2.5 rounded-xl transition-all duration-300"
+                          >
+                            <FileText className="w-4 h-4 text-primary" /> View Latest Resume (PDF)
+                          </a>
+                        )}
+                        {activeFaculty.certificateUrl && (
+                          <a
+                            href={activeFaculty.certificateUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center gap-2 text-xs font-bold text-primary bg-primary/5 hover:bg-primary/10 border border-primary/20 px-4.5 py-2.5 rounded-xl transition-all duration-300"
+                          >
+                            <Award className="w-4 h-4 text-primary" /> View Highest Qualification Certificate
+                          </a>
                         )}
                       </div>
                     </div>
