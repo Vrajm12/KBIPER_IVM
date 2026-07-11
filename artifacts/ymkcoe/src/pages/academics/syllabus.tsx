@@ -56,25 +56,29 @@ interface ProgramData {
     labCount: string;
     internship: string;
   };
+  downloadUrl: string;
+  fileSize: string;
   years: YearData[];
 }
 
 const SYLLABUS_DATABASE: Record<string, ProgramData> = {
-  bpharm: {
-    title: "Bachelor of Pharmacy",
-    subtitle: "B. Pharmacy (4-Year Undergraduate Program)",
-    description: "The B.Pharm curriculum is designed under Pharmacy Council of India (PCI) guidelines to prepare competent pharmaceutical professionals. It covers the complete drug cycle—from design and organic synthesis to formulation development, analytical testing, pharmacological screening, and clinical trials.",
+  bpharm_fy: {
+    title: "Bachelor of Pharmacy (FY)",
+    subtitle: "B. Pharmacy (Revised Syllabus - FY only)",
+    description: "The B.Pharm first year curriculum is designed under Pharmacy Council of India (PCI) guidelines to prepare competent pharmaceutical professionals. It covers the complete drug cycle—from design and organic synthesis to formulation development, analytical testing, pharmacological screening, and clinical trials.",
     accent: "text-blue-500",
     bgAccent: "bg-blue-600 hover:bg-blue-700",
     iconColor: "text-blue-400",
     bannerGradient: "from-blue-600/20 via-primary to-[#011a2a]",
     stats: {
-      totalCredits: "208 Credits",
-      schema: "PCI Syllabus Schema",
-      theoryCount: "32 Theory Modules",
-      labCount: "20 Laboratory Practicals",
-      internship: "150 Hours Industrial/Hospital Training"
+      totalCredits: "50 Credits",
+      schema: "Revised PCI Syllabus Schema",
+      theoryCount: "8 Theory Modules",
+      labCount: "6 Laboratory Practicals",
+      internship: "General Orientation"
     },
+    downloadUrl: "/documents/B_Pharm_New_Syllabus_FY.pdf",
+    fileSize: "1.6 MB",
     years: [
       {
         yearName: "First Year",
@@ -170,7 +174,27 @@ const SYLLABUS_DATABASE: Record<string, ProgramData> = {
             ]
           }
         ]
-      },
+      }
+    ]
+  },
+  bpharm_sy_ty_final: {
+    title: "Bachelor of Pharmacy (SY, TY & Final)",
+    subtitle: "B. Pharmacy (Standard Syllabus - SY, TY & Final Year)",
+    description: "The B.Pharm second, third and final year curriculum is designed under Pharmacy Council of India (PCI) guidelines. It covers advanced drug formulations, pharmacology, toxicology, regulatory compliance, quality control, and clinical evaluations.",
+    accent: "text-blue-500",
+    bgAccent: "bg-blue-600 hover:bg-blue-700",
+    iconColor: "text-blue-400",
+    bannerGradient: "from-blue-600/20 via-primary to-[#011a2a]",
+    stats: {
+      totalCredits: "158 Credits",
+      schema: "Standard PCI Syllabus Schema",
+      theoryCount: "24 Theory Modules",
+      labCount: "14 Laboratory Practicals",
+      internship: "150 Hours Training"
+    },
+    downloadUrl: "/documents/B_Pharm_Old_Syllabus_SY_TY_Final.pdf",
+    fileSize: "1.6 MB",
+    years: [
       {
         yearName: "Second Year",
         semesters: [
@@ -465,6 +489,8 @@ const SYLLABUS_DATABASE: Record<string, ProgramData> = {
     accent: "text-emerald-500",
     bgAccent: "bg-emerald-600 hover:bg-emerald-700",
     iconColor: "text-emerald-400",
+    downloadUrl: "/documents/D_Pharm_New_Syllabus.pdf",
+    fileSize: "985 KB",
     bannerGradient: "from-emerald-600/20 via-primary to-[#011a2a]",
     stats: {
       totalCredits: "Yearly Scheme",
@@ -613,6 +639,8 @@ const SYLLABUS_DATABASE: Record<string, ProgramData> = {
     accent: "text-[#F4B609]",
     bgAccent: "bg-[#F4B609] hover:bg-[#db9d00] text-black font-semibold",
     iconColor: "text-[#F4B609]",
+    downloadUrl: "/documents/M_Pharm_Syllabus.pdf",
+    fileSize: "3.8 MB",
     bannerGradient: "from-[#F4B609]/20 via-primary to-[#011a2a]",
     stats: {
       totalCredits: "95 Credits",
@@ -759,7 +787,7 @@ const SYLLABUS_DATABASE: Record<string, ProgramData> = {
       }
     ]
   }
-};
+};;
 
 export default function Syllabus() {
   const params = useParams();
@@ -768,7 +796,7 @@ export default function Syllabus() {
   
   const course = params.course || "bpharm";
   const data = useMemo(() => {
-    return SYLLABUS_DATABASE[course as keyof typeof SYLLABUS_DATABASE] || SYLLABUS_DATABASE.bpharm;
+    return SYLLABUS_DATABASE[course as keyof typeof SYLLABUS_DATABASE] || SYLLABUS_DATABASE.bpharm_fy;
   }, [course]);
 
   const [activeYearIdx, setActiveYearIdx] = useState(0);
@@ -791,19 +819,18 @@ export default function Syllabus() {
   const activeYear = data.years[activeYearIdx] || data.years[0];
   const activeSemester = activeYear.semesters[activeSemIdx] || activeYear.semesters[0];
 
-  const handleDownload = (programName: string, docType: string) => {
+  const handleDownload = (programName: string, filePath: string) => {
     toast({
-      title: "Generating Document",
-      description: `Preparing to download the official PCI curriculum for ${programName} (${docType})...`,
+      title: "Downloading Syllabus",
+      description: `Downloading the official curriculum PDF for ${programName}...`,
     });
     
-    // Simulate delayed file download
-    setTimeout(() => {
-      toast({
-        title: "Download Started",
-        description: `Official PDF for ${programName} curriculum has been saved.`,
-      });
-    }, 2000);
+    const link = document.createElement("a");
+    link.href = filePath;
+    link.download = filePath.split("/").pop() || "syllabus.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const getDomainIcon = (domain: Subject["domain"]) => {
@@ -939,26 +966,42 @@ export default function Syllabus() {
           
           {/* Degree Tabs Switches */}
           <div className="flex justify-center mb-12">
-            <div className="inline-flex p-1.5 bg-muted/80 backdrop-blur rounded-2xl border border-muted/50 shadow-sm gap-1">
-              <button
-                onClick={() => setLocation("/syllabus/dpharm")}
-                className={`cursor-pointer px-5 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 ${course === "dpharm" ? "bg-primary text-white shadow-md" : "text-muted-foreground hover:text-primary"}`}
-              >
-                D. Pharmacy
-              </button>
-              <button
-                onClick={() => setLocation("/syllabus/bpharm")}
-                className={`cursor-pointer px-5 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 ${course === "bpharm" ? "bg-primary text-white shadow-md" : "text-muted-foreground hover:text-primary"}`}
-              >
-                B. Pharmacy
-              </button>
-              <button
-                onClick={() => setLocation("/syllabus/mpharm")}
-                className={`cursor-pointer px-5 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 ${course === "mpharm" ? "bg-primary text-white shadow-md" : "text-muted-foreground hover:text-primary"}`}
-              >
-                M. Pharmacy
-              </button>
+            <div className="inline-flex p-1.5 bg-muted/80 backdrop-blur rounded-2xl border border-muted/50 shadow-sm gap-1.5 overflow-x-auto no-scrollbar max-w-full">
+              {([
+                { id: "dpharm", label: "D. Pharmacy" },
+                { id: "bpharm_fy", label: "B. Pharmacy (FY)" },
+                { id: "bpharm_sy_ty_final", label: "B. Pharmacy (SY, TY & Final)" },
+                { id: "mpharm", label: "M. Pharmacy" }
+              ] as const).map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => setLocation(`/syllabus/${tab.id}`)}
+                  className={`cursor-pointer px-5 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 whitespace-nowrap ${course === tab.id ? "bg-primary text-white shadow-md" : "text-muted-foreground hover:text-primary"}`}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
+          </div>
+
+          {/* Download Card Section */}
+          <div className="mb-10 bg-white border border-muted p-6 md:p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.01)] flex flex-col md:flex-row items-center justify-between gap-6 hover:border-accent/40 transition-colors">
+            <div className="flex items-center gap-4.5">
+              <div className="w-14 h-14 rounded-2xl bg-primary/5 flex items-center justify-center border border-primary/10 text-primary shrink-0">
+                <FileCheck className="w-7 h-7 text-accent animate-pulse" />
+              </div>
+              <div>
+                <span className="text-[10px] uppercase font-bold text-accent tracking-widest block mb-1">Official PCI Syllabus</span>
+                <h2 className="text-lg font-extrabold text-primary leading-tight">{data.title}</h2>
+                <p className="text-xs text-muted-foreground mt-0.5 max-w-lg leading-relaxed">{data.subtitle} - Complete curriculum framework details, credits, and rules.</p>
+              </div>
+            </div>
+            <button 
+              onClick={() => handleDownload(data.title, data.downloadUrl)}
+              className="cursor-pointer w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary hover:bg-primary/95 text-white text-xs font-bold rounded-xl shadow-md transition-all duration-300 hover:scale-[1.01] shrink-0"
+            >
+              <FileDown className="w-4.5 h-4.5 text-accent" /> Download Curriculum PDF ({data.fileSize})
+            </button>
           </div>
 
           {/* Double Nav (Year Tab select + Sem select) */}
@@ -981,7 +1024,7 @@ export default function Syllabus() {
               ))}
             </div>
 
-            {/* Semester selections OR download button */}
+            {/* Semester selections */}
             <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
               {activeYear.semesters.length > 1 && (
                 <div className="flex gap-1.5 bg-muted/20 p-0.5 rounded-lg border border-muted/40">
@@ -1000,13 +1043,6 @@ export default function Syllabus() {
                   ))}
                 </div>
               )}
-              
-              <button 
-                onClick={() => handleDownload(data.subtitle, activeYear.yearName)}
-                className={`cursor-pointer flex items-center gap-2 px-4.5 py-2.5 rounded-xl text-white text-xs font-bold shadow-md shadow-primary/10 transition-all duration-300 ${data.bgAccent}`}
-              >
-                <FileDown className="w-3.5 h-3.5" /> Download PDF
-              </button>
             </div>
           </div>
 

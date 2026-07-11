@@ -18,7 +18,7 @@ import { useState, useMemo } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "wouter";
 
-type StakeholderRole = "student" | "alumni" | "parent" | "employer";
+type StakeholderRole = "student" | "alumni" | "faculty";
 
 interface SurveyQuestion {
   id: string;
@@ -55,26 +55,15 @@ const SURVEY_CONFIGS: Record<StakeholderRole, StakeholderConfig> = {
       { id: "A4", text: "Willingness to support juniors through expert guest lectures and networking" }
     ]
   },
-  parent: {
-    label: "Parent Feedback",
+  faculty: {
+    label: "Faculty Feedback",
     icon: <ShieldCheck className="w-4 h-4" />,
-    subtitle: "Assessment of safety, discipline, mentoring, and ward development.",
+    subtitle: "Evaluating the curriculum design, institutional support, research opportunities, and environment.",
     questions: [
-      { id: "P1", text: "Institutional discipline, class schedules execution, and attendance alerts" },
-      { id: "P2", text: "Care, mentoring, and student safety practices inside the college premises" },
-      { id: "P3", text: "Cleanliness of classrooms, labs, and hostelling facilities" },
-      { id: "P4", text: "Overall character development and progress observed in your ward" }
-    ]
-  },
-  employer: {
-    label: "Employer Feedback",
-    icon: <TrendingUp className="w-4 h-4" />,
-    subtitle: "Evaluating the workplace performance, competency, and ethics of our graduates.",
-    questions: [
-      { id: "E1", text: "Domain knowledge & technical competencies in core pharmaceutical sciences" },
-      { id: "E2", text: "Professional ethics, workplace discipline, and clinical safety compliance" },
-      { id: "E3", text: "Communication skills, professional presentation, and teamwork attributes" },
-      { id: "E4", text: "Aptitude for continuous learning, problem-solving, and adaptability" }
+      { id: "F1", text: "Relevance and structure of the syllabus under Dr. Babasaheb Ambedkar Technological University (DBATU)" },
+      { id: "F2", text: "Availability and adequacy of resources (reference books, digital libraries, and lab infrastructure)" },
+      { id: "F3", text: "Support for research, paper publications, and professional faculty development (FDP)" },
+      { id: "F4", text: "Overall academic environment, institutional administration, and student discipline" }
     ]
   }
 };
@@ -323,8 +312,7 @@ export default function Feedback() {
                         <label className="block text-[10px] font-bold text-primary mb-1 uppercase tracking-wide">
                           {activeRole === "student" && "Current Year & Batch (e.g. Third Year B.Pharm 2023-27)"}
                           {activeRole === "alumni" && "Graduating Year & Batch (e.g. Graduated 2021-22)"}
-                          {activeRole === "parent" && "Name of your Ward (e.g. Ward Name - Snehal Shinde)"}
-                          {activeRole === "employer" && "Company Name & Designation (e.g. Sun Pharma - HR Manager)"}
+                          {activeRole === "faculty" && "Designation & Department (e.g. Associate Professor - Pharmaceutics)"}
                         </label>
                         <input
                           type="text"
@@ -333,8 +321,7 @@ export default function Feedback() {
                           placeholder={
                             activeRole === "student" ? "e.g. Third Year B.Pharm" :
                             activeRole === "alumni" ? "e.g. B.Pharm Batch 2022" :
-                            activeRole === "parent" ? "e.g. Ward Name - Snehal Shinde" :
-                            "e.g. Sun Pharma - Executive Director"
+                            "e.g. Associate Professor - Pharmaceutics"
                           }
                           className="w-full px-4 py-3 rounded-xl border border-muted bg-white text-sm focus:outline-none focus:ring-2 focus:ring-accent transition-all placeholder:text-muted-foreground/40"
                         />

@@ -39,49 +39,85 @@ interface CommitteeMember {
 const GRIEVANCE_MEMBERS: CommitteeMember[] = [
   { 
     id: "1", 
-    name: "Dr. Sanjay R. Bhegade", 
+    name: "Dr. Sanjay R. Arote", 
     role: "Chairman", 
-    designation: "Principal & Professor", 
+    designation: "Principal", 
     department: "College Administration", 
-    phone: "+91 9876543210", 
-    email: "principal.kbiper@gmail.com",
+    phone: "9960365969", 
+    email: "principal.iiper@gmail.com",
     isHead: true 
   },
   { 
     id: "2", 
-    name: "Dr. Rekha Patil", 
-    role: "Coordinator", 
-    designation: "Professor", 
-    department: "Pharmacology Department", 
-    phone: "+91 9876543241", 
-    email: "rekha.patil@kbiper.edu.in" 
+    name: "Dr. Mayuri V. Gurav", 
+    role: "Teaching Representative", 
+    designation: "Assistant Professor", 
+    department: "KBIPER", 
+    phone: "8149457732", 
+    email: "Mayuriguravmvg.iper@gmail.com" 
   },
   { 
     id: "3", 
-    name: "Dr. Vivek Sharma", 
-    role: "Member", 
-    designation: "HOD & Professor", 
-    department: "Pharmaceutics Department", 
-    phone: "+91 9876543242", 
-    email: "vivek.sharma@kbiper.edu.in" 
+    name: "Ms. Sohini Ganguly", 
+    role: "Teaching Representative", 
+    designation: "Assistant Professor", 
+    department: "KBIPER", 
+    phone: "8605544989", 
+    email: "iipsohini@gmail.com" 
   },
   { 
     id: "4", 
-    name: "Prof. Anjali Jadhav", 
-    role: "Member", 
+    name: "Dr. Payal K. Thorat", 
+    role: "Teaching Representative", 
     designation: "Assistant Professor", 
-    department: "Pharmacology Department", 
-    phone: "+91 9876543243", 
-    email: "anjali.jadhav@kbiper.edu.in" 
+    department: "KBIPER", 
+    phone: "8275391357", 
+    email: "payal.pansare57@gmail.com" 
   },
   { 
     id: "5", 
-    name: "Mr. Vijay Pawar", 
-    role: "Member (Office Representative)", 
-    designation: "Office Superintendent", 
+    name: "Mrs. Mrinal Bhide", 
+    role: "Non-Teaching Representative", 
+    designation: "Representative", 
     department: "Administrative Office", 
-    phone: "+91 9876543204", 
-    email: "vijay.pawar@kbiper.edu.in" 
+    phone: "8767675223", 
+    email: "bank.iiper@gmail.com" 
+  },
+  { 
+    id: "6", 
+    name: "Mrs. Shubhangi Dabhade", 
+    role: "Non-Teaching Representative", 
+    designation: "Representative", 
+    department: "Administrative Office", 
+    phone: "9975905598", 
+    email: "shubhangidabhade292@gmail.com" 
+  },
+  { 
+    id: "7", 
+    name: "Ms. Priti S. Yadav", 
+    role: "Student Representative", 
+    designation: "Student representative D. Pharmacy", 
+    department: "D. Pharmacy", 
+    phone: "9156051275", 
+    email: "2004preetiyadav@gmail.com" 
+  },
+  { 
+    id: "8", 
+    name: "Ms. Diksha S. Gaikwad", 
+    role: "Student Representative", 
+    designation: "Student representative B. Pharmacy", 
+    department: "B. Pharmacy", 
+    phone: "9788733752", 
+    email: "sachingaikwad9870@gmail.com" 
+  },
+  { 
+    id: "9", 
+    name: "Mr. Jyotiraditya S. Fiske", 
+    role: "Student Representative", 
+    designation: "Student representative M. Pharmacy", 
+    department: "M. Pharmacy", 
+    phone: "9373471040", 
+    email: "adityafiske123@gmail.com" 
   }
 ];
 
@@ -353,8 +389,8 @@ export default function Grievance() {
                     <div className="text-xs text-white/70 leading-relaxed flex gap-2">
                       <Phone className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                       <div>
-                        <span>For urgent concerns, contact the Cell Coordinator Dr. Rekha Patil at:</span>
-                        <a href="tel:+919876543241" className="block text-accent font-bold hover:underline mt-1">+91 9876543241</a>
+                        <span>For urgent concerns, contact the Cell Chairman Dr. Sanjay R. Arote at:</span>
+                        <a href="tel:+919960365969" className="block text-accent font-bold hover:underline mt-1">+91 9960365969</a>
                       </div>
                     </div>
                   </div>

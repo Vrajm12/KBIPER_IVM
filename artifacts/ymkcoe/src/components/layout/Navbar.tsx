@@ -128,57 +128,12 @@ export function Navbar() {
             {showAcademicsDropdown && (
               <div className="absolute top-full left-0 w-[240px] bg-background border border-border rounded-lg shadow-lg p-2 mt-1 flex flex-col gap-1 z-50 animate-in fade-in duration-200">
                 <Link href="/academics/departmental-info"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Departmental information</span></Link>
-                
-                {/* Nested Faculty */}
-                <div className="group/faculty relative">
-                  <span className="flex justify-between items-center px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground">
-                    Faculty <ChevronRight className="h-4 w-4" />
-                  </span>
-                  <div className="absolute top-0 left-full w-[200px] hidden group-hover/faculty:flex flex-col bg-background border border-border rounded-lg shadow-lg p-2 -ml-1">
-                    <Link href="/faculty"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >Teaching Staff</span></Link>
-                    <Link href="/faculty-non-teaching"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >Non-Teaching Staff</span></Link>
-                  </div>
-                </div>
-
-                {/* Nested Syllabus */}
-                <div className="group/syllabus relative">
-                  <span className="flex justify-between items-center px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground">
-                    Syllabus <ChevronRight className="h-4 w-4" />
-                  </span>
-                  <div className="absolute top-0 left-full w-[200px] hidden group-hover/syllabus:flex flex-col bg-background border border-border rounded-lg shadow-lg p-2 -ml-1">
-                    <Link href="/syllabus/dpharm"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >D. Pharmacy</span></Link>
-                    <Link href="/syllabus/bpharm"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >B. Pharmacy</span></Link>
-                    <Link href="/syllabus/mpharm"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >M. Pharmacy</span></Link>
-                  </div>
-                </div>
-
-                {/* Nested Academic Calendar */}
-                <div className="group/calendar relative">
-                  <span className="flex justify-between items-center px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground">
-                    Academic Calendar <ChevronRight className="h-4 w-4" />
-                  </span>
-                  <div className="absolute top-0 left-full w-[200px] hidden group-hover/calendar:flex flex-col bg-background border border-border rounded-lg shadow-lg p-2 -ml-1">
-                    <Link href="/calendar/current"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >Current Year</span></Link>
-                    <Link href="/calendar/archive"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >Archive</span></Link>
-                  </div>
-                </div>
-
-                {/* Nested Results */}
-                <div className="group/results relative">
-                  <span className="flex justify-between items-center px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground">
-                    Results <ChevronRight className="h-4 w-4" />
-                  </span>
-                  <div className="absolute top-0 left-full w-[160px] hidden group-hover/results:flex flex-col bg-background border border-border rounded-lg shadow-lg p-2 -ml-1">
-                    <Link href="/results/2021-22"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >2021-22</span></Link>
-                    <Link href="/results/2020-21"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >2020-21</span></Link>
-                    <Link href="/results/2019-20"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >2019-20</span></Link>
-                    <Link href="/results/2018-19"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >2018-19</span></Link>
-                    <Link href="/results/2017-18"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >2017-18</span></Link>
-                  </div>
-                </div>
-
+                <Link href="/faculty"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Faculty Directory</span></Link>
+                <Link href="/syllabus"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Syllabus Portal</span></Link>
+                <Link href="/calendar/current"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Academic Calendar</span></Link>
+                <Link href="/results"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Results & Toppers</span></Link>
                 <Link href="/library"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Library</span></Link>
-                <Link href="/feedback"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >feedback</span></Link>
+                <Link href="/feedback"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Feedback Hub</span></Link>
               </div>
             )}
           </div>
@@ -200,6 +155,7 @@ export function Navbar() {
                 <Link href="/support/anti-ragging"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Anti-ragging committee</span></Link>
                 <Link href="/support/sc-st"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >SC/ST Cell</span></Link>
                 <Link href="/support/grievance"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Grievance redressel cell</span></Link>
+                <Link href="/support/staff-grievance"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Staff grievance redressal cell</span></Link>
                 <Link href="/support/internal-complaint"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Internal complaint committee</span></Link>
                 <Link href="/support/student-council"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Student council</span></Link>
                 
@@ -280,6 +236,7 @@ export function Navbar() {
                   <div className="absolute top-0 left-full w-[160px] hidden group-hover/training:flex flex-col bg-background border border-border rounded-lg shadow-lg p-2 -ml-1">
                     <Link href="/placements/training/2022-23"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >2022-23</span></Link>
                     <Link href="/placements/training/2023-24"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >2023-24</span></Link>
+                    <Link href="/placements/training/2025-26"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer" >2025-26</span></Link>
                   </div>
                 </div>
 
@@ -366,22 +323,12 @@ export function Navbar() {
               {showMobileAcademics && (
                 <div className="pl-6 flex flex-col gap-1 mt-1 border-l border-border ml-4">
                   <Link href="/academics/departmental-info"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Departmental information</span></Link>
-                  <span className="block px-4 py-2 rounded-md text-sm hover:bg-muted font-semibold">Faculty</span>
-                  <Link href="/faculty"><span className="block px-4 py-2 ml-4 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Teaching Staff</span></Link>
-                  <Link href="/faculty-non-teaching"><span className="block px-4 py-2 ml-4 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Non-Teaching Staff</span></Link>
-                  
-                  <span className="block px-4 py-2 rounded-md text-sm hover:bg-muted font-semibold">Syllabus</span>
-                  <Link href="/syllabus/dpharm"><span className="block px-4 py-2 ml-4 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>D. Pharmacy</span></Link>
-                  <Link href="/syllabus/bpharm"><span className="block px-4 py-2 ml-4 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>B. Pharmacy</span></Link>
-                  <Link href="/syllabus/mpharm"><span className="block px-4 py-2 ml-4 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>M. Pharmacy</span></Link>
-
-                  <span className="block px-4 py-2 rounded-md text-sm hover:bg-muted font-semibold">Results</span>
-                  <Link href="/results/2021-22"><span className="block px-4 py-2 ml-4 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>2021-22</span></Link>
-                  <Link href="/results/2020-21"><span className="block px-4 py-2 ml-4 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>2020-21</span></Link>
-                  <Link href="/results/2019-20"><span className="block px-4 py-2 ml-4 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>2019-20</span></Link>
-                  
+                  <Link href="/faculty"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Faculty Directory</span></Link>
+                  <Link href="/syllabus"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Syllabus Portal</span></Link>
+                  <Link href="/calendar/current"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Academic Calendar</span></Link>
+                  <Link href="/results"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Results & Toppers</span></Link>
                   <Link href="/library"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Library</span></Link>
-                  <Link href="/feedback"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>feedback</span></Link>
+                  <Link href="/feedback"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Feedback Hub</span></Link>
                 </div>
               )}
             </div>
@@ -396,6 +343,7 @@ export function Navbar() {
                   <Link href="/support/anti-ragging"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Anti-ragging committee</span></Link>
                   <Link href="/support/sc-st"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>SC/ST Cell</span></Link>
                   <Link href="/support/grievance"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Grievance redressel cell</span></Link>
+                  <Link href="/support/staff-grievance"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Staff grievance redressal cell</span></Link>
                   <Link href="/support/internal-complaint"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Internal complaint committee</span></Link>
                   <Link href="/support/student-council"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Student council</span></Link>
                   <Link href="/support/mahadbt"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Link of MAHADBT</span></Link>
@@ -412,6 +360,12 @@ export function Navbar() {
               {showMobileTAndP && (
                 <div className="pl-6 flex flex-col gap-1 mt-1 border-l border-border ml-4">
                   <Link href="/placements/message"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>TPO message</span></Link>
+                  <span className="block px-4 py-1 text-xs font-bold text-muted-foreground uppercase tracking-wider ml-1 mt-1">Details of Training</span>
+                  <div className="pl-4 flex flex-col gap-1 border-l border-border/55 ml-2 mb-2">
+                    <Link href="/placements/training/2022-23"><span className="block px-4 py-1.5 rounded-md text-xs hover:bg-muted text-foreground/80" onClick={() => setIsOpen(false)}>Academic Year 2022-23</span></Link>
+                    <Link href="/placements/training/2023-24"><span className="block px-4 py-1.5 rounded-md text-xs hover:bg-muted text-foreground/80" onClick={() => setIsOpen(false)}>Academic Year 2023-24</span></Link>
+                    <Link href="/placements/training/2025-26"><span className="block px-4 py-1.5 rounded-md text-xs hover:bg-muted text-foreground/80" onClick={() => setIsOpen(false)}>Academic Year 2025-26</span></Link>
+                  </div>
                   <Link href="/placements/cell"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>T & P cell</span></Link>
                   <Link href="/placements/industrial-visit"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Industrial visit</span></Link>
                   <Link href="/placements/mous"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>MOUs</span></Link>

@@ -12,33 +12,38 @@ import {
   Calendar,
   Clock,
   Send,
-  Briefcase
+  Briefcase,
+  Quote,
+  CheckCircle,
+  ThumbsUp,
+  FileCheck,
+  Building
 } from "lucide-react";
 import { useState, useMemo } from "react";
 import { useToast } from "@/hooks/use-toast";
 
 const PILLARS = [
   {
-    title: "Career Guidance & Counseling",
-    description: "One-on-one sessions to align student strengths with clinical, industrial, formulation, or marketing pharmacy domains.",
-    icon: Target,
+    title: "Regular Skill Training",
+    description: "Arranging structured workshops with industry experts to develop student personality, confidence, and career readiness.",
+    icon: Sparkles,
     color: "bg-blue-500/10 text-blue-600 dark:text-blue-400"
   },
   {
-    title: "Skill Enhancement Modules",
-    description: "Rigorous training on verbal communication, pharmaceutical arithmetic, and aptitude tests.",
-    icon: Sparkles,
+    title: "Industry Expert Lectures",
+    description: "Hosting guest sessions by industry officials to guide students on current advancements and opportunities in the pharma sector.",
+    icon: Users,
     color: "bg-amber-500/10 text-amber-600 dark:text-amber-400"
   },
   {
-    title: "Industry Linkages",
-    description: "Active networking with top pharma conglomerates to organize campus interviews, internships, and research tie-ups.",
-    icon: Users,
+    title: "SWOT & KASH Analysis",
+    description: "Conducting dynamic Knowledge, Attitude, Skills, and Habits (KASH) mapping along with SWOT analysis to evaluate core competencies.",
+    icon: Target,
     color: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
   },
   {
-    title: "Mock Interview Drills",
-    description: "Simulating actual HR and technical panel interviews conducted by visiting experts from the pharmaceutical industry.",
+    title: "Grooming & Mock Interviews",
+    description: "Conducting mock panels for T.Y. and Final Year students, categorizing candidates into 'Job Seekers' and 'Job Creators' for focused grooming.",
     icon: Award,
     color: "bg-purple-500/10 text-purple-600 dark:text-purple-400"
   }
@@ -71,7 +76,7 @@ export default function PlacementsMessage() {
     setIsSubmitted(true);
     toast({
       title: "Counseling Request Sent",
-      description: `Dear ${studentName}, your request for a ${purpose} has been successfully scheduled with the TPO Cell.`,
+      description: `Dear ${studentName}, your request for a ${purpose} has been successfully scheduled with Mr. Shyam S. Awate.`,
     });
   };
 
@@ -119,22 +124,26 @@ export default function PlacementsMessage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="bg-white border border-muted shadow-lg rounded-3xl p-6.5 text-center relative overflow-hidden group"
               >
-                {/* Visual Avatar Placeholder */}
-                <div className="w-32 h-32 rounded-2xl bg-gradient-to-tr from-primary to-accent mx-auto mb-5 flex items-center justify-center text-white text-3xl font-extrabold shadow-md transform group-hover:scale-105 transition-transform duration-300">
-                  TPO
+                {/* Visual Avatar */}
+                <div className="w-36 h-36 rounded-2xl overflow-hidden mx-auto mb-5 border border-muted shadow-md transform group-hover:scale-103 transition-transform duration-300">
+                  <img 
+                    src="/images/tpo_shyam_awate.jpg" 
+                    alt="Mr. Shyam S. Awate" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 
-                <h3 className="text-lg font-extrabold text-primary">Prof. Sandeep R. Bhegade</h3>
-                <p className="text-xs font-bold text-accent uppercase tracking-wider mb-4">Training & Placement Officer</p>
+                <h3 className="text-base font-extrabold text-primary">Mr. Shyam S. Awate</h3>
+                <p className="text-[10px] font-bold text-accent uppercase tracking-wider mb-4">Dean Training & Placement & III ED Cell</p>
                 
                 <div className="border-t border-muted/50 pt-4 space-y-3 text-left text-xs text-muted-foreground">
                   <div className="flex items-center gap-3">
                     <Mail className="w-4.5 h-4.5 text-accent shrink-0" />
-                    <span className="truncate text-[11px] lg:text-xs">tpo.kbiper@indrayanividyamandir.org</span>
+                    <span className="truncate text-[11px] lg:text-xs">placement.iiper@gmail.com</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="w-4.5 h-4.5 text-accent shrink-0" />
-                    <span>+91 98817 23640</span>
+                    <span>+91 95457 13667</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPin className="w-4.5 h-4.5 text-accent shrink-0" />
@@ -144,12 +153,12 @@ export default function PlacementsMessage() {
 
                 <div className="mt-6 pt-4 border-t border-muted/50 bg-muted/20 -mx-6 -mb-6 p-4 text-[10px] text-muted-foreground flex justify-around items-center">
                   <div className="text-center">
-                    <span className="block font-extrabold text-primary text-sm">12+ Yrs</span>
+                    <span className="block font-extrabold text-primary text-sm">15+ Yrs</span>
                     <span>Experience</span>
                   </div>
                   <div className="h-6 w-px bg-muted-border" />
                   <div className="text-center">
-                    <span className="block font-extrabold text-primary text-sm">95%+</span>
+                    <span className="block font-extrabold text-primary text-sm">90%+</span>
                     <span>Placements</span>
                   </div>
                 </div>
@@ -189,36 +198,43 @@ export default function PlacementsMessage() {
                 className="bg-white border border-muted p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.01)] space-y-6"
               >
                 <div className="inline-flex px-3 py-1 bg-accent/15 text-accent text-[10px] uppercase font-bold rounded-lg tracking-wider border border-accent/20">
-                  Director's & Officer's Perspective
+                  TPO Perspective
                 </div>
                 
                 <h2 className="text-2xl md:text-3xl font-extrabold text-primary leading-tight">
                   Welcome to KBIPER Training & Placement Cell
                 </h2>
 
+                {/* Styled Quote Box */}
+                <div className="relative p-6 bg-muted/40 border-l-4 border-accent rounded-r-2xl my-4 text-xs md:text-sm font-semibold italic text-primary leading-relaxed">
+                  <Quote className="absolute -top-3 -left-2 w-7 h-7 text-accent/20 pointer-events-none" />
+                  "If we train the students right, they will be placed right."
+                </div>
+
                 <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
                   <p>
                     Dear Students, Recruiter Partners, and Academicians,
                   </p>
                   <p>
-                    The pharmaceutical field is transitioning rapidly, propelled by breakthroughs in drug delivery systems, pharmacogenomics, artificial intelligence, and global regulatory mandates. At Krishnarao Bhegade Institute of Pharmaceutical Education & Research (KBIPER), we do not merely educate; we prime our graduates to lead these transitions.
+                    The Training and Placement Cell is the most vibrant department of our college. We want our students to be able to choose a career according to their choice and train them to achieve their respective career goals to be a responsible pharmacist, as well as a citizen of India.
                   </p>
                   <p>
-                    Our Training & Placement Cell works dynamically to identify specific talents in every student, providing structured pathways for their growth. By integrating continuous industry inputs, organizing pharmacy practice simulations, and offering comprehensive aptitude drill modules, we prepare students to join formulation, quality assurance, regulatory affairs, research & development, or product marketing divisions with absolute confidence.
+                    Our approach is centered on preparing students dynamically. We conduct focused mock interviews, groom them according to their liking and family backgrounds, and categorize them into Job Seekers and Job Creators. Through active collaborations and hands-on industrial training, we build bridges between science and career growth.
                   </p>
                   <p>
-                    We welcome leading corporate recruiters to visit our campus and meet our high-performing graduates. We assure you of unmatched professionalism and execution competency. Let us collaborate to shape the future of healthcare.
+                    We welcome leading corporate recruiters to visit our campus and meet our high-performing graduates. We assure you of unmatched professionalism and execution competency.
                   </p>
                   <p className="font-extrabold text-primary">
                     Warm Regards,<br />
-                    Prof. Sandeep R. Bhegade
+                    Mr. Shyam S. Awate<br />
+                    <span className="text-xs text-muted-foreground font-medium">Dean Training & Placement & III ED Cell, IVM's KBIPER</span>
                   </p>
                 </div>
               </motion.div>
 
-              {/* Four Pillars Grid */}
+              {/* Pillars Grid */}
               <div className="space-y-4">
-                <h3 className="text-lg font-extrabold text-primary">Core Pillars of Career Development</h3>
+                <h3 className="text-lg font-extrabold text-primary">Core Initiatives of Career Development</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {PILLARS.map((pillar, idx) => {
                     const IconComp = pillar.icon;
@@ -326,7 +342,7 @@ export default function PlacementsMessage() {
                     <div>
                       <h4 className="text-base font-extrabold text-primary">Inquiry Logged Successfully</h4>
                       <p className="text-xs text-muted-foreground mt-1 max-w-sm mx-auto">
-                        Your request has been routed to Prof. Sandeep R. Bhegade's desk. An confirmation email with calendar slot has been dispatched to <span className="font-bold text-primary">{studentEmail}</span>.
+                        Your request has been routed to Mr. Shyam S. Awate's desk. A confirmation email with a calendar slot has been dispatched to <span className="font-bold text-primary">{studentEmail}</span>.
                       </p>
                     </div>
                     <button

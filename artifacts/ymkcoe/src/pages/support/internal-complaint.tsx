@@ -36,48 +36,103 @@ interface CommitteeMember {
 const ICC_MEMBERS: CommitteeMember[] = [
   { 
     id: "1", 
-    name: "Dr. Rekha Patil", 
+    name: "Hon. Mrs. Nirupa S. Kanitkar", 
     role: "Presiding Officer", 
-    designation: "Professor", 
-    department: "Pharmacology Department", 
-    phone: "+91 9876543241", 
-    email: "rekha.patil@kbiper.edu.in",
+    designation: "Trustee IVMs", 
+    department: "Trustee IVMs", 
+    phone: "9822054013", 
+    email: "nirupakanitkar@gmail.com",
     isHead: true 
   },
   { 
     id: "2", 
-    name: "Dr. Sanjay R. Bhegade", 
-    role: "Ex-Officio Chairman", 
-    designation: "Principal", 
-    department: "College Administration", 
-    phone: "+91 9876543210", 
-    email: "principal.kbiper@gmail.com"
+    name: "Adv. Dhananjay Kate", 
+    role: "Legal Expert", 
+    designation: "Advocate", 
+    department: "Legal Cell", 
+    phone: "9922680678", 
+    email: "katedhananjay@gmail.com"
   },
   { 
     id: "3", 
-    name: "Prof. Anjali Jadhav", 
-    role: "Coordinator & Member", 
-    designation: "Assistant Professor", 
-    department: "Pharmacology Department", 
-    phone: "+91 9876543243", 
-    email: "anjali.jadhav@kbiper.edu.in" 
+    name: "Hon. Mrs. Sunanda R. Kakade", 
+    role: "NGO Representative", 
+    designation: "Representative", 
+    department: "NGO representative", 
+    phone: "9011008022", 
+    email: "ramdas.kakde@gmail.com" 
   },
   { 
     id: "4", 
-    name: "Mrs. Sunita Deshmukh", 
-    role: "NGO Representative Member", 
-    designation: "Chief Social Worker", 
-    department: "Sankalp NGO & Rehabilitation", 
-    phone: "+91 9876543201", 
-    email: "sankalp.ngo@gmail.com" 
+    name: "Dr. Suhas Kanitkar", 
+    role: "Doctor", 
+    designation: "MBBS AFIH", 
+    department: "Medical Staff", 
+    phone: "9552514361", 
+    email: "suhas27@gmail.com" 
   },
   { 
     id: "5", 
-    name: "Ms. Priyanka Kulkarni", 
+    name: "Ms. Priyanka A. Panmand", 
+    role: "Teaching Representative", 
+    designation: "Teacher", 
+    department: "Teaching Staff", 
+    phone: "7263818289", 
+    email: "priyankapanmand92@gmail.com" 
+  },
+  { 
+    id: "6", 
+    name: "Ms. Ankita V. Berde", 
+    role: "Teaching Representative", 
+    designation: "Teacher", 
+    department: "Teaching Staff", 
+    phone: "8862069488", 
+    email: "ankitaberde2011@gmail.com" 
+  },
+  { 
+    id: "7", 
+    name: "Mrs. Mrinal Bhide", 
+    role: "Non Teaching Representative", 
+    designation: "Staff", 
+    department: "Non-Teaching Staff", 
+    phone: "8767675223", 
+    email: "bank.iper@gmail.com" 
+  },
+  { 
+    id: "8", 
+    name: "Mrs. Shubhangi Dabhade", 
+    role: "Non Teaching Representative", 
+    designation: "Staff", 
+    department: "Non-Teaching Staff", 
+    phone: "9975905598", 
+    email: "principal.iiper@gmail.com" 
+  },
+  { 
+    id: "9", 
+    name: "Ms. Sakshi Tikone", 
     role: "Student Representative", 
-    designation: "Student (Second Year M.Pharm)", 
-    department: "M. Pharmacy Student Council", 
-    email: "priyanka.k@student.kbiper.edu.in" 
+    designation: "Student representative D. Pharmacy", 
+    department: "D. Pharmacy", 
+    phone: "8766026744", 
+    email: "sakshitikone0909@gmail.com" 
+  },
+  { 
+    id: "10", 
+    name: "Ms. Nilam V. Ughade", 
+    role: "Student Representative", 
+    designation: "Student representative B. Pharmacy", 
+    department: "B. Pharmacy", 
+    phone: "8830633282", 
+    email: "nilamughade1104@gmail.com" 
+  },
+  { 
+    id: "11", 
+    name: "Ms. Dimpal R. Patil", 
+    role: "Students Representative", 
+    designation: "Students Representative M. Pharmacy", 
+    department: "M. Pharmacy", 
+    phone: "9665959445", 
+    email: "dimpalpatil4455@gmail.com" 
   }
 ];
 
@@ -211,10 +266,10 @@ export default function InternalComplaint() {
                     <div className="space-y-4">
                       {/* Presiding Officer */}
                       <div className="p-4 bg-white/5 border border-white/10 rounded-2xl">
-                        <span className="text-[9px] uppercase font-bold text-white/60 tracking-wider block">Presiding Officer (Dr. Rekha Patil)</span>
+                        <span className="text-[9px] uppercase font-bold text-white/60 tracking-wider block">Presiding Officer (Hon. Mrs. Nirupa S. Kanitkar)</span>
                         <div className="flex items-center gap-2.5 mt-1.5">
                           <Phone className="w-5 h-5 text-accent shrink-0" />
-                          <a href="tel:+919876543241" className="text-lg font-black hover:underline tracking-tight">+91 9876543241</a>
+                          <a href="tel:+919822054013" className="text-lg font-black hover:underline tracking-tight">+91 9822054013</a>
                         </div>
                       </div>
 
@@ -234,7 +289,7 @@ export default function InternalComplaint() {
                       <Mail className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                       <div>
                         <span>Alternatively, email directly to the ICC monitoring desk:</span>
-                        <a href="mailto:rekha.patil@kbiper.edu.in" className="block text-accent font-bold hover:underline mt-1 break-all">rekha.patil@kbiper.edu.in</a>
+                        <a href="mailto:nirupakanitkar@gmail.com" className="block text-accent font-bold hover:underline mt-1 break-all">nirupakanitkar@gmail.com</a>
                       </div>
                     </div>
                   </div>

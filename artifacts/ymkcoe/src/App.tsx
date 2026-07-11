@@ -27,7 +27,6 @@ const AdminLogin = lazy(() => import("@/pages/admin-login"));
 const AdminDashboard = lazy(() => import("@/pages/admin-dashboard"));
 
 const DepartmentalInfo = lazy(() => import("@/pages/academics/departmental-info"));
-const FacultyNonTeaching = lazy(() => import("@/pages/academics/faculty-non-teaching"));
 const Syllabus = lazy(() => import("@/pages/academics/syllabus"));
 const AcademicCalendar = lazy(() => import("@/pages/academics/academic-calendar"));
 const Results = lazy(() => import("@/pages/academics/results"));
@@ -38,6 +37,7 @@ const Feedback = lazy(() => import("@/pages/feedback"));
 const AntiRagging = lazy(() => import("@/pages/support/anti-ragging"));
 const ScStCell = lazy(() => import("@/pages/support/sc-st"));
 const Grievance = lazy(() => import("@/pages/support/grievance"));
+const StaffGrievance = lazy(() => import("@/pages/support/staff-grievance"));
 const InternalComplaint = lazy(() => import("@/pages/support/internal-complaint"));
 const StudentCouncil = lazy(() => import("@/pages/support/student-council"));
 const AlumniCommittee = lazy(() => import("@/pages/support/alumni-committee"));
@@ -97,10 +97,9 @@ function Router() {
         
         {/* Academics & New Routes */}
         <Route path="/academics/departmental-info" component={DepartmentalInfo} />
-        <Route path="/faculty-non-teaching" component={FacultyNonTeaching} />
-        <Route path="/syllabus/:course" component={Syllabus} />
-        <Route path="/calendar/:type" component={AcademicCalendar} />
-        <Route path="/results/:year" component={Results} />
+        <Route path="/syllabus/:course?" component={Syllabus} />
+        <Route path="/calendar/:type?" component={AcademicCalendar} />
+        <Route path="/results/:year?" component={Results} />
         <Route path="/library" component={Library} />
         <Route path="/feedback" component={Feedback} />
 
@@ -108,6 +107,7 @@ function Router() {
         <Route path="/support/anti-ragging" component={AntiRagging} />
         <Route path="/support/sc-st" component={ScStCell} />
         <Route path="/support/grievance" component={Grievance} />
+        <Route path="/support/staff-grievance" component={StaffGrievance} />
         <Route path="/support/internal-complaint" component={InternalComplaint} />
         <Route path="/support/student-council" component={StudentCouncil} />
         <Route path="/support/alumni-committee" component={AlumniCommittee} />

@@ -34,76 +34,217 @@ interface CommitteeMember {
 }
 
 const COMMITTEE_MEMBERS: CommitteeMember[] = [
-  { 
-    id: "1", 
-    name: "Dr. Sanjay R. Arote", 
-    role: "Chairman", 
-    designation: "Principal & Professor", 
-    department: "College Administration", 
-    phone: "+91 9876543210", 
+  {
+    id: "1",
+    name: "Dr. Sanjay R. Arote",
+    role: "Chairman",
+    designation: "Principal",
+    department: "College Administration",
+    phone: "9960365969",
     email: "principal.iiper@gmail.com",
-    isHead: true 
+    isHead: true
   },
-  { 
-    id: "2", 
-    name: "Mr. Ramesh Patil", 
-    role: "Police Representative", 
-    designation: "Police Inspector (PI)", 
-    department: "Talegaon Dabhade Police Station", 
-    phone: "02114-222444", 
-    email: "ps.talegaon@mahapolice.gov.in" 
+  {
+    id: "2",
+    name: "Mr. Paresh Parekh",
+    role: "Civil Representative",
+    designation: "Social worker",
+    department: "Civil Representative",
+    phone: "9823030979",
+    email: "principal.iiper@gmail.com"
   },
-  { 
-    id: "3", 
-    name: "Mrs. Sunita Deshmukh", 
-    role: "NGO Representative", 
-    designation: "Chief Social Worker", 
-    department: "Sankalp NGO & Rehabilitation", 
-    phone: "+91 9876543201", 
-    email: "sankalp.ngo@gmail.com" 
+  {
+    id: "3",
+    name: "Mrs. Anuja G. Phadtare",
+    role: "Police Representative",
+    designation: "API, Training center Lonawala",
+    department: "Police Department",
+    phone: "9028948595",
+    email: "anujaphadtare@gmail.com"
   },
-  { 
-    id: "4", 
-    name: "Dr. Gulab S. Shinde", 
-    role: "Faculty Representative (D.Pharm)", 
-    designation: "HOD & Associate Professor", 
-    department: "Diploma in Pharmacy", 
-    phone: "+91 9876543202", 
-    email: "gulab.shinde@kbiper.edu.in" 
+  {
+    id: "4",
+    name: "Dr. Suhas Kanitkar",
+    role: "NGO Representative",
+    designation: "M.B.B.S., A.F.I.H.",
+    department: "NGO Representative",
+    phone: "9552514361",
+    email: "suhas27@gmail.com"
   },
-  { 
-    id: "5", 
-    name: "Dr. Yogesh B. Zambare", 
-    role: "Faculty Representative (B.Pharm)", 
-    designation: "HOD & Associate Professor", 
-    department: "Pharmacology & Animal House", 
-    phone: "+91 9876543203", 
-    email: "yogesh.zambare@kbiper.edu.in" 
+  {
+    id: "5",
+    name: "Mrs. Rekha B. Bhegade",
+    role: "Local media Representative",
+    designation: "Representative",
+    department: "Local Media",
+    phone: "8956323150",
+    email: "principal.iiper@gmail.com"
   },
-  { 
-    id: "6", 
-    name: "Mr. Ganesh A. Waghmode", 
-    role: "Non-Teaching Representative", 
-    designation: "Office Superintendent", 
-    department: "Administrative Office", 
-    phone: "+91 9876543204", 
-    email: "ganesh.waghmode@kbiper.edu.in" 
+  {
+    id: "6",
+    name: "Dr. Gulab S. Shinde",
+    role: "Teaching Representative (D.Pharm)",
+    designation: "HOD D.Pharm",
+    department: "Diploma in Pharmacy",
+    phone: "8975251496",
+    email: "shindegss@gmail.com"
   },
-  { 
-    id: "7", 
-    name: "Mr. Rohan Joshi", 
-    role: "Student Representative (Senior)", 
-    designation: "Student (Final Year B.Pharm)", 
-    department: "B. Pharmacy Student Council", 
-    email: "rohan.joshi@student.kbiper.edu.in" 
+  {
+    id: "7",
+    name: "Dr. Ganesh R. Phadtare",
+    role: "Representative (B.Pharm)",
+    designation: "Asso. Professor, KBIPER",
+    department: "B. Pharmacy",
+    phone: "8652858595",
+    email: "gpcology@gmail.com"
   },
-  { 
-    id: "8", 
-    name: "Ms. Neha Kale", 
-    role: "Student Representative (Fresher)", 
-    designation: "Student (First Year B.Pharm)", 
-    department: "B. Pharmacy Student Council", 
-    email: "neha.k@student.kbiper.edu.in" 
+  {
+    id: "8",
+    name: "Dr. Amol Rakte",
+    role: "Teaching Representative (M.Pharm)",
+    designation: "Asso. Professor, KBIPER",
+    department: "M. Pharmacy",
+    phone: "9867395656",
+    email: "amolsrakte@gmail.com"
+  },
+  {
+    id: "9",
+    name: "Mr. Ruturaj K Karande",
+    role: "Non-Teaching Representative",
+    designation: "O.S. KBIPER",
+    department: "Administrative Office",
+    phone: "9921351889",
+    email: "ruturajkarande0@gmail.com"
+  },
+  {
+    id: "10",
+    name: "Mrs. Sheetal S. Thakar",
+    role: "Parents Representative (D.Pharm)",
+    designation: "Parents Representative",
+    department: "D. Pharmacy",
+    phone: "9356248040",
+    email: "siathakar21@gmail.com"
+  },
+  {
+    id: "11",
+    name: "Mr. Somnath Sonawane",
+    role: "Parents Representative (B.Pharm)",
+    designation: "Parents Representative",
+    department: "B. Pharmacy",
+    phone: "9767551507",
+    email: "sonvanesomnath9767@gmail.com"
+  },
+  {
+    id: "12",
+    name: "Mr. Ravindra J. Patil",
+    role: "Parents Representative (M.Pharm)",
+    designation: "Parents Representative",
+    department: "M. Pharmacy",
+    phone: "7875979445",
+    email: "ravindrapatil@gmail.com"
+  },
+  {
+    id: "13",
+    name: "Ms. Riya R. Rai",
+    role: "Student Representative (D.Pharm)",
+    designation: "Student Representative",
+    department: "D. Pharmacy",
+    phone: "9529653271",
+    email: "rairriya@gmail.com"
+  },
+  {
+    id: "14",
+    name: "Mr. Vinit N. Dagade",
+    role: "Student Representative (D.Pharm)",
+    designation: "Student Representative",
+    department: "D. Pharmacy",
+    phone: "7387120712",
+    email: "vinitdagade77@gmail.com"
+  },
+  {
+    id: "15",
+    name: "Ms. Shruti S. Sonawane",
+    role: "Student Representative (B.Pharm)",
+    designation: "Student Representative",
+    department: "B. Pharmacy",
+    phone: "9373060484",
+    email: "sonavaneshruti03@gmail.com"
+  },
+  {
+    id: "16",
+    name: "Ms. Samruddhi S. Kajulkar",
+    role: "Student Representative (B.Pharm)",
+    designation: "Student Representative",
+    department: "B. Pharmacy",
+    phone: "9579421915",
+    email: "samruddhikajulkar@gmail.com"
+  },
+  {
+    id: "17",
+    name: "Ms. Dimpal R. Patil",
+    role: "Student Representative (M.Pharm)",
+    designation: "Student Representative",
+    department: "M. Pharmacy",
+    phone: "9665959445",
+    email: "dimpalpatil4455@gmail.com"
+  },
+  {
+    id: "18",
+    name: "Mr. Rohit Sonawane",
+    role: "Student Representative (M.Pharm)",
+    designation: "Student Representative",
+    department: "M. Pharmacy",
+    phone: "7498792872",
+    email: "sonawanerohit158@gmail.com"
+  }
+];
+
+const SQUAD_MEMBERS: CommitteeMember[] = [
+  {
+    id: "1",
+    name: "Dr. Sanjay R. Arote",
+    role: "Chairman",
+    designation: "Principal",
+    department: "College Administration",
+    phone: "9960365969",
+    email: "principal.iiper@gmail.com",
+    isHead: true
+  },
+  {
+    id: "2",
+    name: "Prof. Shyam S. Awate",
+    role: "Teaching Representative",
+    designation: "Assi. Professor, KBIPER",
+    department: "Teaching Staff",
+    phone: "9545713667",
+    email: "shyamsawate@gmail.com"
+  },
+  {
+    id: "3",
+    name: "Mrs. Komal A. Thakar",
+    role: "Teaching Representative",
+    designation: "Assi. Professor, KBIPER",
+    department: "Teaching Staff",
+    phone: "9921987644",
+    email: "komalgade113@gmail.com"
+  },
+  {
+    id: "4",
+    name: "Mrs. Subhangi S. Dabhade",
+    role: "Non Teaching Representative",
+    designation: "Representative",
+    department: "Non-Teaching Staff",
+    phone: "9975905598",
+    email: "shubhangidabhade292@gmail.com"
+  },
+  {
+    id: "5",
+    name: "Mrs. Arati A. Dhore",
+    role: "Non Teaching Representative",
+    designation: "Representative",
+    department: "Non-Teaching Staff",
+    phone: "9527602100",
+    email: "aaru.dhore20@gmail.com"
   }
 ];
 
@@ -119,6 +260,7 @@ export default function AntiRagging() {
   const { toast } = useToast();
   
   const [activeTab, setActiveTab] = useState<"report" | "members" | "rules">("report");
+  const [memberSubTab, setMemberSubTab] = useState<"committee" | "squad">("committee");
   
   // Incident Report form state
   const [isAnonymous, setIsAnonymous] = useState(true);
@@ -276,7 +418,7 @@ export default function AntiRagging() {
                         <span className="text-[9px] uppercase font-bold text-white/60 tracking-wider block">Campus Squad Desk</span>
                         <div className="flex items-center gap-2.5 mt-1.5">
                           <Phone className="w-5 h-5 text-accent shrink-0" />
-                          <a href="tel:+919876543222" className="text-lg font-black hover:underline tracking-tight">+91 9876543222</a>
+                          <a href="tel:+919960365969" className="text-lg font-black hover:underline tracking-tight">+91 9960365969</a>
                         </div>
                       </div>
 
@@ -502,19 +644,39 @@ export default function AntiRagging() {
                 exit={{ opacity: 0, y: -15 }}
                 className="space-y-6"
               >
-                <div className="text-left mb-6">
-                  <h3 className="text-xl font-extrabold text-primary">Committee & Squad Directory</h3>
-                  <p className="text-xs text-muted-foreground mt-0.5">Contact members of the Anti-Ragging Committee and Squad for emergency support or clarifications.</p>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                  <div className="text-left">
+                    <h3 className="text-xl font-extrabold text-primary">Committee & Squad Directory</h3>
+                    <p className="text-xs text-muted-foreground mt-0.5">Contact members of the Anti-Ragging Committee and Squad for emergency support or clarifications.</p>
+                  </div>
+                  <div className="inline-flex p-1 bg-muted/65 rounded-xl border border-muted/50 shadow-sm gap-1 self-start">
+                    <button
+                      onClick={() => setMemberSubTab("committee")}
+                      className={`cursor-pointer px-4 py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
+                        memberSubTab === "committee" ? "bg-primary text-white shadow-sm" : "text-muted-foreground hover:text-primary"
+                      }`}
+                    >
+                      Anti-Ragging Committee
+                    </button>
+                    <button
+                      onClick={() => setMemberSubTab("squad")}
+                      className={`cursor-pointer px-4 py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
+                        memberSubTab === "squad" ? "bg-primary text-white shadow-sm" : "text-muted-foreground hover:text-primary"
+                      }`}
+                    >
+                      Anti-Ragging Squad
+                    </button>
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6.5">
-                  {COMMITTEE_MEMBERS.map((member) => {
+                  {(memberSubTab === "committee" ? COMMITTEE_MEMBERS : SQUAD_MEMBERS).map((member) => {
                     const initials = member.name.split(" ").slice(-2).map(n => n.charAt(0)).join("");
                     return (
                       <div
                         key={member.id}
                         className={`group relative flex flex-col h-full ${
-                          member.isHead ? "md:col-span-2 lg:col-span-3 lg:w-2/3 mx-auto" : ""
+                          member.isHead && memberSubTab === "squad" ? "md:col-span-2 lg:col-span-3 lg:w-2/3 mx-auto" : ""
                         }`}
                       >
                         <div className="absolute inset-0 bg-primary/5 rounded-3xl transform group-hover:translate-x-1.5 group-hover:translate-y-1.5 transition-transform duration-500 ease-out" />

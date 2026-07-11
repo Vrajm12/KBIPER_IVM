@@ -32,6 +32,31 @@ const TRAINING_DATABASE: Record<string, {
   stats: { hours: number; sessions: number; enrollment: number; rating: string };
   sessions: TrainingSession[];
 }> = {
+  "2025-26": {
+    stats: { hours: 160, sessions: 22, enrollment: 154, rating: "4.9/5.0" },
+    sessions: [
+      {
+        title: "Reliance Foundation Employability & Soft Skills Workshop",
+        category: "Soft Skills",
+        trainer: "Mr. Shubham Sathe & Mr. Pramod Bhalerao",
+        agency: "Reliance Foundation (HR coordinators: Mr. Prathamesh Vaidya & Shaibaz Shaikh)",
+        hours: 45,
+        dateRange: "April 20 - April 27, 2026",
+        target: "Final Year B.Pharm & D.Pharm (Batches RF-70 & RF-71)",
+        description: "A 7-day intensive workshop under the 21st Century Skills Initiative. Modules include self-introductions, SWOT analysis, Goal Setting, problem-solving through 'Blind Eye' exercises, professional communication models, trust-building exercises, time management, optimization of LinkedIn/Naukri recruiter profiles, financial planning, and a mock interview board in preparation for Infosys Health & Insurance campus drives."
+      },
+      {
+        title: "Clinical Research in Drug Development: Careers and Science",
+        category: "Technical",
+        trainer: "Mr. Tanmay D. Gawde",
+        agency: "Advanced Clinical Data Manager, Aixial Group (Pune)",
+        hours: 15,
+        dateRange: "July 24, 2025",
+        target: "Third Year & Final Year B.Pharmacy Students",
+        description: "A dedicated guest lecture exploring clinical research, phases of clinical trials (Phases I-IV), career opportunities in the Pharma IT industry, salary structures, and an overview of 'The Clinical Pyxida' curriculum comprising 12 domains."
+      }
+    ]
+  },
   "2023-24": {
     stats: { hours: 120, sessions: 18, enrollment: 145, rating: "4.8/5.0" },
     sessions: [
@@ -46,7 +71,7 @@ const TRAINING_DATABASE: Record<string, {
         description: "Practical lectures focusing on liposomal formulations, micro-encapsulation methods, and scale-up validation parameters in modern manufacturing."
       },
       {
-        title: "Quantitative Aptitude & Logical Reasoning Boot camp",
+        title: "Quantitative Aptitude & Logical Reasoning Bootcamp",
         category: "Aptitude",
         trainer: "Prof. Vinayak Salve & Team",
         agency: "Global Aptitude Academy",
@@ -124,14 +149,14 @@ const TRAINING_DATABASE: Record<string, {
   }
 };
 
-const YEARS = ["2023-24", "2022-23"];
+const YEARS = ["2025-26", "2023-24", "2022-23"];
 
 export default function PlacementsTraining() {
   const params = useParams();
   const [, setLocation] = useLocation();
   const { toast } = useToast();
 
-  const selectedYear = params.year && YEARS.includes(params.year) ? params.year : "2023-24";
+  const selectedYear = params.year && YEARS.includes(params.year) ? params.year : "2025-26";
   
   const [activeTab, setActiveTab] = useState<"all" | "Technical" | "Aptitude" | "Soft Skills" | "Mock Prep">("all");
   const [studentName, setStudentName] = useState("");
@@ -198,7 +223,7 @@ export default function PlacementsTraining() {
               Details of <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-[#e6d080]">Training</span>
             </h1>
             <p className="text-base md:text-lg text-white/80 font-light max-w-2xl mx-auto">
-              Empowering students with systematic guidance on technical formulation, aptitude solving, and corporate mock evaluations.
+              Empowering students with systematic guidance on technical formulation, soft skills, and corporate mock evaluations.
             </p>
           </motion.div>
         </div>
@@ -272,14 +297,14 @@ export default function PlacementsTraining() {
             <div className="lg:col-span-8 space-y-6">
               
               {/* Filter tabs */}
-              <div className="flex bg-muted/50 p-1 rounded-xl border border-muted gap-1 overflow-x-auto no-scrollbar max-w-full">
+              <div className="flex bg-muted/50 p-1.5 rounded-2xl border border-muted gap-1 overflow-x-auto no-scrollbar max-w-full">
                 {(["all", "Technical", "Aptitude", "Soft Skills", "Mock Prep"] as const).map(tab => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`cursor-pointer px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 whitespace-nowrap capitalize ${
+                    className={`cursor-pointer px-4.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 whitespace-nowrap capitalize ${
                       activeTab === tab 
-                        ? "bg-white text-primary shadow-sm" 
+                        ? "bg-primary text-white shadow-sm" 
                         : "text-muted-foreground hover:text-primary"
                     }`}
                   >
@@ -306,8 +331,8 @@ export default function PlacementsTraining() {
                             {session.category}
                           </span>
                           <h3 className="text-base font-extrabold text-primary leading-tight">{session.title}</h3>
-                          <p className="text-[10px] text-muted-foreground font-semibold mt-1 flex items-center gap-1">
-                            <Users className="w-3.5 h-3.5 text-accent" /> Delivered by: <span className="text-foreground">{session.trainer}</span> ({session.agency})
+                          <p className="text-[10px] text-muted-foreground font-semibold mt-1.5 flex items-center gap-1.5">
+                            <Users className="w-3.5 h-3.5 text-accent" /> Delivered by: <span className="text-foreground font-bold">{session.trainer}</span> ({session.agency})
                           </p>
                         </div>
                         <span className="inline-flex items-center gap-1 bg-muted px-2.5 py-1 text-[10px] font-bold text-primary rounded-lg border border-muted-border shrink-0 self-start sm:self-auto">
@@ -315,11 +340,11 @@ export default function PlacementsTraining() {
                         </span>
                       </div>
 
-                      <p className="text-xs text-muted-foreground leading-relaxed bg-muted/20 p-3 rounded-xl border border-muted/30">
+                      <p className="text-xs text-muted-foreground leading-relaxed bg-muted/20 p-3.5 rounded-xl border border-muted/30">
                         {session.description}
                       </p>
 
-                      <div className="flex flex-wrap justify-between items-center text-[10px] text-muted-foreground pt-2 border-t border-muted/50 gap-2">
+                      <div className="flex flex-wrap justify-between items-center text-[10px] text-muted-foreground pt-2.5 border-t border-muted/50 gap-2">
                         <span className="flex items-center gap-1">
                           <Calendar className="w-3.5 h-3.5 text-accent" /> <strong>Schedule:</strong> {session.dateRange}
                         </span>

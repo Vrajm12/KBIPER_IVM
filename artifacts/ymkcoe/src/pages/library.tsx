@@ -136,6 +136,7 @@ export default function Library() {
   const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
   const [searchTriggered, setSearchTriggered] = useState(false);
+  const [activeTab, setActiveTab] = useState<"catalog" | "digital" | "facilities">("catalog");
 
   const libraryStats = [
     { value: "15,000+", label: "Printed Books", icon: Layers },
@@ -281,7 +282,40 @@ export default function Library() {
         </div>
       </section>
 
-      {/* Book Finder Results Section (Revealed on Search) */}
+      {/* Category Tabs Switches */}
+      <div className="flex justify-center mb-10 mt-10">
+        <div className="inline-flex p-1.5 bg-muted/80 backdrop-blur rounded-2xl border border-muted/50 shadow-sm gap-1.5">
+          {([
+            { id: "catalog", label: "Catalog Search & Stats" },
+            { id: "digital", label: "DELNET & E-Resources" },
+            { id: "facilities", label: "Reading Rooms & Rules" }
+          ] as const).map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`cursor-pointer px-5.5 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 ${
+                activeTab === tab.id 
+                  ? "bg-primary text-white shadow-md" 
+                  : "text-muted-foreground hover:text-primary"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Tabs Content */}
+      <AnimatePresence mode="wait">
+        {activeTab === "catalog" && (
+          <motion.div
+            key="catalog"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Book Finder Results Section (Revealed on Search) */}
       <AnimatePresence>
         {searchTriggered && (
           <motion.section 
@@ -346,8 +380,19 @@ export default function Library() {
         )}
       </AnimatePresence>
 
-      {/* Digital Library & E-Resources Section */}
-      <section className="py-20 bg-background">
+          </motion.div>
+        )}
+
+        {activeTab === "digital" && (
+          <motion.div
+            key="digital"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Digital Library & E-Resources Section */}
+            <section className="py-12 bg-background">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">
@@ -397,8 +442,19 @@ export default function Library() {
         </div>
       </section>
 
-      {/* Library Sections & Guidelines */}
-      <section className="py-24 bg-muted/20 border-t border-muted">
+          </motion.div>
+        )}
+
+        {activeTab === "facilities" && (
+          <motion.div
+            key="facilities"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Library Sections & Guidelines */}
+            <section className="py-12 bg-muted/20 border-t border-muted">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             
@@ -486,6 +542,9 @@ export default function Library() {
           </div>
         </div>
       </section>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </AppLayout>
   );
 }

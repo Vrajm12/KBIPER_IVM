@@ -3,21 +3,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   ImageIcon, 
   Search, 
-  DownloadCloud, 
   ChevronLeft, 
   ChevronRight, 
   X,
   Instagram,
   Facebook,
   ArrowRight,
-  Sparkles,
-  Heart,
-  Share2,
   RefreshCw,
   MessageCircle,
   ThumbsUp,
   ExternalLink,
-  ShieldCheck
+  ShieldCheck,
+  Share2,
+  Heart
 } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -33,65 +31,157 @@ interface MediaItem {
 const GALLERY_DATABASE: MediaItem[] = [
   {
     id: 1,
-    title: "Advanced Pharmaceutical Chemistry Lab",
+    title: "Main Pharmaceutical Chemistry Research Laboratory",
     category: "Institute & Labs",
-    url: "https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=800&auto=format&fit=crop",
-    description: "Equipped with HPLC, UV-Spectrophotometer, and dissolution testers for high-precision validation."
+    url: "/images/gallery/IMG-20250924-WA0011.jpg",
+    description: "Equipped with specialized fume hoods, synthesis benches, and reagent storage units for student practicals."
   },
   {
     id: 2,
-    title: "KBIPER Central Library & E-Reading Zone",
-    category: "Institute & Labs",
-    url: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=800&auto=format&fit=crop",
-    description: "Hosting 5000+ reference volumes, subscription e-journals (DelNet), and a quiet research lobby."
+    title: "Main Corridor and Classrooms Frontage",
+    category: "Campus Tour",
+    url: "/images/gallery/IMG-20250924-WA0018.jpg",
+    description: "Spacious and well-ventilated corridors connecting classrooms, lecture halls, and administrative offices."
   },
   {
     id: 3,
-    title: "KBIPER Campus Building Frontage",
-    category: "Campus Tour",
-    url: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800&auto=format&fit=crop",
-    description: "Krishnarao Bhegade Institute main educational block at Talegaon Dabhade, Pune."
+    title: "Pharmaceutics Practical Training Desk",
+    category: "Institute & Labs",
+    url: "/images/gallery/IMG-20250924-WA0020.jpg",
+    description: "Students performing physical evaluation of powders and formulation tests under faculty guidance."
   },
   {
     id: 4,
-    title: "Pharma-Fiesta Annual Cultural Celebrations",
+    title: "Welcome Speech by Guest Speakers",
     category: "Events & Culture",
-    url: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=800&auto=format&fit=crop",
-    description: "Students participating in annual group dances, dramatic arts, and scientific posters display."
+    url: "/images/gallery/IMG-20250924-WA0021.jpg",
+    description: "Eminent pharmaceutical experts delivering guest lectures in the college seminar hall."
   },
   {
     id: 5,
-    title: "Annual Sports Week Tournament - Cricket Finals",
-    category: "Sports",
-    url: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
-    description: "B.Pharm vs D.Pharm cricket match final held at Indrayani Vidya Mandir sports complex ground."
+    title: "Seminar Hall Lobby Entrance",
+    category: "Campus Tour",
+    url: "/images/gallery/IMG-20250924-WA0023.jpg",
+    description: "Inviting foyer area decorated with motivational achievements posters and academic display boards."
   },
   {
     id: 6,
-    title: "Formulation Science & Machine Room Desk",
+    title: "Pharmacology Testing Equipment",
     category: "Institute & Labs",
-    url: "https://images.unsplash.com/photo-1532187643603-ba119ca4109e?q=80&w=800&auto=format&fit=crop",
-    description: "Trainees handling rotary tablet punching machines and coating pans during lab hours."
+    url: "/images/gallery/IMG-20250924-WA0032.jpg",
+    description: "Validation of animal behavior study apparatus and recording instruments in the pharmacology section."
   },
   {
     id: 7,
-    title: "NSS Social Awareness Extension Camp",
-    category: "Events & Culture",
-    url: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop",
-    description: "NSS volunteers performing village health check-up orientation camps at Sudumbare village."
+    title: "Lush Campus Lawns & Botanical Garden",
+    category: "Campus Tour",
+    url: "/images/gallery/IMG-20250924-WA0044.jpg",
+    description: "An outdoor study area surrounded by medicinal plants and green foliage for natural relaxation."
   },
   {
     id: 8,
-    title: "Indoor Sports Hall - Table Tennis & Badminton",
+    title: "Traditional Lamp Lighting Ceremony",
+    category: "Events & Culture",
+    url: "/images/gallery/IMG-20250924-WA0045.jpg",
+    description: "Auspicious beginning of the academic year with traditional lamp lighting by college directors."
+  },
+  {
+    id: 9,
+    title: "Sports Complex Cricket Net Practice",
     category: "Sports",
-    url: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
-    description: "KBIPER student recreation lobby and sports practice fields validation."
+    url: "/images/gallery/IMG-20250924-WA0052.jpg",
+    description: "Students during net practice hours on the main sports ground prepare for inter-collegiate cups."
+  },
+  {
+    id: 10,
+    title: "Annual Sports Meet Track Event",
+    category: "Sports",
+    url: "/images/gallery/IMG-20250924-WA0055.jpg",
+    description: "Final heat of the 100-meter sprint running event under the sports week celebrations."
+  },
+  {
+    id: 11,
+    title: "Fume Hood Station in Chemistry Lab",
+    category: "Institute & Labs",
+    url: "/images/gallery/IMG-20250924-WA0059.jpg",
+    description: "Advanced ventilation systems for handling volatile chemicals during synthesis experiments safely."
+  },
+  {
+    id: 12,
+    title: "Students Group Dance Performance",
+    category: "Events & Culture",
+    url: "/images/gallery/IMG-20250924-WA0062.jpg",
+    description: "Vibrant group dance performance by students at the annual cultural festival 'Pharma-Fiesta'."
+  },
+  {
+    id: 13,
+    title: "Modern Library Reading Cabins",
+    category: "Campus Tour",
+    url: "/images/gallery/IMG-20250924-WA0065.jpg",
+    description: "Dedicated study carrels and silent reading zones designed for research students and readers."
+  },
+  {
+    id: 14,
+    title: "Instrument Room Analytical Benches",
+    category: "Institute & Labs",
+    url: "/images/gallery/IMG-20250924-WA0076.jpg",
+    description: "Analytical balances, pH meters, and polarimeters set up for quality control lab testing."
+  },
+  {
+    id: 15,
+    title: "Inauguration and Ribbon Cutting",
+    category: "Events & Culture",
+    url: "/images/gallery/IMG-20250924-WA0081.jpg",
+    description: "Felicitation and inaugural ribbon cutting of the new computer laboratory block by the Trustee."
+  },
+  {
+    id: 16,
+    title: "Machine Room Rotary Press",
+    category: "Institute & Labs",
+    url: "/images/gallery/IMG-20250924-WA0083.jpg",
+    description: "Tablet compression machine demonstrations explaining batch manufacturing processes to trainees."
+  },
+  {
+    id: 17,
+    title: "Herbarium Collection and Storage",
+    category: "Campus Tour",
+    url: "/images/gallery/IMG-20250924-WA0086.jpg",
+    description: "Preserved plant specimens cataloged and labeled for pharmacognosy reference and study."
+  },
+  {
+    id: 18,
+    title: "Poster Presentation Competition",
+    category: "Events & Culture",
+    url: "/images/gallery/IMG-20250924-WA0088.jpg",
+    description: "Students explaining their scientific research posters to judges during the research meet."
+  },
+  {
+    id: 19,
+    title: "Table Tennis Play Area",
+    category: "Sports",
+    url: "/images/gallery/IMG-20250924-WA0095.jpg",
+    description: "Indoor recreation hall equipped with table tennis boards, chess tables, and carrom boards."
+  },
+  {
+    id: 20,
+    title: "Digital Microscope Display",
+    category: "Institute & Labs",
+    url: "/images/gallery/IMG-20250924-WA0100.jpg",
+    description: "Microscopic analysis workstation for cell structure and powder characterization study."
+  },
+  {
+    id: 21,
+    title: "Faculty and Alumni Panel Meet",
+    category: "Events & Culture",
+    url: "/images/gallery/IMG-20250924-WA0113.jpg",
+    description: "Alumni interaction meeting discussing curriculum updates and training needs of the market."
   }
 ];
 
 export default function Media() {
   const { toast } = useToast();
   const [activeCategory, setActiveCategory] = useState<"All" | "Institute & Labs" | "Campus Tour" | "Events & Culture" | "Sports" | "Social Hub">("All");
+  const [searchQuery, setSearchQuery] = useState("");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   // Simulated live feed states
@@ -133,9 +223,19 @@ export default function Media() {
   }, [activeCategory]);
 
   const filteredPhotos = useMemo(() => {
-    if (activeCategory === "All" || activeCategory === "Social Hub") return GALLERY_DATABASE;
-    return GALLERY_DATABASE.filter(item => item.category === activeCategory);
-  }, [activeCategory]);
+    let photos = GALLERY_DATABASE;
+    if (activeCategory !== "All" && activeCategory !== "Social Hub") {
+      photos = GALLERY_DATABASE.filter(item => item.category === activeCategory);
+    }
+    if (searchQuery.trim().length > 0) {
+      const query = searchQuery.toLowerCase();
+      photos = photos.filter(item => 
+        item.title.toLowerCase().includes(query) || 
+        item.description.toLowerCase().includes(query)
+      );
+    }
+    return photos;
+  }, [activeCategory, searchQuery]);
 
   const handleNextPhoto = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -171,10 +271,10 @@ export default function Media() {
         </div>
       </section>
 
-      {/* Categories Toggle Sticky Ribbon */}
-      <section className="py-4 bg-background border-b border-border sticky top-0 z-40 shadow-sm">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <div className="flex bg-muted/60 p-1.5 rounded-2xl border border-muted shadow-xs gap-1.5 overflow-x-auto no-scrollbar max-w-full justify-start md:justify-center">
+      {/* Navigation & Search Sticky Ribbon */}
+      <section className="py-5 bg-background border-b border-border sticky top-0 z-40 shadow-xs">
+        <div className="container mx-auto px-4 max-w-6xl flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex bg-muted/60 p-1.5 rounded-2xl border border-muted shadow-2xs gap-1.5 overflow-x-auto no-scrollbar max-w-full justify-start md:justify-center">
             {(["All", "Institute & Labs", "Campus Tour", "Events & Culture", "Sports", "Social Hub"] as const).map(cat => (
               <button
                 key={cat}
@@ -184,7 +284,7 @@ export default function Media() {
                 }}
                 className={`cursor-pointer px-4.5 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all duration-300 whitespace-nowrap ${
                   activeCategory === cat 
-                    ? "bg-primary text-white shadow-md" 
+                    ? "bg-primary text-white shadow-xs" 
                     : "text-muted-foreground hover:text-primary"
                 }`}
               >
@@ -192,6 +292,19 @@ export default function Media() {
               </button>
             ))}
           </div>
+
+          {activeCategory !== "Social Hub" && (
+            <div className="relative w-full md:w-72">
+              <input
+                type="text"
+                placeholder="Search memories..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-9 pr-4 py-2.5 h-11 rounded-xl border border-muted bg-white text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-accent text-primary placeholder:text-muted-foreground/45 shadow-2xs"
+              />
+              <Search className="absolute left-3 top-3.5 w-4 h-4 text-muted-foreground/45" />
+            </div>
+          )}
         </div>
       </section>
 
@@ -209,19 +322,19 @@ export default function Media() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6.5"
+                className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 [column-fill:balance]"
               >
                 {filteredPhotos.map((item, index) => (
                   <div
                     key={item.id}
                     onClick={() => setLightboxIndex(index)}
-                    className="group bg-white border border-muted rounded-2.5xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-500 cursor-pointer flex flex-col justify-between"
+                    className="break-inside-avoid inline-block w-full group bg-white border border-muted rounded-2.5xl overflow-hidden shadow-xs hover:shadow-lg transition-all duration-500 cursor-pointer"
                   >
-                    <div className="overflow-hidden aspect-4/3 relative">
+                    <div className="overflow-hidden relative">
                       <img 
                         src={item.url} 
                         alt={item.title} 
-                        className="w-full h-full object-cover transform group-hover:scale-103 transition-transform duration-500"
+                        className="w-full h-auto object-cover transform group-hover:scale-103 transition-transform duration-500"
                         loading="lazy"
                       />
                       <span className="absolute top-4 left-4 bg-primary/80 backdrop-blur text-white text-[9px] uppercase font-bold px-2 py-0.5 rounded-lg border border-white/10">
@@ -229,7 +342,7 @@ export default function Media() {
                       </span>
                     </div>
 
-                    <div className="p-5.5 space-y-1.5">
+                    <div className="p-5.5 space-y-1.5 border-t border-muted/30">
                       <h3 className="text-sm font-extrabold text-primary leading-tight flex justify-between items-center group-hover:text-accent transition-colors">
                         {item.title}
                         <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all transform group-hover:translate-x-1" />
@@ -381,7 +494,7 @@ export default function Media() {
                         </div>
                         <div className="text-xs">
                           <span className="font-extrabold text-primary flex items-center gap-1">
-                            kbiper_pharmacy <span className="h-3 w-3 bg-blue-500 rounded-full flex items-center justify-center text-[7px] text-white">✓</span>
+                            kbiper_pharmacy <span className="h-3.5 w-3.5 bg-blue-500 rounded-full flex items-center justify-center text-[7px] text-white">✓</span>
                           </span>
                           <span className="text-[10px] text-muted-foreground">Talegaon Dabhade, Pune</span>
                         </div>
@@ -412,7 +525,7 @@ export default function Media() {
 
                         <p className="leading-relaxed text-muted-foreground text-xs">
                           <strong className="text-primary font-extrabold mr-1">kbiper_pharmacy</strong>
-                          National Conference on Herbal Formulation starts today! Principal Dr. Rekha Patil welcoming delegates to advanced drug delivery validations. 🌿📚 #education #pharmacy #seminar #pune
+                          National Conference on Herbal Formulation starts today! Principal Dr. Sanjay Arote welcoming delegates to advanced drug delivery validations. 🌿📚 #education #pharmacy #seminar #pune
                         </p>
                       </div>
                     </div>
@@ -426,7 +539,7 @@ export default function Media() {
                         </div>
                         <div className="text-xs">
                           <span className="font-extrabold text-primary flex items-center gap-1">
-                            kbiper_pharmacy <span className="h-3 w-3 bg-blue-500 rounded-full flex items-center justify-center text-[7px] text-white">✓</span>
+                            kbiper_pharmacy <span className="h-3.5 w-3.5 bg-blue-500 rounded-full flex items-center justify-center text-[7px] text-white">✓</span>
                           </span>
                           <span className="text-[10px] text-muted-foreground">Talegaon Dabhade, Pune</span>
                         </div>
@@ -678,11 +791,11 @@ export default function Media() {
               </div>
 
               {/* Big Image display */}
-              <div className="relative aspect-video bg-black flex items-center justify-center overflow-hidden">
+              <div className="relative h-[65vh] bg-black flex items-center justify-center overflow-hidden">
                 <img 
                   src={filteredPhotos[lightboxIndex].url} 
                   alt={filteredPhotos[lightboxIndex].title} 
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain animate-in fade-in duration-300"
                 />
 
                 {/* Navigation Arrows */}

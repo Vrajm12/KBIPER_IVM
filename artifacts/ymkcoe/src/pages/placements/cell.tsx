@@ -25,43 +25,71 @@ interface Coordinator {
 
 const COORDINATORS: Coordinator[] = [
   {
-    name: "Prof. Sandeep R. Bhegade",
-    role: "Training & Placement Officer",
-    deptOrClass: "T&P Administration",
-    email: "tpo.kbiper@indrayanividyamandir.org",
+    name: "Mr. Shyam S. Awate",
+    role: "Dean Training & Placement & III ED Cell",
+    deptOrClass: "T&P Cell Head",
+    email: "placement.iiper@gmail.com",
     type: "Faculty"
   },
   {
-    name: "Mrs. Priya Deshpande",
-    role: "Assistant Professor",
-    deptOrClass: "Pharmaceutics Department",
-    email: "priya.deshpande@indrayanividyamandir.org",
+    name: "Ms. Vilasini Pandav",
+    role: "Assistant Professor & Faculty Coordinator",
+    deptOrClass: "Pharmacology & Placement",
+    email: "vilasini.pandav@indrayanividyamandir.org",
     type: "Faculty"
   },
   {
-    name: "Dr. Nilesh Patil",
-    role: "Associate Professor",
-    deptOrClass: "Pharmaceutical Quality Assurance",
-    email: "nilesh.patil@indrayanividyamandir.org",
+    name: "Ms. Mugdha A. Joshi",
+    role: "Assistant Professor & Alumni Coordinator",
+    deptOrClass: "Pharmacognosy & Alumni relations",
+    email: "mugdha.joshi@indrayanividyamandir.org",
+    type: "Faculty"
+  },
+  {
+    name: "Prof. Shraddha S. Satkar",
+    role: "Assistant Professor & Faculty Coordinator",
+    deptOrClass: "Pharmaceutical Chemistry",
+    email: "shraddha.satkar@indrayanividyamandir.org",
+    type: "Faculty"
+  },
+  {
+    name: "Prof. Amol S. Deshmukh",
+    role: "Assistant Professor & Faculty Coordinator",
+    deptOrClass: "Pharmaceutics & Analysis",
+    email: "amol.deshmukh@indrayanividyamandir.org",
+    type: "Faculty"
+  },
+  {
+    name: "Mr. Mayur Lohkare",
+    role: "Assistant Professor & Faculty Coordinator",
+    deptOrClass: "Pharma Practices & Skills",
+    email: "mayur.lohkare@indrayanividyamandir.org",
+    type: "Faculty"
+  },
+  {
+    name: "Ms. P. A. Panmand",
+    role: "Assistant Professor & Faculty Coordinator",
+    deptOrClass: "Quality Assurance & Placement Support",
+    email: "pratibha.panmand@indrayanividyamandir.org",
     type: "Faculty"
   },
   {
     name: "Mr. Rohit Jagtap",
-    role: "Student Coordinator",
+    role: "Student Placement Coordinator",
     deptOrClass: "Final Year B.Pharm",
     email: "rohit.jagtap@student.kbiper.org",
     type: "Student"
   },
   {
     name: "Ms. Snehal Shinde",
-    role: "Student Coordinator",
+    role: "Student Placement Coordinator",
     deptOrClass: "Final Year B.Pharm",
     email: "snehal.shinde@student.kbiper.org",
     type: "Student"
   },
   {
     name: "Mr. Vivek Awate",
-    role: "Student Coordinator",
+    role: "Student Placement Coordinator",
     deptOrClass: "Second Year D.Pharm",
     email: "vivek.awate@student.kbiper.org",
     type: "Student"
@@ -182,7 +210,7 @@ export default function PlacementsCell() {
                   </div>
                   <div>
                     <h3 className="text-sm font-extrabold text-primary leading-tight">{coordinator.name}</h3>
-                    <p className="text-xs font-bold text-accent mt-0.5">{coordinator.role}</p>
+                    <p className="text-[11px] font-bold text-accent mt-0.5">{coordinator.role}</p>
                     <p className="text-[10px] text-muted-foreground">{coordinator.deptOrClass}</p>
                   </div>
                 </div>
@@ -253,7 +281,7 @@ export default function PlacementsCell() {
             {/* Side FAQ section */}
             <div className="lg:col-span-4 space-y-6 bg-white border border-muted p-6.5 rounded-3xl shadow-sm">
               <h3 className="text-base font-extrabold text-primary flex items-center gap-1.5">
-                <HelpCircle className="w-5 h-5 text-accent" /> placement FAQs
+                <HelpCircle className="w-5 h-5 text-accent" /> Placement FAQs
               </h3>
               
               <div className="space-y-4">

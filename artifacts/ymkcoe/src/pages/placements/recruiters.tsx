@@ -20,7 +20,7 @@ import { useToast } from "@/hooks/use-toast";
 
 interface Recruiter {
   name: string;
-  category: "R&D & Formulation" | "Quality Control" | "Marketing" | "Clinical Research";
+  category: "R&D & Formulation" | "Quality Control" | "Marketing" | "Clinical Research" | "Pharma Healthcare";
   hiresCount: number;
   packageRange: string;
   testimonial: string;
@@ -29,59 +29,139 @@ interface Recruiter {
 
 const RECRUITERS_DATA: Recruiter[] = [
   {
-    name: "Lupin Research Park",
+    name: "Serum Institute of India",
     category: "R&D & Formulation",
-    hiresCount: 35,
-    packageRange: "3.6 - 6.5 LPA",
-    testimonial: "KBIPER graduates show strong pilot formulation values, logical reasoning capabilities, and solid lab ethics.",
-    hrName: "Dr. Sunil Patil (Head HR)"
+    hiresCount: 38,
+    packageRange: "4.5 - 7.5 LPA",
+    testimonial: "KBIPER graduates show strong sterile manufacturing awareness, logical R&D reasoning capabilities, and outstanding lab ethics.",
+    hrName: "Dr. Nitin Salvi (R&D Panel)"
   },
   {
-    name: "Cipla Limited",
+    name: "Lupin Limited",
     category: "Quality Control",
     hiresCount: 42,
-    packageRange: "3.2 - 5.8 LPA",
+    packageRange: "3.6 - 6.5 LPA",
     testimonial: "The analytical calibration expertise shown by final year B.Pharm students during audits is truly commendable.",
     hrName: "Mr. Satish Shinde (QC Director)"
   },
   {
-    name: "Sun Pharmaceutical Industries",
+    name: "Emcure Pharmaceuticals",
     category: "R&D & Formulation",
-    hiresCount: 28,
+    hiresCount: 35,
     packageRange: "3.8 - 6.2 LPA",
-    testimonial: "Highly impressed by the research mindset and regulatory USFDA compliance understandings of M.Pharm candidates.",
+    testimonial: "Highly impressed by the research mindset and regulatory compliance understandings of the candidates.",
     hrName: "Mrs. Anjali Joshi (Senior Recruiter)"
   },
   {
-    name: "Pfizer Global Supply",
+    name: "TCS (Tata Consultancy Services)",
     category: "Clinical Research",
-    hiresCount: 15,
-    packageRange: "4.2 - 7.5 LPA",
+    hiresCount: 28,
+    packageRange: "4.0 - 6.8 LPA",
     testimonial: "KBIPER candidates demonstrate absolute proficiency in pharmacovigilance safety coding and clinical data logging.",
     hrName: "Mr. Ramesh More (Clinical HR)"
   },
   {
-    name: "Abbott Healthcare",
+    name: "Mankind Pharma",
     category: "Marketing",
     hiresCount: 24,
-    packageRange: "3.0 - 5.5 LPA",
+    packageRange: "3.2 - 5.5 LPA",
     testimonial: "Energetic graduates displaying outstanding pharmaceutical verbal skills, confidence, and brand knowledge.",
     hrName: "Mr. Vivek Deshmukh (Marketing Lead)"
   },
   {
-    name: "Dr. Reddy's Laboratories",
+    name: "Piramal Healthcare",
     category: "Quality Control",
     hiresCount: 18,
-    packageRange: "3.5 - 6.0 LPA",
+    packageRange: "3.5 - 5.8 LPA",
     testimonial: "Strong alignment with good manufacturing laboratory validations (GMP) and cleanroom protocols.",
     hrName: "Dr. R. K. Nair (Recruitment Panel)"
+  },
+  {
+    name: "AstraZeneca",
+    category: "R&D & Formulation",
+    hiresCount: 15,
+    packageRange: "4.8 - 7.2 LPA",
+    testimonial: "Excellent theoretical clarity on pharmacodynamics and formulation safety protocols.",
+    hrName: "Mrs. Gunawardhana (Academic Partner)"
+  },
+  {
+    name: "Reliance Foundation",
+    category: "Pharma Healthcare",
+    hiresCount: 30,
+    packageRange: "3.5 - 5.0 LPA",
+    testimonial: "Outstanding soft skills and workplace readiness drills prepare these graduates to fit in immediately.",
+    hrName: "Mr. Prathamesh Vaidya (HR Team)"
+  },
+  {
+    name: "Novartis",
+    category: "Clinical Research",
+    hiresCount: 12,
+    packageRange: "4.5 - 7.0 LPA",
+    testimonial: "Exceptional analytical thinking during data management and safety logging rounds.",
+    hrName: "Dr. Sandesh Kate (Advisory Director)"
+  },
+  {
+    name: "Advantmed",
+    category: "Clinical Research",
+    hiresCount: 22,
+    packageRange: "3.4 - 5.0 LPA",
+    testimonial: "Highly precise medical coding skills and medical chart audit understanding.",
+    hrName: "Mr. Govind Deshpande (Director)"
+  },
+  {
+    name: "Aquity Solutions",
+    category: "Clinical Research",
+    hiresCount: 20,
+    packageRange: "3.2 - 4.8 LPA",
+    testimonial: "Outstanding clinical scribing and documentation capabilities shown by final year B.Pharm candidates.",
+    hrName: "Mr. Rohitkumar A. Borade (Project Lead)"
+  },
+  {
+    name: "Fourrts India Laboratories Pvt. Ltd.",
+    category: "Quality Control",
+    hiresCount: 16,
+    packageRange: "3.0 - 4.5 LPA",
+    testimonial: "Great discipline and compliance with standard operating procedures (SOP) in QC labs.",
+    hrName: "Dr. Yogesh B. Zambare (IQAC Advisor)"
+  },
+  {
+    name: "GeBBS Healthcare Solutions",
+    category: "Clinical Research",
+    hiresCount: 25,
+    packageRange: "3.3 - 5.2 LPA",
+    testimonial: "Professional and quick adaptors in healthcare revenue cycle management and medical billing.",
+    hrName: "Ms. Dipika Patil (Assistant TPO)"
+  },
+  {
+    name: "Shilpa Medicare Ltd.",
+    category: "R&D & Formulation",
+    hiresCount: 10,
+    packageRange: "3.8 - 6.0 LPA",
+    testimonial: "In-depth understanding of oncology formulations and dosage form safety regulations.",
+    hrName: "Dr. Sunil Balaji Tambe (Director)"
+  },
+  {
+    name: "Nutrigold Healthtech LLP",
+    category: "R&D & Formulation",
+    hiresCount: 14,
+    packageRange: "3.0 - 4.8 LPA",
+    testimonial: "Great innovation index and awareness of nutraceutical formulations and dietary supplements.",
+    hrName: "Mr. Ashutosh Kumar (Corporate Signatory)"
+  },
+  {
+    name: "Episource",
+    category: "Clinical Research",
+    hiresCount: 19,
+    packageRange: "3.4 - 5.2 LPA",
+    testimonial: "Proficient chart auditors who show solid medical terminology and safety report generation skills.",
+    hrName: "Mr. Shivam R. Banarase (MD)"
   }
 ];
 
 export default function PlacementsRecruiters() {
   const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeCategory, setActiveCategory] = useState<"All" | "R&D & Formulation" | "Quality Control" | "Marketing" | "Clinical Research">("All");
+  const [activeCategory, setActiveCategory] = useState<"All" | "R&D & Formulation" | "Quality Control" | "Marketing" | "Clinical Research" | "Pharma Healthcare">("All");
   
   // Resume form state
   const [studentName, setStudentName] = useState("");
@@ -176,27 +256,27 @@ export default function PlacementsRecruiters() {
                 
                 {/* Search */}
                 <div className="relative w-full sm:max-w-xs">
-                  <Search className="absolute left-3.5 top-3.5 w-4 h-4 text-muted-foreground" />
+                  <Search className="absolute left-3.5 top-3.5 w-4 h-4 text-muted-foreground/45" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search recruitment partners..."
-                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-muted bg-white text-xs focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full pl-10 pr-4 py-3 rounded-xl border border-muted bg-white text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-accent text-primary placeholder:text-muted-foreground/45"
                   />
                 </div>
 
                 {/* Filter Selector */}
-                <div className="flex bg-muted p-1 rounded-xl border border-muted gap-1 overflow-x-auto no-scrollbar max-w-full">
-                  {(["All", "R&D & Formulation", "Quality Control", "Marketing", "Clinical Research"] as const).map(cat => (
+                <div className="flex bg-muted p-1.5 rounded-2xl border border-muted gap-1 overflow-x-auto no-scrollbar max-w-full">
+                  {(["All", "R&D & Formulation", "Quality Control", "Marketing", "Clinical Research", "Pharma Healthcare"] as const).map(cat => (
                     <button
                       key={cat}
                       onClick={() => setActiveCategory(cat)}
-                      className={`cursor-pointer px-3.5 py-2 rounded-lg text-[10px] font-bold transition-all duration-200 whitespace-nowrap ${
-                        activeCategory === cat ? "bg-white text-primary shadow-sm" : "text-muted-foreground hover:text-primary"
+                      className={`cursor-pointer px-4.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 whitespace-nowrap ${
+                        activeCategory === cat ? "bg-primary text-white shadow-sm" : "text-muted-foreground hover:text-primary"
                       }`}
                     >
-                      {cat === "All" ? "All Sectors" : cat.split(" & ").pop()}
+                      {cat === "All" ? "All Sectors" : cat}
                     </button>
                   ))}
                 </div>
@@ -216,22 +296,22 @@ export default function PlacementsRecruiters() {
                       className="bg-white border border-muted p-5.5 rounded-2xl shadow-[0_4px_20px_rgb(0,0,0,0.01)] hover:border-accent/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
                     >
                       <div className="space-y-3">
-                        <div className="flex justify-between items-start">
+                        <div className="flex justify-between items-start gap-4">
                           <div>
                             <h3 className="text-sm font-extrabold text-primary leading-tight">{rec.name}</h3>
-                            <span className="text-[9px] uppercase font-bold text-accent tracking-wide block mt-0.5">{rec.category}</span>
+                            <span className="text-[9px] uppercase font-bold text-accent tracking-wide block mt-1">{rec.category}</span>
                           </div>
-                          <span className="text-[10px] bg-primary/5 text-primary px-2 py-0.5 rounded font-semibold border border-primary/10 shrink-0">
+                          <span className="text-[10px] bg-primary/5 text-primary px-2.5 py-1 rounded-lg font-semibold border border-primary/10 shrink-0">
                             {rec.packageRange}
                           </span>
                         </div>
 
-                        <p className="text-xs text-muted-foreground italic leading-relaxed bg-muted/20 p-3 rounded-xl border border-muted/30">
+                        <p className="text-xs text-muted-foreground italic leading-relaxed bg-muted/20 p-3.5 rounded-xl border border-muted/30">
                           "{rec.testimonial}"
                         </p>
                       </div>
 
-                      <div className="pt-3 mt-4 border-t border-muted/50 flex justify-between items-center text-[9px] text-muted-foreground">
+                      <div className="pt-3 mt-4 border-t border-muted/50 flex justify-between items-center text-[10px] text-muted-foreground">
                         <span className="font-semibold text-primary">{rec.hrName}</span>
                         <span className="bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-full font-bold border border-emerald-100 flex items-center gap-1 shrink-0">
                           <TrendingUp className="w-3 h-3" /> {rec.hiresCount}+ Hired
@@ -255,7 +335,7 @@ export default function PlacementsRecruiters() {
               <div className="bg-white border border-muted p-6.5 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] space-y-6 sticky top-28">
                 <div>
                   <h3 className="text-base font-extrabold text-primary flex items-center gap-1.5">
-                    <Briefcase className="w-5 h-5 text-accent" /> Student Resume submission
+                    <Briefcase className="w-5 h-5 text-accent" /> Student Resume Submission
                   </h3>
                   <p className="text-xs text-muted-foreground mt-1">Submit your latest formatted resume to register for upcoming corporate recruitment rounds.</p>
                 </div>

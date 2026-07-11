@@ -9,7 +9,8 @@ import {
   ChevronRight,
   BookOpen,
   MapPin,
-  Clock
+  Clock,
+  ShieldCheck
 } from "lucide-react";
 
 interface IndustrialVisit {
@@ -21,75 +22,58 @@ interface IndustrialVisit {
   objective: string;
   outcomes: string[];
   facultyCoordinators: string[];
+  industryOfficials: string[];
 }
 
 const VISITS_DATA: IndustrialVisit[] = [
   {
-    company: "Lupin Research Park",
-    location: "Nande, Pune",
-    date: "March 15, 2026",
-    studentsCount: 45,
-    targetBatch: "Final Year B.Pharm & M.Pharm",
-    objective: "To demonstrate pilot-scale formulation, modern drug delivery development, and automated packaging systems.",
+    company: "Dr. Balaji Tambe Health Care Pvt. Ltd.",
+    location: "Atmasantulana Village, Karla, Maval, Pune",
+    date: "November 18, 2025 (Monday)",
+    studentsCount: 55,
+    targetBatch: "Final Year B.Pharmacy",
+    objective: "To provide guidance to students regarding Ayurvedic formulations manufacturing, industrial guidelines, work culture, and documentation.",
     outcomes: [
-      "Observed automated tablet punchers and dry-granulators in real-time execution.",
-      "Interacted with senior formulation scientists working on liposomal drug development.",
-      "Understood GMP clinical data logging protocols and standard operating procedures (SOP)."
+      "Observed stainless steel manufacturing instruments of SS 304L and 316L grades.",
+      "Learnt the manufacturing process of Chyavanprash and the concept of 'Bhavana' related to drug potency.",
+      "Observed pill rolling machines and understood the critical importance of weight uniformity.",
+      "Studied vacuum dryers for controlled heat drying and isolation of volatile oils, and industrial boilers for steam control.",
+      "Learnt to identify adulterated oils (pure oils must look brown in color).",
+      "Measured BRICS value of solutions using a Refractometer.",
+      "Studied Sandhan Kalpana (Asav & Arishta using decoction bases) and sterilization protocols at 70-75°C.",
+      "Learnt identification of Swarna Bhasma using XRD analysis, gold Shodhan, and traditional quality markers (Rekha purnantva, Varitatva, Niswadhy, Nirdhuva, Nishchandra)."
     ],
-    facultyCoordinators: ["Prof. Sandeep R. Bhegade", "Dr. Nilesh Patil"]
+    facultyCoordinators: ["Mr. Shyam S. Awate (TPO)", "Ms. Mugdha A. Joshi", "Ms. Vilasini Pandav"],
+    industryOfficials: ["Dr. Sunil Balaji Tambe (Director)", "Mr. Vijeesh V. Kattakallam (HOD)", "Mr. Kulkarni (Production Dept)"]
   },
   {
-    company: "Cipla Limited",
-    location: "Kurkumbh, MIDC",
-    date: "February 22, 2026",
-    studentsCount: 52,
-    targetBatch: "Third Year B.Pharm",
-    objective: "To study bulk drug manufacturing, cleanroom validation grades, and HVAC system setups in parenteral formulations.",
+    company: "MAGS IATRC Research and Training Pvt. Ltd.",
+    location: "Bhosari, Pune, Maharashtra - 411026",
+    date: "August 23, 2024 (Friday)",
+    studentsCount: 64,
+    targetBatch: "Final Year B.Pharmacy",
+    objective: "To provide hands-on training on various advanced analytical instruments and guidance regarding industrial documentation, work culture, and guidelines.",
     outcomes: [
-      "Toured cleanroom Class A & B sterile formulation zones.",
-      "Learned the operation of double-cone blenders and fluid-bed dryers.",
-      "Explored quality control systems including high-performance liquid chromatography (HPLC) units."
+      "Participated in live training sessions on various analytical instruments and understood their application in pharmaceutical research.",
+      "Learnt the operating protocols and calibration steps of UV-Spectrophotometer.",
+      "Observed Gas Chromatography (GC) methods for compound separations.",
+      "Tested formulation release rates using Dissolution and Disintegration test apparatus.",
+      "Learnt moisture estimation using Karl Fisher titration apparatus.",
+      "Studied compound profiling using High-Performance Liquid Chromatography (HPLC) analytical benches."
     ],
-    facultyCoordinators: ["Mrs. Priya Deshpande", "Mr. Vicky Salve"]
-  },
-  {
-    company: "Serum Institute of India",
-    location: "Hadapsar, Pune",
-    date: "September 18, 2025",
-    studentsCount: 40,
-    targetBatch: "M.Pharm (Pharmaceutics)",
-    objective: "To expose students to large-scale bioreactor operations, vaccine production lines, and sterile freeze-drying procedures.",
-    outcomes: [
-      "Examined industrial-grade fermenter operations and cell-culture scaling vessels.",
-      "Observed automated vial washing, sterile filling, and aluminum capping assembly lines.",
-      "Learned vaccine cold-chain logistics and thermal validation metrics."
-    ],
-    facultyCoordinators: ["Dr. Rekha Patil", "Prof. Sandeep R. Bhegade"]
-  },
-  {
-    company: "Alkem Laboratories",
-    location: "Baddi, Himachal Pradesh",
-    date: "January 10, 2025",
-    studentsCount: 38,
-    targetBatch: "Final Year B.Pharm",
-    objective: "To study soft gelatin capsule encapsulation processes, dissolution tests, and regulatory auditing standards.",
-    outcomes: [
-      "Observed gelatin ribbon formulation and rotary-die encapsulation machines.",
-      "Learned analytical stability testing chambers and standard environmental parameters.",
-      "Understood USFDA inspection readiness and validation protocol documentation."
-    ],
-    facultyCoordinators: ["Prof. Sandeep R. Bhegade", "Mrs. Priya Deshpande"]
+    facultyCoordinators: ["Prof. Shyam S. Awate (TPO)", "Prof. Shraddha S. Satkar", "Prof. Amol S. Deshmukh"],
+    industryOfficials: ["Dr. Sandesh Kate (Director)", "Mr. Govind Deshpande (Director)", "Mr. Ashish (Instrument Trainer)"]
   }
 ];
 
 const STUDENT_FEEDBACK = [
   {
-    quote: "Seeing the pilot formulation plants at Lupin helped me connect academic lecture notes on tableting to physical manufacturing steps.",
+    quote: "Testing Swarna Bhasma using XRD and understanding the weight uniformity of pill rolling machines at Dr. Balaji Tambe Health Care was an eye-opener. It perfectly bridged our pharmacology theory with real production lines.",
     student: "Ms. Snehal Shinde",
     batch: "B.Pharm Final Year"
   },
   {
-    quote: "The cleanroom sterilization protocols at Cipla gave me clear insights into aseptic processing. It motivated me to seek QC positions.",
+    quote: "The hands-on calibration of Gas Chromatography and HPLC systems at MAGS IATRC Research helped me clear my technical round with confidence during campus interviews.",
     student: "Mr. Rohit Jagtap",
     batch: "B.Pharm Final Year"
   }
@@ -124,20 +108,20 @@ export default function PlacementsIndustrialVisit() {
           <div className="bg-white border border-muted rounded-3xl p-6.5 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="space-y-2 max-w-xl text-xs md:text-sm">
               <h2 className="text-lg font-extrabold text-primary flex items-center gap-1.5">
-                <Building className="w-5 h-5 text-accent" /> Why Industrial Visits Matter?
+                <Building className="w-5 h-5 text-accent" /> Visualizing Industry Standards
               </h2>
               <p className="text-muted-foreground leading-relaxed">
-                Industrial visits are a core curriculum component at KBIPER. They provide students with direct visual contact of high-volume tablet machines, quality check HPLC arrays, sterile vaccine lines, and bulk drug reactors. This real exposure builds practical competency and increases employability in placement interviews.
+                Industrial visits are a core competency requirement at KBIPER. By visiting state-of-the-art analytical research hubs and traditional formulations manufacturers, students experience the strict standards of GMP, sterile areas, quality controls, and advanced machinery.
               </p>
             </div>
             <div className="flex gap-4 shrink-0 bg-primary/5 p-4 rounded-2xl border border-primary/10">
               <div className="text-center px-4">
-                <span className="block font-black text-primary text-2xl tracking-tight">4+</span>
-                <span className="text-[10px] text-muted-foreground font-semibold uppercase">Visits / Year</span>
+                <span className="block font-black text-primary text-2xl tracking-tight">2 Large</span>
+                <span className="text-[10px] text-muted-foreground font-semibold uppercase">Visits Logged</span>
               </div>
               <div className="w-px bg-muted-border" />
               <div className="text-center px-4">
-                <span className="block font-black text-primary text-2xl tracking-tight">180+</span>
+                <span className="block font-black text-primary text-2xl tracking-tight">119</span>
                 <span className="text-[10px] text-muted-foreground font-semibold uppercase">Students Covered</span>
               </div>
             </div>
@@ -169,16 +153,16 @@ export default function PlacementsIndustrialVisit() {
                             <MapPin className="w-3.5 h-3.5 text-accent" /> {visit.location}
                           </p>
                         </div>
-                        <span className="inline-flex px-2 py-0.5 bg-muted text-[10px] text-primary font-bold rounded-lg border border-muted-border self-start sm:self-auto">
+                        <span className="inline-flex px-2.5 py-0.5 bg-muted text-[10px] text-primary font-bold rounded-lg border border-muted-border self-start sm:self-auto shrink-0">
                           {visit.date}
                         </span>
                       </div>
 
-                      <div className="space-y-1.5 text-xs text-muted-foreground leading-relaxed">
+                      <div className="space-y-2 text-xs text-muted-foreground leading-relaxed">
                         <p><strong>Objective:</strong> {visit.objective}</p>
                         
                         <div className="bg-muted/30 p-4 rounded-xl border border-muted/30 space-y-2 mt-2">
-                          <span className="text-[10px] uppercase font-bold text-primary tracking-wide block">Key Learning Outcomes:</span>
+                          <span className="text-[10px] uppercase font-bold text-primary tracking-wide block">Key Learnings & Outcomes:</span>
                           <ul className="space-y-1.5 list-none pl-0 text-[11px]">
                             {visit.outcomes.map((outcome, oIdx) => (
                               <li key={oIdx} className="flex items-start gap-1.5">
@@ -190,11 +174,18 @@ export default function PlacementsIndustrialVisit() {
                         </div>
                       </div>
 
+                      <div className="bg-primary/5 p-3 rounded-xl border border-primary/10 text-[10px] text-primary space-y-1.5">
+                        <div className="flex items-center gap-2">
+                          <ShieldCheck className="w-4 h-4 text-accent shrink-0" />
+                          <span><strong>Key Industry Officials:</strong> {visit.industryOfficials.join(", ")}</span>
+                        </div>
+                      </div>
+
                       <div className="pt-3 border-t border-muted/50 flex flex-wrap justify-between items-center text-[10px] text-muted-foreground gap-2">
                         <span className="flex items-center gap-1">
-                          <Users className="w-3.5 h-3.5 text-accent" /> <strong>Accompanying Faculty:</strong> {visit.facultyCoordinators.join(", ")}
+                          <Users className="w-3.5 h-3.5 text-accent" /> <strong>Faculty Escorts:</strong> {visit.facultyCoordinators.join(", ")}
                         </span>
-                        <span className="bg-primary/5 text-primary px-2 py-0.5 rounded font-semibold border border-primary/10">
+                        <span className="bg-primary/5 text-primary px-2.5 py-0.5 rounded-full font-bold border border-primary/10">
                           {visit.studentsCount} Students ({visit.targetBatch})
                         </span>
                       </div>
@@ -214,7 +205,7 @@ export default function PlacementsIndustrialVisit() {
                   <BookOpen className="w-48 h-48" strokeWidth={0.5} />
                 </div>
                 <h4 className="text-xs font-extrabold uppercase tracking-widest text-accent mb-6 flex items-center gap-1.5">
-                  <Award className="w-4 h-4" /> Student Experiences
+                  <Award className="w-4 h-4" /> Student Feedback
                 </h4>
                 
                 <div className="space-y-6">
@@ -239,15 +230,15 @@ export default function PlacementsIndustrialVisit() {
                 <ul className="space-y-2 pl-0 list-none text-[11px] text-muted-foreground">
                   <li className="flex items-start gap-1">
                     <ChevronRight className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
-                    <span>Permission slips signed by guardians must be submitted to the TPO cell 3 days prior.</span>
+                    <span>Consent forms signed by parent must be submitted to the TPO cell 3 days prior.</span>
                   </li>
                   <li className="flex items-start gap-1">
                     <ChevronRight className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
-                    <span>All students must wear formal clean uniform and standard ID cards.</span>
+                    <span>All students must wear clean college uniforms and standard identity cards.</span>
                   </li>
                   <li className="flex items-start gap-1">
                     <ChevronRight className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" />
-                    <span>Safety aprons and hairnets must be worn inside formulation laboratories.</span>
+                    <span>Safety aprons, face masks, and hair caps must be worn inside pharmaceutical sterile zones.</span>
                   </li>
                 </ul>
               </div>
