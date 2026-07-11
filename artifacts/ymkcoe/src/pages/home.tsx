@@ -267,8 +267,8 @@ export default function Home() {
               <CardContent className="p-8 flex flex-col justify-between h-full space-y-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-4 border-b border-border pb-4">
-                    <div className="h-14 w-14 rounded-full bg-gradient-to-tr from-primary to-primary-light flex items-center justify-center font-bold text-white text-lg shrink-0 shadow-sm">
-                      SA
+                    <div className="h-14 w-14 rounded-full bg-gradient-to-tr from-primary to-primary-light flex items-center justify-center font-bold text-white text-lg shrink-0 shadow-sm overflow-hidden relative">
+                      <img src={`${import.meta.env.BASE_URL}principal_sanjay_arote.jpg`} alt="Dr. Sanjay R. Arote" className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h3 className="font-bold text-base text-primary leading-tight">Dr. Sanjay R. Arote</h3>

@@ -187,7 +187,7 @@ export default function About() {
                 className="lg:w-2/5 relative"
               >
                 <div className="aspect-[3/4] rounded-3xl overflow-hidden relative shadow-2xl border-4 border-white/10">
-                  <img src={`${import.meta.env.BASE_URL}president.jpg`} alt="Dr. Sanjay R. Arote" className="w-full h-full object-cover" />
+                  <img src={`${import.meta.env.BASE_URL}principal_sanjay_arote.jpg`} alt="Dr. Sanjay R. Arote" className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
                 </div>
                 {/* Floating badge */}

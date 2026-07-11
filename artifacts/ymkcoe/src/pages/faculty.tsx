@@ -49,6 +49,7 @@ const FACULTY_MEMBERS: FacultyMember[] = [
     "experience": "8+ Years (Teaching)",
     "email": "sanjayr.arote@kbiper.edu.in",
     "bio": "Dr. Sanjay R. Arote is a dedicated Principal in the Department of Pharmacology at KBIPER, committed to academic mentoring and practical laboratory guidance.",
+    "photoUrl": `${import.meta.env.BASE_URL}principal_sanjay_arote.jpg`,
     "programs": [
       "bpharm",
       "mpharm"
