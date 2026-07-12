@@ -52,13 +52,14 @@ export function Footer() {
             <h4 className="text-lg font-semibold mb-4 border-b border-primary-foreground/10 pb-2">Departments</h4>
             <ul className="space-y-2">
               {[
-                "Computer Science & Engineering",
-                "Artificial Intelligence & Data Science",
-                "Electronics & Telecommunication Engineering",
-                "Information Technology",
+                "Pharmaceutics",
+                "Pharmaceutical Chemistry",
+                "Pharmacology",
+                "Pharmacognosy",
+                "Quality Assurance",
               ].map((dept) => (
                 <li key={dept}>
-                  <Link href={`/courses?dept=${encodeURIComponent(dept)}`}>
+                  <Link href={`/faculty?dept=${encodeURIComponent(dept)}`}>
                     <span className="text-sm text-primary-foreground/80 hover:text-accent transition-colors flex items-center group">
                       <ChevronRight className="h-3 w-3 mr-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                       {dept}
@@ -83,7 +84,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3 text-sm text-primary-foreground/80">
                 <Mail className="h-5 w-5 text-accent shrink-0" />
-                <a href="mailto:admission@ymkcoe.com" className="hover:text-accent transition-colors">admission@ymkcoe.com</a>
+                <a href="mailto:principal.iiper@gmail.com" className="hover:text-accent transition-colors">principal.iiper@gmail.com</a>
               </li>
             </ul>
           </div>
@@ -91,9 +92,17 @@ export function Footer() {
         </div>
       </div>
       
-      <div className="bg-primary/95 border-t border-primary-foreground/10 py-3">
+      <div className="bg-primary/95 border-t border-primary-foreground/10 py-4">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-primary-foreground/60">
-          <p>&copy; {currentYear} Krishnarao Bhegade Institute of Pharmaceutical Education and Research (KBIPER). All rights reserved.</p>
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
+            <p>&copy; {currentYear} Krishnarao Bhegade Institute of Pharmaceutical Education and Research (KBIPER). All rights reserved.</p>
+            <span className="hidden md:inline text-primary-foreground/30">|</span>
+            <Link href="/triverse">
+              <span className="hover:text-accent font-medium transition-colors cursor-pointer flex items-center gap-1 group">
+                Designed &amp; Developed by <span className="text-white font-bold group-hover:text-accent transition-colors underline decoration-accent/40 group-hover:decoration-accent decoration-2 underline-offset-4">Triverse Solutions</span>
+              </span>
+            </Link>
+          </div>
           <div className="flex gap-4">
             <Link href="/admin"><span className="hover:text-accent transition-colors">Admin Portal</span></Link>
             <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>

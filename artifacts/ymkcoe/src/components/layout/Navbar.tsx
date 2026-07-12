@@ -105,7 +105,7 @@ export function Navbar() {
                 <Link href="/admissions?tab=documents"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Documents Required</span></Link>
                 <Link href="/admissions?tab=process"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Admission Process</span></Link>
                 <Link href="/admissions?tab=institute-level"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Admission at Institute Level</span></Link>
-                <Link href="/admissions?tab=tfw-code"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >TFW Code</span></Link>
+                <Link href="/admissions?tab=tfw-code"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >TFWS Code</span></Link>
                 <Link href="/admissions?tab=fee-structure"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Fee Structure</span></Link>
                 <Link href="/admissions?tab=fra"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >FRA</span></Link>
                 <Link href="/admissions/check-eligibility"><span className="block px-3 py-2 rounded-md text-sm hover:bg-muted hover:text-accent cursor-pointer text-foreground" >Check Your Eligibility</span></Link>
@@ -307,7 +307,7 @@ export function Navbar() {
                   <Link href="/admissions?tab=documents"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Documents Required</span></Link>
                   <Link href="/admissions?tab=process"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Admission Process</span></Link>
                   <Link href="/admissions?tab=institute-level"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Admission at Institute Level</span></Link>
-                  <Link href="/admissions?tab=tfw-code"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>TFW Code</span></Link>
+                  <Link href="/admissions?tab=tfw-code"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>TFWS Code</span></Link>
                   <Link href="/admissions?tab=fee-structure"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Fee Structure</span></Link>
                   <Link href="/admissions?tab=fra"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>FRA</span></Link>
                   <Link href="/admissions/check-eligibility"><span className="block px-4 py-2 rounded-md text-sm hover:bg-muted" onClick={() => setIsOpen(false)}>Check Your Eligibility</span></Link>

@@ -110,7 +110,7 @@ export default function Contact() {
                     <div>
                       <h3 className="font-semibold text-foreground text-lg mb-1">Email Address</h3>
                       <p className="text-muted-foreground">
-                        <a href="mailto:admission@ymkcoe.com" className="hover:text-primary transition-colors">admission@ymkcoe.com</a>
+                        <a href="mailto:principal.iiper@gmail.com" className="hover:text-primary transition-colors">principal.iiper@gmail.com</a>
                       </p>
                     </div>
                   </div>

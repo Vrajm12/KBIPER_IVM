@@ -1,5 +1,5 @@
 import { AppLayout } from "@/components/layout/AppLayout";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Mail, 
@@ -546,10 +546,34 @@ function getGradientForInitials(name: string): string {
 }
 
 export default function Faculty() {
+  const [location] = useLocation();
   const [selectedDept, setSelectedDept] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [activeFaculty, setActiveFaculty] = useState<FacultyMember | null>(null);
   const [activeProgram, setActiveProgram] = useState<"bpharm" | "mpharm" | "dpharm">("bpharm");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const deptParam = params.get("dept");
+      if (deptParam && DEPARTMENTS.includes(deptParam)) {
+        setSelectedDept(deptParam);
+        
+        // Find which program has this department, and switch to it if needed
+        const possiblePrograms = FACULTY_MEMBERS.filter(
+          member => member.department.includes(deptParam)
+        ).flatMap(member => member.programs);
+        
+        if (possiblePrograms.length > 0) {
+          if (!possiblePrograms.includes(activeProgram)) {
+            setActiveProgram(possiblePrograms[0]);
+          }
+        }
+      } else {
+        setSelectedDept("All");
+      }
+    }
+  }, [location, activeProgram]);
 
   const filteredFaculty = useMemo(() => {
     return FACULTY_MEMBERS.filter((member) => {

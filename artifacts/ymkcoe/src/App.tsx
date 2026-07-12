@@ -54,6 +54,7 @@ const Newsletter = lazy(() => import("@/pages/support/newsletter"));
 const NAACIQAC = lazy(() => import("@/pages/naac/iqac"));
 const NAACSSR = lazy(() => import("@/pages/naac/ssr"));
 const NAACLinks = lazy(() => import("@/pages/naac/links"));
+const Triverse = lazy(() => import("@/pages/triverse"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -124,6 +125,7 @@ function Router() {
         <Route path="/naac/iqac" component={NAACIQAC} />
         <Route path="/naac/ssr" component={NAACSSR} />
         <Route path="/naac/links" component={NAACLinks} />
+        <Route path="/triverse" component={Triverse} />
 
         <Route component={NotFound} />
       </Switch>
