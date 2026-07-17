@@ -1,3 +1,9 @@
 [build]
   command = "pnpm --filter @workspace/ymkcoe build"
   publish = "artifacts/ymkcoe/dist"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://kbiper-ivm.onrender.com/api/:splat"
+  status = 200
+  force = true
