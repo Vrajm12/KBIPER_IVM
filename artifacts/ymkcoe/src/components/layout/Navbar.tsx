@@ -57,6 +57,9 @@ export function Navbar() {
             <span className="font-bold text-[10px] md:text-[12px] lg:text-[14px] xl:text-[16px] 2xl:text-lg text-primary uppercase tracking-wide leading-tight whitespace-nowrap">
               Pharmaceutical Education & Research
             </span>
+            <span className="hidden md:block text-[9px] md:text-[10px] lg:text-[11px] xl:text-[12px] text-muted-foreground font-medium leading-none whitespace-nowrap mt-0.5 md:mt-1">
+              Talegaon Chakan Road, Talegaon Dabhade, Tal. Maval, Dist. Pune 410507
+            </span>
           </div>
         </Link>
 
