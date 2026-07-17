@@ -3,19 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
 import { ArrowRight, GraduationCap, Users, Building, Trophy, Calendar, CheckCircle2, MessageSquare, Quote, Landmark, History } from "lucide-react";
-import { useGetNews, useGetDashboardStats } from "@workspace/api-client-react";
+import { useGetNews, useGetDashboardStats, useGetCourses } from "@workspace/api-client-react";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { CampusShowcase } from "@/components/layout/CampusShowcase";
 
 export default function Home() {
-  // Bypass API for courses and use hardcoded pharmacy courses
-  const courses = [
-    { id: '1', name: 'D. Pharmacy', department: 'Diploma', duration: '2 Years', seats: 60, established: '2017-18' },
-    { id: '2', name: 'B. Pharmacy', department: 'Undergraduate', duration: '4 Years', seats: 100, established: '2017-18' },
-    { id: '3', name: 'M. Pharmacy (Pharmaceutics)', department: 'Postgraduate', duration: '2 Years', seats: 15, established: '2023-24' },
-    { id: '4', name: 'M. Pharmacy (Pharmacology)', department: 'Postgraduate', duration: '2 Years', seats: 15, established: '2023-24' },
-  ];
+  const { data: coursesData } = useGetCourses();
+  const courses = Array.isArray(coursesData) ? coursesData : [];
   const { data: news = [] } = useGetNews({ category: "announcement" });
   const { data: stats } = useGetDashboardStats();
 
@@ -64,15 +59,29 @@ export default function Home() {
             <p className="text-lg md:text-xl text-primary-foreground/80 max-w-lg leading-relaxed">
               Indrayani Vidya Mandir's Krishnarao Bhegade Institute of Pharmaceutical Education & Research prepares the next generation of pharmacists and healthcare innovators.
             </p>
+            {/* Pharmacy Programs Quick Links */}
+            <div className="flex items-center gap-3 text-sm font-semibold tracking-wider text-white/95 uppercase pt-2 select-none">
+              <Link href="/academics/departmental-info?tab=dpharm">
+                <span className="hover:text-accent transition-colors duration-200 cursor-pointer border-b border-transparent hover:border-accent pb-0.5">D. Pharm</span>
+              </Link>
+              <span className="text-white/30 font-light">|</span>
+              <Link href="/academics/departmental-info?tab=bpharm">
+                <span className="hover:text-accent transition-colors duration-200 cursor-pointer border-b border-transparent hover:border-accent pb-0.5">B. Pharm</span>
+              </Link>
+              <span className="text-white/30 font-light">|</span>
+              <Link href="/academics/departmental-info?tab=mpharm">
+                <span className="hover:text-accent transition-colors duration-200 cursor-pointer border-b border-transparent hover:border-accent pb-0.5">M. Pharm</span>
+              </Link>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-start w-full sm:w-auto">
               <Link href="/admissions">
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-white font-semibold px-8 h-14 text-base w-full sm:w-auto shadow-lg shadow-accent/20">
                   Apply Now <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link href="/courses">
+              <Link href="/academics/departmental-info">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 h-14 px-8 text-base w-full sm:w-auto backdrop-blur-sm">
-                  Explore Programs
+                  Explore Departments
                 </Button>
               </Link>
             </div>
@@ -80,6 +89,14 @@ export default function Home() {
           
           {/* Empty spacer for the right side image on desktop */}
           <div className="hidden lg:block lg:col-span-6"></div>
+        </div>
+
+        {/* Floating DTE Code Badge */}
+        <div className="absolute bottom-6 right-6 z-20 flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-accent hover:bg-accent/90 text-white shadow-xl shadow-accent/20 border-2 border-white/20 transition-all duration-300 hover:scale-105 select-none">
+          <div className="text-center font-bold">
+            <span className="block text-[9px] md:text-[10px] uppercase tracking-wider text-white/90 leading-tight">DTE Code</span>
+            <span className="block text-lg md:text-xl font-extrabold tracking-tight leading-tight mt-0.5">6902</span>
+          </div>
         </div>
       </section>
 

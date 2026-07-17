@@ -1,5 +1,5 @@
 import { AppLayout } from "@/components/layout/AppLayout";
-// API client import removed since we are hardcoding the courses now
+import { useGetCourses } from "@workspace/api-client-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -14,20 +14,13 @@ const DEPARTMENTS = [
   "Postgraduate",
 ];
 
-const PHARMACY_COURSES = [
-  { id: '1', name: 'D. Pharmacy', department: 'Diploma', type: 'Diploma', duration: '2 Years', seats: 60, eligibility: '10+2 with Science', description: 'Diploma in Pharmacy is a 2-year entry-level diploma course that provides the essential knowledge and skills required to practice as a pharmacist.' },
-  { id: '2', name: 'B. Pharmacy', department: 'Undergraduate', type: 'Degree', duration: '4 Years', seats: 100, eligibility: '10+2 with PCB/PCM', description: 'Bachelor of Pharmacy is a 4-year undergraduate program focusing on health and chemical sciences.' },
-  { id: '3', name: 'M. Pharmacy (Pharmaceutics)', department: 'Postgraduate', type: 'Master', duration: '2 Years', seats: 15, eligibility: 'B.Pharm', description: 'Specialized master program focusing on the process of turning a new chemical entity into a medication.' },
-  { id: '4', name: 'M. Pharmacy (Pharmacology)', department: 'Postgraduate', type: 'Master', duration: '2 Years', seats: 15, eligibility: 'B.Pharm', description: 'Specialized master program focusing on drug action and how medicines interact with biological systems.' },
-];
-
 export default function Courses() {
   const [selectedDept, setSelectedDept] = useState<string>("All");
   
-  const isLoading = false;
-  const courses = selectedDept === "All" 
-    ? PHARMACY_COURSES 
-    : PHARMACY_COURSES.filter(c => c.department === selectedDept);
+  const { data: coursesData, isLoading } = useGetCourses(
+    selectedDept !== "All" ? { department: selectedDept } : undefined
+  );
+  const courses = Array.isArray(coursesData) ? coursesData : [];
 
   return (
     <AppLayout>

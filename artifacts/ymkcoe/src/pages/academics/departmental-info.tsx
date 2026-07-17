@@ -1,6 +1,7 @@
 import { AppLayout } from "@/components/layout/AppLayout";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Pill, FlaskConical, Beaker, Microscope, ArrowRight } from "lucide-react";
 
 const DEPARTMENTS = [
@@ -58,7 +59,25 @@ const DEPARTMENTS = [
 ];
 
 export default function DepartmentalInfo() {
-  const [activeTab, setActiveTab] = useState(DEPARTMENTS[0].id);
+  const [location] = useLocation();
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const tab = params.get("tab");
+      if (tab && DEPARTMENTS.some(d => d.id === tab)) {
+        return tab;
+      }
+    }
+    return DEPARTMENTS[0].id;
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const tab = params.get("tab");
+    if (tab && DEPARTMENTS.some(d => d.id === tab)) {
+      setActiveTab(tab);
+    }
+  }, [location]);
   
   const activeDept = DEPARTMENTS.find(d => d.id === activeTab) || DEPARTMENTS[0];
 

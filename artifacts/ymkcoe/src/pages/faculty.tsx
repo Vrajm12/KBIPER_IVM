@@ -15,6 +15,8 @@ import {
   ArrowRight
 } from "lucide-react";
 import { useLocation } from "wouter";
+import { useGetFaculty } from "@workspace/api-client-react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface FacultyMember {
   id: string;
@@ -37,490 +39,6 @@ interface FacultyMember {
   resumeUrl?: string;
   programs: ("bpharm" | "mpharm" | "dpharm")[];
 }
-
-const FACULTY_MEMBERS: FacultyMember[] = [
-  {
-    "id": "1",
-    "name": "Dr. Sanjay R. Arote",
-    "designation": "Principal",
-    "department": "Pharmacology",
-    "qualification": "M. Pharm",
-    "specialization": "Advanced Pharmaceutical Research, Pharmacology validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "sanjayr.arote@kbiper.edu.in",
-    "bio": "Dr. Sanjay R. Arote is a dedicated Principal in the Department of Pharmacology at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "photoUrl": `${import.meta.env.BASE_URL}principal_sanjay_arote.jpg`,
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "2",
-    "name": "Dr. Yogesh B. Zambare",
-    "designation": "Professor",
-    "department": "Pharmaceutical Chemistry, HOD",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Neuropharmacology, Behavioral Toxicology, Cardiovascular Screening",
-    "experience": "13+ Years",
-    "email": "yogesh.zambare@kbiper.edu.in",
-    "bio": "Dr. Yogesh Zambare leads the pharmacology department and oversees the institutional CPCSEA animal house facility. His research explores target receptors in neurodegenerative diseases like Alzheimer's and Parkinson's.",
-    "publications": "20+ Research and review articles in indexed journals",
-    "projects": "Collaborating with local hospitals for clinical research safety evaluations",
-    "isHOD": true,
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "3",
-    "name": "Dr. Amol S. Rakte",
-    "designation": "Professor",
-    "department": "Pharmaceutics, HOD",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutics validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "amols.rakte@kbiper.edu.in",
-    "bio": "Dr. Amol S. Rakte is a dedicated Professor in the Department of Pharmaceutics at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "4",
-    "name": "Dr. Ganesh R. Phadtare",
-    "designation": "Assoc. Professor",
-    "department": "Pharmacolog , HOD",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Synthetic Organic Chemistry, Computer-Aided Drug Design (CADD), Spectroscopy",
-    "experience": "18+ Years",
-    "email": "ganesh.phadtare@kbiper.edu.in",
-    "bio": "Dr. Phadtare specializes in the design and synthesis of bioactive molecules targeting metabolic disorders. His expertise lies in molecular docking, spectroscopic analysis, and chemical process optimization.",
-    "publications": "25+ Publications in high-impact international journals",
-    "projects": "Investigating lead molecules with potential anti-diabetic activities",
-    "isHOD": true,
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "5",
-    "name": "Dr. Mayuri V. Gurav",
-    "designation": "Assistant Professor",
-    "department": "Pharmacology",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmacology validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "mayuriv.gurav@kbiper.edu.in",
-    "bio": "Dr. Mayuri V. Gurav is a dedicated Assistant Professor in the Department of Pharmacology at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "6",
-    "name": "Dr. Payal K. Thorat",
-    "designation": "Assoc. Professor",
-    "department": "Pharmaceutics",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutics validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "payalk.thorat@kbiper.edu.in",
-    "bio": "Dr. Payal K. Thorat is a dedicated Assoc. Professor in the Department of Pharmaceutics at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "7",
-    "name": "Mr. Shyam S. Awate",
-    "designation": "Assoc. Professor",
-    "department": "Pharmaceutics",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutics validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "shyams.awate@kbiper.edu.in",
-    "bio": "Mr. Shyam S. Awate is a dedicated Assoc. Professor in the Department of Pharmaceutics at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "8",
-    "name": "Ms. Mugdha A. Joshi",
-    "designation": "Assoc. Professor",
-    "department": "Pharmacognosy, HOD",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmacognosy validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "mugdhaa.joshi@kbiper.edu.in",
-    "bio": "Ms. Mugdha A. Joshi is a dedicated Assoc. Professor in the Department of Pharmacognosy at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "9",
-    "name": "Ms. Kadambari S. Ghatpande",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutical Chemistry",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutical Chemistry validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "kadambaris.ghatpande@kbiper.edu.in",
-    "bio": "Ms. Kadambari S. Ghatpande is a dedicated Assistant Professor in the Department of Pharmaceutical Chemistry at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "10",
-    "name": "Ms. Priyanka A. Panmand",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutics",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutics validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "priyankaa.panmand@kbiper.edu.in",
-    "bio": "Ms. Priyanka A. Panmand is a dedicated Assistant Professor in the Department of Pharmaceutics at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "11",
-    "name": "Ms. Mrinali A. Kale",
-    "designation": "Assistant Professor",
-    "department": "Pharmacognosy",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmacognosy validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "mrinalia.kale@kbiper.edu.in",
-    "bio": "Ms. Mrinali A. Kale is a dedicated Assistant Professor in the Department of Pharmacognosy at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "12",
-    "name": "Ms. Shraddha S. Satkar",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutical Chemistry",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutical Chemistry validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "shraddhas.satkar@kbiper.edu.in",
-    "bio": "Ms. Shraddha S. Satkar is a dedicated Assistant Professor in the Department of Pharmaceutical Chemistry at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "13",
-    "name": "Ms. Vikranti W. Koli",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutics",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutics validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "vikrantiw.koli@kbiper.edu.in",
-    "bio": "Ms. Vikranti W. Koli is a dedicated Assistant Professor in the Department of Pharmaceutics at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "14",
-    "name": "Ms. Sharda S. Kulkarni",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutics",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutics validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "shardas.kulkarni@kbiper.edu.in",
-    "bio": "Ms. Sharda S. Kulkarni is a dedicated Assistant Professor in the Department of Pharmaceutics at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "15",
-    "name": "Ms. Godavari K. Brahma",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutics",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutics validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "godavarik.brahma@kbiper.edu.in",
-    "bio": "Ms. Godavari K. Brahma is a dedicated Assistant Professor in the Department of Pharmaceutics at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "16",
-    "name": "Ms. Ashwini Joshi",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutical Chemistry",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutical Chemistry validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "ashwinijoshi@kbiper.edu.in",
-    "bio": "Ms. Ashwini Joshi is a dedicated Assistant Professor in the Department of Pharmaceutical Chemistry at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "17",
-    "name": "Mr. Mahesh B. Gawade",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutical Chemistry",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutical Chemistry validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "maheshb.gawade@kbiper.edu.in",
-    "bio": "Mr. Mahesh B. Gawade is a dedicated Assistant Professor in the Department of Pharmaceutical Chemistry at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "18",
-    "name": "Ms. Reshma B. Nehere",
-    "designation": "Assistant Professor",
-    "department": "Pharmacology",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmacology validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "reshmab.nehere@kbiper.edu.in",
-    "bio": "Ms. Reshma B. Nehere is a dedicated Assistant Professor in the Department of Pharmacology at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "19",
-    "name": "Ms. Pooja N. Sawant",
-    "designation": "Assistant Professor",
-    "department": "Pharmacology",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmacology validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "poojan.sawant@kbiper.edu.in",
-    "bio": "Ms. Pooja N. Sawant is a dedicated Assistant Professor in the Department of Pharmacology at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "20",
-    "name": "Ms. Nilam S. Patangare",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutics",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutics validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "nilams.patangare@kbiper.edu.in",
-    "bio": "Ms. Nilam S. Patangare is a dedicated Assistant Professor in the Department of Pharmaceutics at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "21",
-    "name": "Ms. Rasika R. Giri",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutics",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutics validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "rasikar.giri@kbiper.edu.in",
-    "bio": "Ms. Rasika R. Giri is a dedicated Assistant Professor in the Department of Pharmaceutics at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "22",
-    "name": "Ms. Vilasini R. Pandav",
-    "designation": "Assistant Professor",
-    "department": "Pharmacognosy",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmacognosy validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "vilasinir.pandav@kbiper.edu.in",
-    "bio": "Ms. Vilasini R. Pandav is a dedicated Assistant Professor in the Department of Pharmacognosy at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "23",
-    "name": "Ms. Reshma P. Dhakate",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutical Chemistry",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutical Chemistry validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "reshmap.dhakate@kbiper.edu.in",
-    "bio": "Ms. Reshma P. Dhakate is a dedicated Assistant Professor in the Department of Pharmaceutical Chemistry at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "24",
-    "name": "Ms. Yogita C. Saraf",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutics",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutics validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "yogitac.saraf@kbiper.edu.in",
-    "bio": "Ms. Yogita C. Saraf is a dedicated Assistant Professor in the Department of Pharmaceutics at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "25",
-    "name": "Mr. Dadagouda M. Birajdar",
-    "designation": "Assistant Professor",
-    "department": "Pharmaceutical Chemistry",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmaceutical Chemistry validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "dadagoudam.birajdar@kbiper.edu.in",
-    "bio": "Mr. Dadagouda M. Birajdar is a dedicated Assistant Professor in the Department of Pharmaceutical Chemistry at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "26",
-    "name": "Ms. Sandhya V. Patil",
-    "designation": "Assistant Professor",
-    "department": "Pharmacology",
-    "qualification": "M. Pharm, Ph.D.",
-    "specialization": "Advanced Pharmaceutical Research, Pharmacology validation",
-    "experience": "8+ Years (Teaching)",
-    "email": "sandhyav.patil@kbiper.edu.in",
-    "bio": "Ms. Sandhya V. Patil is a dedicated Assistant Professor in the Department of Pharmacology at KBIPER, committed to academic mentoring and practical laboratory guidance.",
-    "programs": [
-      "bpharm",
-      "mpharm"
-    ]
-  },
-  {
-    "id": "27",
-    "name": "Dr. Gulab S. Shinde",
-    "designation": "HOD",
-    "department": "D. Pharmacy",
-    "qualification": "M. Pharm",
-    "specialization": "Dispensing, Drug Store & Business Management",
-    "experience": "5+ Years (Teaching)",
-    "email": "gulabs.shinde@kbiper.edu.in",
-    "bio": "Dr. Gulab S. Shinde is a Lecturer in the D. Pharmacy division at KBIPER, focusing on retail and hospital pharmacy training.",
-    "programs": [
-      "dpharm"
-    ]
-  },
-  {
-    "id": "28",
-    "name": "Mr. Mayur K. Lohkare",
-    "designation": "Lecturer",
-    "department": "D. Pharmacy",
-    "qualification": "M. Pharm",
-    "specialization": "Dispensing, Drug Store & Business Management",
-    "experience": "5+ Years (Teaching)",
-    "email": "mayurk.lohkare@kbiper.edu.in",
-    "bio": "Mr. Mayur K. Lohkare is a Lecturer in the D. Pharmacy division at KBIPER, focusing on retail and hospital pharmacy training.",
-    "programs": [
-      "dpharm"
-    ]
-  },
-  {
-    "id": "29",
-    "name": "Ms. Sohini A. Ganguly",
-    "designation": "Lecturer",
-    "department": "D. Pharmacy",
-    "qualification": "M. Pharm",
-    "specialization": "Dispensing, Drug Store & Business Management",
-    "experience": "5+ Years (Teaching)",
-    "email": "sohinia.ganguly@kbiper.edu.in",
-    "bio": "Ms. Sohini A. Ganguly is a Lecturer in the D. Pharmacy division at KBIPER, focusing on retail and hospital pharmacy training.",
-    "programs": [
-      "dpharm"
-    ]
-  },
-  {
-    "id": "30",
-    "name": "Ms. Ankita Vilas Berde",
-    "designation": "Lecturer",
-    "department": "D. Pharmacy",
-    "qualification": "M. Pharm",
-    "specialization": "Dispensing, Drug Store & Business Management",
-    "experience": "5+ Years (Teaching)",
-    "email": "ankitavilasberde@kbiper.edu.in",
-    "bio": "Ms. Ankita Vilas Berde is a Lecturer in the D. Pharmacy division at KBIPER, focusing on retail and hospital pharmacy training.",
-    "programs": [
-      "dpharm"
-    ]
-  },
-  {
-    "id": "31",
-    "name": "Ms. Komal A. Thakar",
-    "designation": "Lecturer",
-    "department": "D. Pharmacy",
-    "qualification": "M. Pharm",
-    "specialization": "Dispensing, Drug Store & Business Management",
-    "experience": "5+ Years (Teaching)",
-    "email": "komala.thakar@kbiper.edu.in",
-    "bio": "Ms. Komal A. Thakar is a Lecturer in the D. Pharmacy division at KBIPER, focusing on retail and hospital pharmacy training.",
-    "programs": [
-      "dpharm"
-    ]
-  },
-  {
-    "id": "32",
-    "name": "Ms. Shweta M. Mantri",
-    "designation": "Lecturer",
-    "department": "D. Pharmacy",
-    "qualification": "M. Pharm",
-    "specialization": "Dispensing, Drug Store & Business Management",
-    "experience": "5+ Years (Teaching)",
-    "email": "shwetam.mantri@kbiper.edu.in",
-    "bio": "Ms. Shweta M. Mantri is a Lecturer in the D. Pharmacy division at KBIPER, focusing on retail and hospital pharmacy training.",
-    "programs": [
-      "dpharm"
-    ]
-  }
-];
 
 const DEPARTMENTS = [
   "All",
@@ -552,6 +70,51 @@ export default function Faculty() {
   const [activeFaculty, setActiveFaculty] = useState<FacultyMember | null>(null);
   const [activeProgram, setActiveProgram] = useState<"bpharm" | "mpharm" | "dpharm">("bpharm");
 
+  const { data: facultyData, isLoading } = useGetFaculty();
+  const dbFaculty = Array.isArray(facultyData) ? facultyData : [];
+
+  const facultyMembers = useMemo(() => {
+    return dbFaculty.map((member) => {
+      const programs: ("bpharm" | "mpharm" | "dpharm")[] = 
+        member.department === "D. Pharmacy" 
+          ? ["dpharm"] 
+          : ["bpharm", "mpharm"];
+          
+      let parsedBio = member.bio || "";
+      let publications = undefined;
+      let projects = undefined;
+      
+      try {
+        if (member.bio?.startsWith("{")) {
+          const parsed = JSON.parse(member.bio);
+          parsedBio = parsed.bio || "";
+          publications = parsed.publications;
+          projects = parsed.projects;
+        }
+      } catch (e) {
+        // ignore
+      }
+
+      return {
+        id: member.id.toString(),
+        name: member.name,
+        designation: member.designation,
+        department: member.department,
+        qualification: member.qualification || "",
+        specialization: member.specialization || "",
+        experience: member.experience ? `${member.experience}+ Years` : "N/A",
+        email: member.email || "",
+        bio: parsedBio,
+        isHOD: member.isHOD,
+        isPrincipal: member.designation.toLowerCase() === "principal",
+        photoUrl: member.photoUrl || undefined,
+        programs,
+        publications,
+        projects,
+      };
+    });
+  }, [dbFaculty]);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
@@ -560,7 +123,7 @@ export default function Faculty() {
         setSelectedDept(deptParam);
         
         // Find which program has this department, and switch to it if needed
-        const possiblePrograms = FACULTY_MEMBERS.filter(
+        const possiblePrograms = facultyMembers.filter(
           member => member.department.includes(deptParam)
         ).flatMap(member => member.programs);
         
@@ -573,10 +136,10 @@ export default function Faculty() {
         setSelectedDept("All");
       }
     }
-  }, [location, activeProgram]);
+  }, [location, activeProgram, facultyMembers]);
 
   const filteredFaculty = useMemo(() => {
-    return FACULTY_MEMBERS.filter((member) => {
+    return facultyMembers.filter((member) => {
       const matchesProgram = member.programs.includes(activeProgram);
       const matchesDept = selectedDept === "All" || member.department.includes(selectedDept);
       
@@ -590,7 +153,7 @@ export default function Faculty() {
 
       return matchesProgram && matchesDept && matchesSearch;
     });
-  }, [activeProgram, selectedDept, searchQuery]);
+  }, [facultyMembers, activeProgram, selectedDept, searchQuery]);
 
   return (
     <AppLayout>
@@ -693,7 +256,22 @@ export default function Faculty() {
 
           {/* Faculty Cards Grid */}
           <AnimatePresence mode="popLayout">
-            {filteredFaculty.length > 0 ? (
+            {isLoading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+                  <div key={i} className="flex flex-col bg-white border border-muted p-6 md:p-7 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.03)] h-[280px] space-y-4">
+                    <Skeleton className="w-20 h-20 rounded-full" />
+                    <Skeleton className="h-4 w-3/4" />
+                    <Skeleton className="h-3 w-1/2" />
+                    <Skeleton className="h-3 w-1/3" />
+                    <div className="border-t border-muted/50 pt-4 space-y-2 mt-auto">
+                      <Skeleton className="h-3 w-full" />
+                      <Skeleton className="h-3 w-2/3" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : filteredFaculty.length > 0 ? (
               <motion.div 
                 layout
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"

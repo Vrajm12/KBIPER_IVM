@@ -48,13 +48,13 @@ export default function AdminLogin() {
   return (
     <div className="min-h-[100dvh] flex items-center justify-center bg-primary">
       <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')]"></div>
-      <Card className="w-full max-w-md shadow-2xl border-none relative z-10">
-        <CardHeader className="text-center pt-8 pb-6 border-b border-border/50">
-          <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4 text-accent">
-            <Lock className="h-8 w-8" />
+      <Card className="w-full max-w-md shadow-2xl border-none relative z-10 rounded-3xl overflow-hidden">
+        <CardHeader className="text-center pt-10 pb-6 border-b border-border/40 bg-gradient-to-b from-slate-50 to-white">
+          <div className="w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-4 text-accent border border-accent/20">
+            <Lock className="h-7 w-7" />
           </div>
-          <CardTitle className="text-2xl font-bold text-primary">Krishnarao Bhegade Institute of Pharmaceutical Education and Research (KBIPER) Admin</CardTitle>
-          <p className="text-sm text-muted-foreground mt-2">Sign in to manage college website content</p>
+          <CardTitle className="text-2xl font-black tracking-tight text-primary">KBIPER Console</CardTitle>
+          <p className="text-xs text-muted-foreground uppercase font-bold tracking-wider mt-1.5">Administrative Login</p>
         </CardHeader>
         <CardContent className="p-8">
           <Form {...form}>

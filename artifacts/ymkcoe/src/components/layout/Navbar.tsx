@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X, ChevronDown, Mail, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -40,19 +40,6 @@ export function Navbar() {
 
   return (
     <header className="w-full border-b border-border bg-background shadow-sm" ref={navRef}>
-      <div className="bg-primary text-primary-foreground py-1 md:py-1.5">
-        <div className="container mx-auto px-4 flex justify-between items-center text-xs md:text-sm">
-          <div className="flex items-center gap-4">
-            <a href="mailto:principal.iiper@gmail.com" className="flex items-center gap-1 hover:text-accent transition-colors">
-              <Mail className="h-3 w-3" /> <span className="hidden md:inline">principal.iiper@gmail.com</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <span>DBATU AFFILIATED</span>
-            <span className="hidden md:inline font-semibold text-accent">DTE 6902</span>
-          </div>
-        </div>
-      </div>
       <div className="container mx-auto px-4 h-16 md:h-24 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 md:gap-4 hover:opacity-90 transition-opacity">
           <img 
